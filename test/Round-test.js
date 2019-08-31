@@ -1,14 +1,20 @@
-import chai from 'chai';
+import chai from 'chai'
 const expect = chai.expect;
+
+import data from '../src/data/sample-data.js'
+import Puzzle from '../src/Puzzle.js';
 import Round from '../src/Round.js';
 
 describe('Round', () => {
-  let round;
+  let puzzle, round;
 
   beforeEach(() => {
-    round = new Round();
+    puzzle = new Puzzle(data.puzzles);
+    puzzle.choosePuzzleBank();
+    puzzle = puzzle.choosePuzzle();
+    round = new Round(puzzle);
   });
-  it('should return true', function() {
-    expect(true).to.equal(true);
+  it.only('should store the current rounds puzzle', () => {
+    expect(round.puzzle).to.be.an('object');
   });
 });
