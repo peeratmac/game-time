@@ -13,12 +13,12 @@ describe('Puzzle', () => {
     expect(puzzle.puzzleBank).to.equal(data);
   });
 
-  it.only('should be able to randomly pick a bank of puzzles', () => {
+  it('should be able to randomly pick a bank of puzzles', () => {
     puzzle.choosePuzzleBank();
     expect(puzzle.chosenBank.length).to.equal(24);
   })
 
-  it.only('should be able to return a random puzzle from the chosen bank', () => {
+  it('should be able to return a random puzzle from the chosen bank', () => {
     puzzle.choosePuzzleBank();
     expect([puzzle.choosePuzzle()].length).to.equal(1);
   })
