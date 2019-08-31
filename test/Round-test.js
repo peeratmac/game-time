@@ -14,18 +14,31 @@ describe('Round', () => {
     puzzle = new Puzzle(data.puzzles);
     puzzle.choosePuzzleBank();
     puzzle = puzzle.choosePuzzle();
-    round = new Round(puzzle, game);
+    round = new Round(puzzle);
   });
   it('should store the current rounds puzzle', () => {
     expect(round.puzzle).to.be.an('object');
   })
 
-  it.only('should store the current player\'s turn', () => {
-    expect(round.playerTurn).to.be.an('object');
+  it('should store the current player\'s turn', () => {
+    expect(round.playerTurn).to.be(0);
   })
 
   it('should store the current round standings', () => {
     expect(round.roundStandings).to.be.an('array');
   })
+
+  it('should start with no letters guessed', () => {
+    expect(round.guessedLetters).to.be.an('array');
+  })
   
+  it.only('should store letters guessed after they are made', () => {
+    round.storeGuess('a');
+    expect(round.guessedLetters).to.deep.equal(['a']);
+  })
+
+  it('should start a round with a new puzzle', () => {
+    round.startRound();
+    expect(round.puzzle).to.not.equal(puzzle);
+  })
 });
