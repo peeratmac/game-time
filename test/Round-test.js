@@ -32,13 +32,19 @@ describe('Round', () => {
     expect(round.guessedLetters).to.be.an('array');
   })
   
-  it.only('should store letters guessed after they are made', () => {
+  it('should store letters guessed after they are made', () => {
     round.storeGuess('a');
     expect(round.guessedLetters).to.deep.equal(['a']);
   })
 
   it('should start a round with a new puzzle', () => {
     round.startRound();
-    expect(round.puzzle).to.not.equal(puzzle);
+    expect(round.puzzle).to.not.deep.equal(puzzle);
   })
+
+  it.only('should check if a guess is within the correct answer', () => {
+    round.checkGuess('a');
+    expect(round.puzzle).to.not.deep.equal(1);
+  })
+
 });
