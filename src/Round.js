@@ -1,12 +1,11 @@
 import Puzzle from "./Puzzle";
-
 // import Game from '../test/Round-test.js';
 // import Puzzle from './Puzzle.js'
 import data from './data/sample-data.js';
+import { truncate } from "fs";
 
-class Round extends Puzzle {
+class Round {
   constructor(puzzle) {
-    super()
     this.puzzle = puzzle;
     this.playerTurnIndex = 0;
     this.roundStandings = [];
@@ -18,11 +17,32 @@ class Round extends Puzzle {
   }
 
   startRound() {
-    let puzzleClass = new Puzzle(data)
-    let puzzleBank = super.choosePuzzleBank();
-    this.puzzle = super.choosePuzzle()
+    let puzzleClass = new Puzzle(data);
+    this.puzzle = puzzleClass.newPuzzle;
     this.guessedLetters = [];
+    // update round standings with each player's score
   }
+
+  endRound() {
+    return this.roundStandings;
+  }
+
+  checkGuess(letter) {
+    // checkSolve();
+    let indices = [];
+    let answerArray = this.puzzle.correct_answer.split('');
+    answerArray.forEach((char) => {
+      indices.push(answerArray).findIndex(char => char === letter))
+    })
+    console.log(answerArray);
+    console.log(indices);
+  }
+
+  // checkSolve() {
+
+  // }
+
+
 }
 
 export default Round;

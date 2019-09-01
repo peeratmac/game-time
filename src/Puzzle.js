@@ -2,6 +2,7 @@ class Puzzle {
   constructor(puzzles) {
     this.fullBank = puzzles;
     this.chosenBank = [];
+    this.newPuzzle = this.choosePuzzle();
   }
 
   choosePuzzleBank() {

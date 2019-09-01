@@ -44,7 +44,7 @@ describe('Round', () => {
 
   it.only('should check if a guess is within the correct answer', () => {
     round.checkGuess('a');
-    expect(round.puzzle).to.not.deep.equal(1);
+    expect(round.puzzle).to.not.deep.equal(2);
   })
 
 });
