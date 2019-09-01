@@ -1,8 +1,8 @@
-import Puzzle from "./Puzzle";
+import Puzzle from './Puzzle';
 // import Game from '../test/Round-test.js';
 // import Puzzle from './Puzzle.js'
 import data from './data/sample-data.js';
-import { truncate } from "fs";
+import { truncate } from 'fs';
 
 class Round {
   constructor(puzzle) {
@@ -29,20 +29,18 @@ class Round {
 
   checkGuess(letter) {
     // checkSolve();
-    let indices = [];
+    let indicesArray = [];
     let answerArray = this.puzzle.correct_answer.split('');
-    answerArray.forEach((char) => {
-      indices.push(answerArray).findIndex(char => char === letter))
-    })
+    answerArray.forEach((char, index) => {
+      char === letter ? indicesArray.push(index) : null;
+    });
     console.log(answerArray);
-    console.log(indices);
+    console.log(indicesArray);
   }
 
   // checkSolve() {
 
   // }
-
-
 }
 
 export default Round;
