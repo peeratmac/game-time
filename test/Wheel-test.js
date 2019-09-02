@@ -6,14 +6,20 @@ import Wheel from '../src/Wheel.js';
 describe('See if the tests are running', function () {
   let wheel 
   beforeEach(() => {
-    wheel = new Wheel(data.wheel)
+    wheel = new Wheel(data)
   });
 
-  it.only('should be a function', () => {
-    expect(constructor).to.be.an('object');
+  it('should be a function', () => {
+    expect(wheel).to.be.an('object');
   });
 
-  it('')
+  it('should be able to hold the Wheel of Fortune values', () => {
+    expect(wheel.wheelVals).to.be.an('array');
+  });
   
+
+  it('should be able to hold the Wheel of Fortune values', () => {
+    expect(wheel.wheelVals).to.include(wheel.currentVal);
+  });
   
 });
