@@ -25,25 +25,27 @@ class Round {
   }
 
   endRound() {
+    this.guessedLetters = [];
+    this.correctIndicesArr = [];
     return this.roundStandings;
   }
 
   checkGuess(letter) {
-    // let indicesArray = [];
     let answerArray = this.puzzle.correct_answer.split('');
     answerArray.forEach((char, index) => {
       char.toUpperCase() === letter.toUpperCase() ? this.correctIndicesArr.push(index) : null;
     });
-    console.log(answerArray, this.correctIndicesArr);
-    // checkSolve();
+    this.checkSolve();
   }
 
   checkSolve(fullPlayerGuess) {
-    if (
-      this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()
-    ) {
+    let noSpacesArr = this.puzzle.correct_answer.split('').filter(elem => elem !== ' ');
+    if (this.correctIndicesArr.length === noSpacesArr.length) {
+      this.endRound();
+      return true
+    } else if (fullPlayerGuess !== undefined && (this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase())) {
       // ! going to need something to update money/score of the player
-      this.guessedLetters = [];
+      this.endRound()
       return true;
     } else {
       return false;

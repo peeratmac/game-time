@@ -57,4 +57,35 @@ describe('Round', () => {
     expect(round.guessedLetters.length).to.equal(0);
     expect(round.checkSolve('NOT A REAL ANSWER')).to.equal(false);
   });
+
+  it('should check whether the letter guess solved the question/puzzle', () => {
+    round.checkGuess('a');
+    round.checkGuess('b');
+    round.checkGuess('c');
+    round.checkGuess('d');
+    round.checkGuess('e');
+    round.checkGuess('f');
+    round.checkGuess('g');
+    round.checkGuess('h');
+    round.checkGuess('i');
+    round.checkGuess('j');
+    round.checkGuess('k');
+    round.checkGuess('l');
+    round.checkGuess('m');
+    round.checkGuess('n');
+    round.checkGuess('o');
+    round.checkGuess('p');
+    round.checkGuess('q');
+    round.checkGuess('r');
+    round.checkGuess('s');
+    round.checkGuess('t');
+    round.checkGuess('u');
+    round.checkGuess('v');
+    round.checkGuess('w');
+    round.checkGuess('x');
+    round.checkGuess('y');
+    round.checkGuess('z');
+    expect(round.guessedLetters.length).to.equal(0);
+    expect(round.correctIndicesArr.length).to.equal(0);
+  });
 });
