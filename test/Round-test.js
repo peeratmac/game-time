@@ -54,7 +54,7 @@ describe('Round', () => {
 
   it('should check whether the guess solved the question/puzzle', () => {
     expect(round.checkSolve(round.puzzle['correct_answer'])).to.equal(true);
-
+    expect(round.guessedLetters.length).to.equal(0);
     expect(round.checkSolve('NOT A REAL ANSWER')).to.equal(false);
   });
 });
