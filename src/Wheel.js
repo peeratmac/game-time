@@ -1,7 +1,8 @@
-import Wheel from './Wheel.js';
+import data from './data/sample-data.js';
+
 
 class Wheel {
-  constructor(data) {}
+  constructor() {}
 }
 
 export default Wheel;
