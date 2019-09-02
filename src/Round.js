@@ -10,6 +10,7 @@ class Round {
     this.playerTurnIndex = 0;
     this.roundStandings = [];
     this.guessedLetters = [];
+    this.correctIndicesArr = [];
   }
 
   storeGuess(letter) {
@@ -24,25 +25,27 @@ class Round {
   }
 
   endRound() {
+    this.guessedLetters = [];
+    this.correctIndicesArr = [];
     return this.roundStandings;
   }
 
   checkGuess(letter) {
-    // checkSolve();
-    console.log(this.puzzle['correct_answer']);
-    let indicesArray = [];
     let answerArray = this.puzzle.correct_answer.split('');
     answerArray.forEach((char, index) => {
-      char === letter ? indicesArray.push(index) : null;
+      char.toUpperCase() === letter.toUpperCase() ? this.correctIndicesArr.push(index) : null;
     });
+    this.checkSolve();
   }
 
   checkSolve(fullPlayerGuess) {
-    if (
-      this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()
-    ) {
+    let noSpacesArr = this.puzzle.correct_answer.split('').filter(elem => elem !== ' ');
+    if (this.correctIndicesArr.length === noSpacesArr.length) {
+      this.endRound();
+      return true
+    } else if (fullPlayerGuess !== undefined && (this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase())) {
       // ! going to need something to update money/score of the player
-      this.guessedLetters = [];
+      this.endRound()
       return true;
     } else {
       return false;
