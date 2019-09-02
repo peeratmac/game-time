@@ -10,6 +10,7 @@ class Round {
     this.playerTurnIndex = 0;
     this.roundStandings = [];
     this.guessedLetters = [];
+    this.correctIndicesArr = [];
   }
 
   storeGuess(letter) {
@@ -28,13 +29,13 @@ class Round {
   }
 
   checkGuess(letter) {
-    // checkSolve();
-    console.log(this.puzzle['correct_answer']);
-    let indicesArray = [];
+    // let indicesArray = [];
     let answerArray = this.puzzle.correct_answer.split('');
     answerArray.forEach((char, index) => {
-      char === letter ? indicesArray.push(index) : null;
+      char.toUpperCase() === letter.toUpperCase() ? this.correctIndicesArr.push(index) : null;
     });
+    console.log(answerArray, this.correctIndicesArr);
+    // checkSolve();
   }
 
   checkSolve(fullPlayerGuess) {
