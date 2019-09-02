@@ -26,7 +26,7 @@ describe('Round', () => {
   });
 
   it("should store the current player's turn", () => {
-    expect(round.playerTurn).to.be(0);
+    expect(round.playerTurnIndex).to.equal(0);
   });
 
   it('should store the current round standings', () => {
@@ -52,7 +52,9 @@ describe('Round', () => {
     expect(round.puzzle).to.not.deep.equal(2);
   });
 
-  it.only('should check whether the guess solved the question/puzzle', () => {
-    // ! need a test
+  it('should check whether the guess solved the question/puzzle', () => {
+    expect(round.checkSolve(round.puzzle['correct_answer'])).to.equal(true);
+
+    expect(round.checkSolve('NOT A REAL ANSWER')).to.equal(false);
   });
 });
