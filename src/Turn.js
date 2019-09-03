@@ -5,12 +5,13 @@ class Turn {
   }
 
   spinWheel(wheel) {
-    return wheel.randomizeWheelVal();
+    wheel.randomizeWheelVal();
+    return wheel.currentVal;
   }
 
-  // makeGuess(letter) {
-  //   if ()
-  // }
+  makeGuess(letter) {
+    
+  }
 
   solvePuzzle() {
 

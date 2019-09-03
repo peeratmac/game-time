@@ -10,6 +10,7 @@ class Puzzle {
   choosePuzzleBank() {
     let options = ['one_word_answers', 'two_word_answers', 'three_word_answers', 'four_word_answers'];
     let index = Math.floor(Math.random() * 4);
+    // console.log(this.fullBank)
     let chosenOption = options[index];
     this.chosenBank = this.fullBank[chosenOption].puzzle_bank;
   }
@@ -17,7 +18,6 @@ class Puzzle {
   setPuzzle() {
     let index = Math.floor(Math.random() * 24);
     this.newPuzzle = this.chosenBank[index];
-    return this.newPuzzle;
   }
 
   // createPuzzleArray() {

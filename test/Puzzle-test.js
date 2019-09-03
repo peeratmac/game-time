@@ -19,13 +19,13 @@ describe('Puzzle', () => {
     expect(puzzle.chosenBank.length).to.equal(24);
   });
 
-  it.only('should be able to return a random puzzle from the chosen bank', () => {
+  it('should be able to return a random puzzle from the chosen bank', () => {
     puzzle.choosePuzzleBank();
     puzzle.setPuzzle();
     expect(puzzle.newPuzzle).to.be.an('object');
   });
 
-  it.only('should return the puzzle answer as an array', () => {
+  it('should return the puzzle answer as an array', () => {
     puzzle.choosePuzzleBank();
     puzzle.setPuzzle();
     // console.log(puzzle.createPuzzleArray());
