@@ -28,7 +28,7 @@ describe('Puzzle', () => {
   it.only('should return the puzzle answer as an array', () => {
     puzzle.choosePuzzleBank();
     puzzle.setPuzzle();
-    console.log(puzzle.createPuzzleArray());
+    // console.log(puzzle.createPuzzleArray());
     expect(puzzle.newPuzzle).to.be.an('object');
   }); 
 
