@@ -1,8 +1,10 @@
+import { throws } from "assert";
+
 class Puzzle {
   constructor(puzzles) {
     this.fullBank = puzzles;
     this.chosenBank = [];
-    this.newPuzzle = this.choosePuzzle();
+    this.newPuzzle = {};
   }
 
   choosePuzzleBank() {
@@ -12,10 +14,16 @@ class Puzzle {
     this.chosenBank = this.fullBank[chosenOption].puzzle_bank;
   }
 
-  choosePuzzle() {
+  setPuzzle() {
     let index = Math.floor(Math.random() * 24);
-    return this.chosenBank[index];
+    this.newPuzzle = this.chosenBank[index];
+    return this.newPuzzle;
   }
+
+  // createPuzzleArray() {
+  //   return this.newPuzzle
+  // }
+
 }
 
 export default Puzzle;

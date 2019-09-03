@@ -18,8 +18,9 @@ describe('See if the tests are running', function () {
   });
   
 
-  it.only('should be able to hold the Wheel of Fortune values', () => {
+  it('should be able to hold the Wheel of Fortune values', () => {
     expect(wheel.wheelVals).to.include(wheel.currentVal);
   });
+  
   
 });
