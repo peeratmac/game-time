@@ -1,7 +1,6 @@
 class Wheel {
   constructor(data) {
     this.wheelVals = data.wheel;
-    this.currentVal = this.randomizeWheelVal();
   }
 
   randomizeWheelVal() {

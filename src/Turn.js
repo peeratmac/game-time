@@ -1,12 +1,12 @@
-import Turn from './Turn.js';
+import Wheel from './Wheel.js';
 
 class Turn {
-  constructor() {
+  constructor(data) {
 
   }
 
   spinWheel() {
-
+    return wheel.randomizeWheelVal();
   }
 
   makeGuess() {
