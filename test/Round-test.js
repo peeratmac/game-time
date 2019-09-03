@@ -15,17 +15,19 @@ describe('Round', () => {
       { id: 2, name: 'Peerat' },
       { id: 3, name: 'Victor' }
     ]);
-    puzzle = new Puzzle(data.puzzles);
-    puzzle.choosePuzzleBank();
-    puzzle = puzzle.choosePuzzle();
+    // puzzle = new Puzzle(data.puzzles);
+    // puzzle.choosePuzzleBank();
+    // puzzle = puzzle.setPuzzle();
     round = new Round(puzzle);
+    round.startRound();
+
   });
 
   it('should store the current rounds puzzle', () => {
     expect(round.puzzle).to.be.an('object');
   });
 
-  it("should store the current player's turn", () => {
+  it('should store the current player\'s turn', () => {
     expect(round.playerTurnIndex).to.equal(0);
   });
 
@@ -85,7 +87,7 @@ describe('Round', () => {
     round.checkGuess('x');
     round.checkGuess('y');
     round.checkGuess('z');
-    expect(round.guessedLetters.length).to.equal(0);
     expect(round.correctIndicesArr.length).to.equal(0);
+    expect(round.guessedLetters.length).to.equal(0);
   });
 });

@@ -18,7 +18,9 @@ class Round {
   }
 
   startRound() {
-    let puzzleClass = new Puzzle(data);
+    let puzzleClass = new Puzzle(data.puzzles);
+    puzzleClass.choosePuzzleBank();
+    puzzleClass.setPuzzle();
     this.puzzle = puzzleClass.newPuzzle;
     this.guessedLetters = [];
     // update round standings with each player's score

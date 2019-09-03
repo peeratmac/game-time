@@ -1,12 +1,12 @@
 class Wheel {
   constructor(data) {
     this.wheelVals = data.wheel;
-    this.currentVal = this.randomizeWheelVal();
+    this.currentVal = 0;
   }
 
   randomizeWheelVal() {
     let spinIndex = Math.floor(Math.random() * 22);
-    return this.wheelVals[spinIndex];
+    this.currentVal = this.wheelVals[spinIndex]
   }
 
 }

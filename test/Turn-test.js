@@ -19,7 +19,7 @@ describe('Turn', function () {
 
   it('should be able receive and random wheel value from the Wheel class', () => {
     wheel.randomizeWheelVal();
-    expect(turn.spinWheel(wheel)).to.be.equal(1);
+    expect(turn.spinWheel(wheel)).to.not.equal(undefined);
   })
 
 });
