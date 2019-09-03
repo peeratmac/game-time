@@ -1,11 +1,9 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
-$s: blue;
-
 body {
-  color: $primary-background;
+  color: pink;
 }
 
 h1 {
-  color: $s;
+  color: blue;
 }
+/*# sourceMappingURL=base.css.map */
