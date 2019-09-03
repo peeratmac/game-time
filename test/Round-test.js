@@ -26,7 +26,7 @@ describe('Round', () => {
     expect(round.puzzle).to.be.an('object');
   });
 
-  it("should store the current player's turn", () => {
+  it('should store the current player\'s turn', () => {
     expect(round.playerTurnIndex).to.equal(0);
   });
 
@@ -87,7 +87,6 @@ describe('Round', () => {
     round.checkGuess('y');
     round.checkGuess('z');
     expect(round.guessedLetters.length).to.equal(0);
-    expect(round.correctIndicesArr.length).to.equal(0);
   });
 
   it('should find the winner of the round, and return their score', () => {
