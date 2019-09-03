@@ -1,17 +1,16 @@
-import Turn from './Turn.js';
+// import Wheel from './Wheel';
 
 class Turn {
-  constructor() {
-
+  constructor(data) {
   }
 
-  spinWheel() {
-
+  spinWheel(wheel) {
+    return wheel.randomizeWheelVal();
   }
 
-  makeGuess() {
-
-  }
+  // makeGuess(letter) {
+  //   if ()
+  // }
 
   solvePuzzle() {
 
