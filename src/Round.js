@@ -2,6 +2,7 @@ import Puzzle from './Puzzle';
 // import Game from '../test/Round-test.js';
 // import Puzzle from './Puzzle.js'
 import data from './data/sample-data.js';
+// import Game from './Game';
 // import { truncate } from 'fs';
 
 class Round {
@@ -26,9 +27,11 @@ class Round {
     // update round standings with each player's score
   }
 
-  endRound() {
+  endRound(game) {
     this.guessedLetters = [];
     this.correctIndicesArr = [];
+    this.resolveScores();
+    this.updateGameStandings(game);
     return this.roundStandings;
   }
 
@@ -52,6 +55,19 @@ class Round {
     } else {
       return false;
     }
+  }
+
+  resolveScores() {
+    this.roundStandings = this.roundStandings.sort((player1, player2) => {
+      return player2.money - player1.money;
+    })
+  }
+
+  updateGameStandings(game) {
+    let roundWinner = this.roundStandings.shift();
+    let winnerIndex = game.gameStandings.findIndex(player => player.id === roundWinner.id);
+    game.gameStandings[winnerIndex] = roundWinner;
+    console.log(game.gameStandings);
   }
 }
 

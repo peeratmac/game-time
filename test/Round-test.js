@@ -15,12 +15,11 @@ describe('Round', () => {
       { id: 2, name: 'Peerat' },
       { id: 3, name: 'Victor' }
     ]);
-    // puzzle = new Puzzle(data.puzzles);
-    // puzzle.choosePuzzleBank();
-    // puzzle = puzzle.setPuzzle();
+    puzzle = new Puzzle(data.puzzles);
+    puzzle.choosePuzzleBank();
+    puzzle = puzzle.choosePuzzle();
     round = new Round(puzzle);
-    round.startRound();
-
+    round.roundStandings = [{ id: 1, money: 50 }, { id: 2, money: 25 }, { id: 3, money: 150 }];
   });
 
   it('should store the current rounds puzzle', () => {
@@ -87,7 +86,16 @@ describe('Round', () => {
     round.checkGuess('x');
     round.checkGuess('y');
     round.checkGuess('z');
-    expect(round.correctIndicesArr.length).to.equal(0);
     expect(round.guessedLetters.length).to.equal(0);
+  });
+
+  it('should find the winner of the round, and return their score', () => {
+    round.endRound(game);
+    expect(round.roundStandings).to.deep.equal([{ id: 3, money: 150 }, { id: 1, money: 50 }, { id: 2, money: 25 }]);
+  });
+
+    it('should find update the round winner\'s score to the game standings', () => {
+    round.endRound(game);
+    expect(game.gameStandings).to.deep.equal([{ id: 1, money: 0 }, { id: 2, money: 0 }, { id: 3, money: 150 }]);
   });
 });

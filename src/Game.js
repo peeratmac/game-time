@@ -1,7 +1,7 @@
 class Game {
-  constructor(players, standings, round, bonusRound) {
+  constructor(players, round, bonusRound) {
     this.players = players;
-    this.gameStandings = standings;
+    this.gameStandings = [{id: 1, money: 0}, {id: 2, money: 0}, {id: 3, money: 0}];
     this.currentRound = round;
     this.bonusRound = bonusRound;
   }
