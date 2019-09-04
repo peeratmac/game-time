@@ -3,30 +3,50 @@
 
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
+import './css/base.scss'
 import Game from '../src/Game.js';
-import Round from './Round.js';
-import Turn from './Turn.js';
-import Puzzle from './Puzzle.js';
-import Wheel from './Wheel.js';
-import Player from './Player.js';
-import data from './data/sample-data.js';
 import domUpdates from './domUpdates';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-import './css/base.scss';
+//! we can uncomment the following imports if we need them 
+// import Round from './Round.js';
+// import Turn from './Turn.js';
+// import Puzzle from './Puzzle.js';
+// import Wheel from './Wheel.js';
+// import Player from './Player.js';
+// import data from './data/sample-data.js';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
+
+let game;
+let data;
+
+// fetch()
+// ! we will be learning how to do this in Wed's lesson
+
 $('document').ready(function() {
-  
+  //! appending and deciding when to hide and show some elements
+  //! should occur here  
 });
-let game
+
+//? Maybe we should change this to a start game type button?
+//? so that game begins when player names have been entered.
+$('.button--guess').click((event) => {
+  event.preventDefault();
+  let $player1 = $('.input--player1').val();
+  let $player2 = $('.input--player2').val();
+  let $player3 = $('.input--player3').val();
+  game = new Game()
+  game.startGame();
+  //! actions we want to occur on DOM when game starts up
+});
+
+
 
 function startGame(p1, p2, p3) {
   const player1 = new Player(1, p1);
   const player2 = new Player(2, p2);
   const player3 = new Player(3, p3);
-  game = new Game([player1, player2, player3]);
+  const game = new Game([player1, player2, player3]);
 }
 
 
@@ -39,7 +59,5 @@ $('.button--guess').click((event) => {
   console.log(game);
 });
 
-
-console.log(game)
 
 // console.log('This is the JavaScript entry file - your code begins here.');
