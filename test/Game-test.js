@@ -2,7 +2,7 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import Game from '../src/Game.js';
-import Players from '../src/Players.js';
+import Player from '../src/Player.js';
 import Round from '../src/Round.js';
 import data from '../src/data/sample-data.js';
 
