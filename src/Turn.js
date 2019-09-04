@@ -1,7 +1,10 @@
+import Round from "./Round";
+
 // import Wheel from './Wheel';
 
 class Turn {
   constructor(data) {
+    
   }
 
   spinWheel(wheel) {
@@ -10,7 +13,7 @@ class Turn {
   }
 
   makeGuess(letter) {
-    
+    round.puzzle.join('');
   }
 
   solvePuzzle() {

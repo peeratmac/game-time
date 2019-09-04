@@ -17,8 +17,9 @@ describe('Round', () => {
     ]);
     puzzle = new Puzzle(data.puzzles);
     puzzle.choosePuzzleBank();
-    puzzle = puzzle.choosePuzzle();
+    puzzle = puzzle.setPuzzle();
     round = new Round(puzzle);
+    round.startRound();
     round.roundStandings = [{ id: 1, money: 50 }, { id: 2, money: 25 }, { id: 3, money: 150 }];
   });
 
