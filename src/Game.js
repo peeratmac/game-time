@@ -4,9 +4,9 @@ class Game {
   constructor(data, p1, p2, p3) {
     this.data = data;
     this.players = [];
-    this.pOne = new Player(p1);
-    this.pTwo = new Player(p2);
-    this.pThree = new Player(p3);
+    this.pOne = new Players(p1);
+    this.pTwo = new Players(p2);
+    this.pThree = new Players(p3);
 
     this.currentRound = 0;
     this.round = {};
@@ -22,14 +22,13 @@ class Game {
     // this.currentRound;
   }
 
-  instantiatePlayers() {
-    this.players.push(this.pOne, this.pTwo, this.pThree);
-    return this.players;
-  }
+  // instantiatePlayers() {
+  //   this.players.push(this.pOne, this.pTwo, this.pThree);
+  //   return this.players;
+  // }
 
   beginNewRound() {
-    this.currentRound === 4 ? this.beginBonusRound : 
-      this.currentRound ++;
+    this.currentRound === 4 ? this.beginBonusRound : this.currentRound++;
     puzzle.choosePuzzleBank();
     this.currentPuzzle = puzzle.setPuzzle();
   }
@@ -66,13 +65,11 @@ class Game {
     });
     return sortedPlayers[0];
   }
-}
 
   endGame() {
     // ? how do we end it?
     return true;
   }
-
 }
 
 export default Game;
