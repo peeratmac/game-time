@@ -1,8 +1,9 @@
 class Players {
-  constructor(id, name, money) {
+  constructor(id, name, currentRoundMoney, totalMoney) {
     this.id = id;
     this.name = name;
-    this.money = money || 0;
+    this.currentRoundMoney = currentRoundMoney || 0;
+    this.totalMoney = totalMoney || 0;
   }
 }
 
