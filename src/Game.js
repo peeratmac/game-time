@@ -1,15 +1,17 @@
 class Game {
-  constructor(players, round, bonusRound) {
+  constructor(players) {
     this.players = players;
-    this.gameStandings = [{id: 1, money: 0}, {id: 2, money: 0}, {id: 3, money: 0}];
-    this.currentRound = round;
-    this.bonusRound = bonusRound;
+    this.currentRound = 0;
+    // this.gameStandings = [{id: 1, money: 0}, {id: 2, money: 0}, {id: 3, money: 0}];
+    // this.bonusRound = bonusRound;
   }
 
-  startGame() {
-    this.gameStandings = [{ id: 1, money: 0 }, { id: 2, money: 0 }, { id: 3, money: 0 }];
-    this.currentRound = 1;
-  }
+  // startGame() {
+
+  //   this.gameStandings;
+  //   this.gameStandings = [{ id: 1, money: 0 }, { id: 2, money: 0 }, { id: 3, money: 0 }];
+  //   this.currentRound;
+  // }
 
   startBonus() {
     this.bonusRound = true;
