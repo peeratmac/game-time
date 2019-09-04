@@ -1,11 +1,9 @@
-import Round from "./Round";
+import Round from './Round';
 
 // import Wheel from './Wheel';
 
 class Turn {
-  constructor(data) {
-    
-  }
+  constructor(data) {}
 
   spinWheel(wheel) {
     wheel.randomizeWheelVal();
@@ -16,23 +14,13 @@ class Turn {
     round.puzzle.join('');
   }
 
-  solvePuzzle() {
+  solvePuzzle() {}
 
-  }
+  buyVowel() {}
 
-  buyVowel() {
+  startTurn() {}
 
-  }
-
-  startTurn() {
-
-  }
-
-  endTurn() {
-    
-  }
-
-
+  endTurn() {}
 }
 
 export default Turn;

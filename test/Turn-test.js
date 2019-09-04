@@ -4,15 +4,16 @@ import Wheel from '../src/Wheel.js';
 import Turn from '../src/Turn.js';
 import data from '../src/data/sample-data.js';
 import Round from '../src/Round.js';
+import Puzzle from '../src/Puzzle.js';
 
-describe('Turn', function() {
-  let turn;
-  let wheel;
+describe('Turn', () => {
+  let turn, wheel, puzzle, round;
 
   beforeEach(() => {
+    puzzle = new Puzzle(data.puzzles);
     turn = new Turn(data);
     wheel = new Wheel(data);
-    round = new Round(puzzle)
+    round = new Round(puzzle);
   });
 
   it('should be a function', () => {
@@ -24,5 +25,4 @@ describe('Turn', function() {
     let spin2 = turn.spinWheel(wheel);
     expect(spin1).to.not.equal(spin2);
   });
-
 });

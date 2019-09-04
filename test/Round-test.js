@@ -10,24 +10,20 @@ describe('Round', () => {
   let game, puzzle, round;
 
   beforeEach(() => {
-    game = new Game([
-      { id: 1, name: 'Chris' },
-      { id: 2, name: 'Peerat' },
-      { id: 3, name: 'Victor' }
-    ]);
+    game = new Game();
+    game.instantiatePlayers('Chris', 'Peerat', 'Victor');
     puzzle = new Puzzle(data.puzzles);
     puzzle.choosePuzzleBank();
     puzzle = puzzle.setPuzzle();
     round = new Round(puzzle);
     round.startRound();
-    round.roundStandings = [{ id: 1, money: 50 }, { id: 2, money: 25 }, { id: 3, money: 150 }];
   });
 
   it('should store the current rounds puzzle', () => {
     expect(round.puzzle).to.be.an('object');
   });
 
-  it('should store the current player\'s turn', () => {
+  it("should store the current player's turn", () => {
     expect(round.playerTurnIndex).to.equal(0);
   });
 
@@ -55,9 +51,35 @@ describe('Round', () => {
   });
 
   it('should check whether the guess solved the question/puzzle', () => {
-    expect(round.checkSolve(round.puzzle['correct_answer'])).to.equal(true);
-    expect(round.guessedLetters.length).to.equal(0);
     expect(round.checkSolve('NOT A REAL ANSWER')).to.equal(false);
+    round.checkGuess('a');
+    round.checkGuess('b');
+    round.checkGuess('c');
+    round.checkGuess('d');
+    round.checkGuess('e');
+    round.checkGuess('f');
+    round.checkGuess('g');
+    round.checkGuess('h');
+    round.checkGuess('i');
+    round.checkGuess('j');
+    round.checkGuess('k');
+    round.checkGuess('l');
+    round.checkGuess('m');
+    round.checkGuess('n');
+    round.checkGuess('o');
+    round.checkGuess('p');
+    round.checkGuess('q');
+    round.checkGuess('r');
+    round.checkGuess('s');
+    round.checkGuess('t');
+    round.checkGuess('u');
+    round.checkGuess('v');
+    round.checkGuess('w');
+    round.checkGuess('x');
+    round.checkGuess('y');
+    round.checkGuess('z');
+    expect(round.checkSolve(round.puzzle['correct_answer'])).to.equal(true);
+    expect(round.correctIndicesArr.length).to.not.equal(0);
   });
 
   it('should check whether the letter guess solved the question/puzzle', () => {
@@ -87,16 +109,30 @@ describe('Round', () => {
     round.checkGuess('x');
     round.checkGuess('y');
     round.checkGuess('z');
-    expect(round.guessedLetters.length).to.equal(0);
+    console.log(round.guessedLetters);
+    console.log(round.correctIndicesArr.length);
+    expect(round.correctIndicesArr.length).to.not.equal(0);
   });
 
   it('should find the winner of the round, and return their score', () => {
-    round.endRound(game);
-    expect(round.roundStandings).to.deep.equal([{ id: 3, money: 150 }, { id: 1, money: 50 }, { id: 2, money: 25 }]);
+    // console.log(round.updateGameStandings());
+    // round.endRound(game);
+    game.players[0].currentRoundMoney = 800;
+    game.players[1].currentRoundMoney = 700;
+    // console.log(game.players[1].currentRoundMoney);
+    game.players[2].currentRoundMoney = 750;
+    // console.log(round.updateGameStandings(game));
+    expect(round.updateGameStandings(game)).to.deep.equal({
+      id: 1,
+      name: 'Chris',
+      currentRoundMoney: 800,
+      totalMoney: 0
+    });
   });
 
-    it('should find update the round winner\'s score to the game standings', () => {
+  it('should be able to end round and return guessLetters and correctIndicesArr to empty array state', () => {
     round.endRound(game);
-    expect(game.gameStandings).to.deep.equal([{ id: 1, money: 0 }, { id: 2, money: 0 }, { id: 3, money: 150 }]);
+    expect(round.guessedLetters.length).to.equal(0);
+    expect(round.correctIndicesArr.length).to.equal(0);
   });
 });
