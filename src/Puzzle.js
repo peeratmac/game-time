@@ -4,7 +4,7 @@ class Puzzle {
   constructor(puzzles) {
     this.fullBank = puzzles;
     this.chosenBank = [];
-    //! this.newPuzzle = {}; we may not need this
+    this.newPuzzle = {};
   }
 
   choosePuzzleBank() {
@@ -17,6 +17,7 @@ class Puzzle {
 
   setPuzzle() {
     let index = Math.floor(Math.random() * 24);
+    this.newPuzzle = this.chosenBank[index]
     return this.chosenBank[index];
   }
 
