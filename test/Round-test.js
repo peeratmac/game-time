@@ -119,9 +119,9 @@ describe('Round', () => {
     // round.endRound(game);
     game.players[0].currentRoundMoney = 800;
     game.players[1].currentRoundMoney = 700;
-    console.log(game.players[1].currentRoundMoney);
+    // console.log(game.players[1].currentRoundMoney);
     game.players[2].currentRoundMoney = 750;
-    console.log(round.updateGameStandings(game));
+    // console.log(round.updateGameStandings(game));
     expect(round.updateGameStandings(game)).to.deep.equal({
       id: 1,
       name: 'Chris',
@@ -130,12 +130,9 @@ describe('Round', () => {
     });
   });
 
-  it("should find update the round winner's score to the game standings", () => {
+  it('should be able to end round and return guessLetters and correctIndicesArr to empty array state', () => {
     round.endRound(game);
-    expect(game.gameStandings).to.deep.equal([
-      { id: 1, money: 0 },
-      { id: 2, money: 0 },
-      { id: 3, money: 150 }
-    ]);
+    expect(round.guessedLetters.length).to.equal(0);
+    expect(round.correctIndicesArr.length).to.equal(0);
   });
 });

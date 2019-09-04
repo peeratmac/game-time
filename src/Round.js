@@ -24,11 +24,10 @@ class Round {
   }
 
   endRound(game) {
+    this.resolveScores(game);
+    this.updateGameStandings(game);
     this.guessedLetters = [];
     this.correctIndicesArr = [];
-    this.resolveScores();
-    this.updateGameStandings(game);
-    return this.roundStandings;
   }
 
   checkGuess(letter) {
@@ -59,10 +58,8 @@ class Round {
     }
   }
 
-  resolveScores() {
-    this.roundStandings = this.roundStandings.sort((player1, player2) => {
-      return player2.money - player1.money;
-    });
+  resolveScores(gameClass) {
+    return gameClass.getWinnerAtTheEnd();
   }
 
   updateGameStandings(gameClass) {
