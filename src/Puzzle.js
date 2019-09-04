@@ -1,5 +1,4 @@
-import { throws } from "assert";
-
+import { throws } from 'assert';
 class Puzzle {
   constructor(puzzles) {
     this.fullBank = puzzles;
@@ -8,7 +7,12 @@ class Puzzle {
   }
 
   choosePuzzleBank() {
-    let options = ['one_word_answers', 'two_word_answers', 'three_word_answers', 'four_word_answers'];
+    let options = [
+      'one_word_answers',
+      'two_word_answers',
+      'three_word_answers',
+      'four_word_answers'
+    ];
     let index = Math.floor(Math.random() * 4);
     // console.log(this.fullBank)
     let chosenOption = options[index];
@@ -17,10 +21,9 @@ class Puzzle {
 
   setPuzzle() {
     let index = Math.floor(Math.random() * 24);
-    this.newPuzzle = this.chosenBank[index]
+    this.newPuzzle = this.chosenBank[index];
     return this.chosenBank[index];
   }
-
 }
 
 export default Puzzle;
