@@ -5,8 +5,14 @@
 import $ from 'jquery';
 import './css/base.scss'
 import Game from '../src/Game.js';
+import Round from './Round.js';
+import Turn from './Turn.js';
+import Puzzle from './Puzzle.js';
+import Wheel from './Wheel.js';
+import Players from './Players.js';
+import data from './data/sample-data.js';
 import domUpdates from './domUpdates';
-//! we can uncomment the following imports if we need them 
+// ! we can uncomment the following imports if we need them 
 // import Round from './Round.js';
 // import Turn from './Turn.js';
 // import Puzzle from './Puzzle.js';
@@ -49,9 +55,8 @@ function startGame(p1, p2, p3) {
   const game = new Game([player1, player2, player3]);
 }
 
-
-$('.button--guess').click((event) => {
-  event.preventDefault()
+$('.button--guess').click(event => {
+  event.preventDefault();
   let $p1Name = $('.input--player1').val();
   let $p2Name = $('.input--player2').val();
   let $p3Name = $('.input--player3').val();
@@ -59,5 +64,6 @@ $('.button--guess').click((event) => {
   console.log(game);
 });
 
+console.log(game);
 
 // console.log('This is the JavaScript entry file - your code begins here.');

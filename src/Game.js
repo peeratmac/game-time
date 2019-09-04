@@ -7,6 +7,7 @@ class Game {
     this.pOne = new Player(p1);
     this.pTwo = new Player(p2);
     this.pThree = new Player(p3);
+
     this.currentRound = 0;
     this.round = {};
     this.currentPuzzle;
@@ -31,6 +32,13 @@ class Game {
       this.currentRound ++;
     puzzle.choosePuzzleBank();
     this.currentPuzzle = puzzle.setPuzzle();
+  }
+
+  instantiatePlayers(p1, p2, p3) {
+    let pOne = new Players(1, p1);
+    let pTwo = new Players(2, p2);
+    let pThree = new Players(3, p3);
+    this.players.push(pOne, pTwo, pThree);
   }
 
   startBonus() {
