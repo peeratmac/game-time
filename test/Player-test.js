@@ -1,13 +1,13 @@
 import chai from 'chai';
 const expect = chai.expect;
 
-import Players from '../src/Players.js';
+import Player from '../src/Player.js';
 
 describe('Player', () => {
   let player;
 
   beforeEach(() => {
-    player = new Players(2, 'Annabella');
+    player = new Player(2, 'Annabella');
   });
 
   it('should be able to hold player information based on the instantiation of Player', () => {
@@ -20,7 +20,8 @@ describe('Player', () => {
   });
 
   it('should keep track of currentRoundMoney and totalMoney as the game progresses', () => {
-    let player = new Players(3, 'Kombuchaju', 650, 1350);
+    let player = new Player(3, 'Kombuchaju');
+    
     expect(player.currentRoundMoney).to.equal(650);
     expect(player.totalMoney).to.equal(1350);
   });

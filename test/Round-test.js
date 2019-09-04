@@ -10,8 +10,9 @@ describe('Round', () => {
   let game, puzzle, round;
 
   beforeEach(() => {
-    game = new Game();
+    game = new Game(data);
     game.instantiatePlayers('Chris', 'Peerat', 'Victor');
+    // game.startGame();
     puzzle = new Puzzle(data.puzzles);
     puzzle.choosePuzzleBank();
     puzzle = puzzle.setPuzzle();
@@ -40,18 +41,13 @@ describe('Round', () => {
     expect(round.guessedLetters).to.deep.equal(['a']);
   });
 
-  it('should start a round with a new puzzle', () => {
-    round.startRound();
-    expect(round.puzzle).to.not.deep.equal(puzzle);
-  });
-
   it('should check if a guess is within the correct answer', () => {
     round.checkGuess('a');
     expect(round.puzzle).to.not.deep.equal(2);
   });
 
   it('should check whether the guess solved the question/puzzle', () => {
-    expect(round.checkSolve('NOT A REAL ANSWER')).to.equal(false);
+    expect(round.checkSolveByLetter()).to.equal(false);
     round.checkGuess('a');
     round.checkGuess('b');
     round.checkGuess('c');

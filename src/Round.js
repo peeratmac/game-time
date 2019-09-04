@@ -1,6 +1,6 @@
 import Puzzle from './Puzzle.js';
 import Game from './Game.js';
-import data from './data/sample-data.js';
+
 
 class Round {
   constructor(puzzle) {
@@ -16,10 +16,10 @@ class Round {
   }
 
   startRound() {
-    let puzzleClass = new Puzzle(data.puzzles);
-    puzzleClass.choosePuzzleBank();
-    puzzleClass.setPuzzle();
-    this.puzzle = puzzleClass.newPuzzle;
+    // let puzzleClass = new Puzzle(data.puzzles);
+    // puzzleClass.choosePuzzleBank();
+    // puzzleClass.setPuzzle();
+    // this.puzzle = puzzleClass.newPuzzle;
     this.guessedLetters = [];
   }
 
@@ -37,24 +37,24 @@ class Round {
         ? this.correctIndicesArr.push(index)
         : null;
     });
-    // this.checkSolve();
+    this.checkSolveByLetter();
   }
 
-  checkSolve(fullPlayerGuess) {
-    let noSpacesArr = this.puzzle.correct_answer
-      .split('')
+  checkSolveByLetter() {
+    let noSpacesArr = this.puzzle.correct_answer.split('')
       .filter(elem => elem !== ' ');
     if (this.correctIndicesArr.length === noSpacesArr.length) {
       // this.endRound();
       return true;
-    } else if (
-      fullPlayerGuess !== undefined &&
-      this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()
-    ) {
-      // this.endRound();
-      return true;
     } else {
       return false;
+    }
+  }
+
+  checkSolve(fullPlayerGuess) {
+    if (fullPlayerGuess !== undefined && this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()) {
+      // this.endRound();
+      return true;
     }
   }
 
