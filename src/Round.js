@@ -1,9 +1,6 @@
-import Puzzle from './Puzzle';
+import Puzzle from './Puzzle.js';
 import Game from './Game.js';
-// import Puzzle from './Puzzle.js'
 import data from './data/sample-data.js';
-// import Game from './Game';
-// import { truncate } from 'fs';
 
 class Round {
   constructor(puzzle) {
@@ -24,7 +21,6 @@ class Round {
     puzzleClass.setPuzzle();
     this.puzzle = puzzleClass.newPuzzle;
     this.guessedLetters = [];
-    // update round standings with each player's score
   }
 
   endRound(game) {
@@ -38,19 +34,25 @@ class Round {
   checkGuess(letter) {
     let answerArray = this.puzzle.correct_answer.split('');
     answerArray.forEach((char, index) => {
-      char.toUpperCase() === letter.toUpperCase() ? this.correctIndicesArr.push(index) : null;
+      char.toUpperCase() === letter.toUpperCase()
+        ? this.correctIndicesArr.push(index)
+        : null;
     });
-    this.checkSolve();
+    // this.checkSolve();
   }
 
   checkSolve(fullPlayerGuess) {
-    let noSpacesArr = this.puzzle.correct_answer.split('').filter(elem => elem !== ' ');
+    let noSpacesArr = this.puzzle.correct_answer
+      .split('')
+      .filter(elem => elem !== ' ');
     if (this.correctIndicesArr.length === noSpacesArr.length) {
-      this.endRound();
-      return true
-    } else if (fullPlayerGuess !== undefined && (this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase())) {
-      // ! going to need something to update money/score of the player
-      this.endRound()
+      // this.endRound();
+      return true;
+    } else if (
+      fullPlayerGuess !== undefined &&
+      this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()
+    ) {
+      // this.endRound();
       return true;
     } else {
       return false;
@@ -60,14 +62,16 @@ class Round {
   resolveScores() {
     this.roundStandings = this.roundStandings.sort((player1, player2) => {
       return player2.money - player1.money;
-    })
+    });
   }
 
-  updateGameStandings(game) {
-    let roundWinner = this.roundStandings.shift();
-    let winnerIndex = game.gameStandings.findIndex(player => player.id === roundWinner.id);
-    game.gameStandings[winnerIndex] = roundWinner;
-    console.log(game.gameStandings);
+  updateGameStandings(gameClass) {
+    // let gameClass = new Game();
+    // gameClass.instantiatePlayers('Chris', 'Peerat', 'Victor');
+    // gameClass.players[0].currentRoundMoney = 800;
+    // gameClass.players[1].currentRoundMoney = 700;
+    // gameClass.players[2].currentRoundMoney = 750;
+    return gameClass.getWinnerThisRound();
   }
 }
 
