@@ -8,7 +8,7 @@ import Round from './Round.js';
 import Turn from './Turn.js';
 import Puzzle from './Puzzle.js';
 import Wheel from './Wheel.js';
-import Player from './Player.js';
+import Players from './Players.js';
 import data from './data/sample-data.js';
 import domUpdates from './domUpdates';
 
@@ -17,21 +17,18 @@ import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
-$('document').ready(function() {
-  
-});
-let game
+$('document').ready(function() {});
+let game;
 
 function startGame(p1, p2, p3) {
-  const player1 = new Player(1, p1);
-  const player2 = new Player(2, p2);
-  const player3 = new Player(3, p3);
+  const player1 = new Players(1, p1);
+  const player2 = new Players(2, p2);
+  const player3 = new Players(3, p3);
   game = new Game([player1, player2, player3]);
 }
 
-
-$('.button--guess').click((event) => {
-  event.preventDefault()
+$('.button--guess').click(event => {
+  event.preventDefault();
   let $p1Name = $('.input--player1').val();
   let $p2Name = $('.input--player2').val();
   let $p3Name = $('.input--player3').val();
@@ -39,7 +36,6 @@ $('.button--guess').click((event) => {
   console.log(game);
 });
 
-
-console.log(game)
+console.log(game);
 
 // console.log('This is the JavaScript entry file - your code begins here.');
