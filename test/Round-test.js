@@ -4,6 +4,7 @@ const expect = chai.expect;
 import data from '../src/data/sample-data.js';
 import Game from '../src/Game.js';
 import Puzzle from '../src/Puzzle.js';
+import Player from '../src/Player.js'
 import Round from '../src/Round.js';
 
 describe('Round', () => {
@@ -56,6 +57,12 @@ describe('Round', () => {
     expect(round.puzzle).to.not.deep.equal(2);
   });
 
+  it('should calculate a user score for correct guesses', () => {
+    round.checkGuess('a');
+    round.checkGuess('e');
+    expect(round.calculateScore(2, 600)).to.not.equal(0);
+  });
+
   it('should check whether the guess solved the question/puzzle', () => {
     expect(round.checkSolveByLetter()).to.equal(false);
     round.checkGuess('a');
@@ -88,47 +95,16 @@ describe('Round', () => {
     expect(round.correctIndicesArr.length).to.not.equal(0);
   });
 
-  it('should check whether the letter guess solved the question/puzzle', () => {
-    round.checkGuess('a');
-    round.checkGuess('b');
-    round.checkGuess('c');
-    round.checkGuess('d');
-    round.checkGuess('e');
-    round.checkGuess('f');
-    round.checkGuess('g');
-    round.checkGuess('h');
-    round.checkGuess('i');
-    round.checkGuess('j');
-    round.checkGuess('k');
-    round.checkGuess('l');
-    round.checkGuess('m');
-    round.checkGuess('n');
-    round.checkGuess('o');
-    round.checkGuess('p');
-    round.checkGuess('q');
-    round.checkGuess('r');
-    round.checkGuess('s');
-    round.checkGuess('t');
-    round.checkGuess('u');
-    round.checkGuess('v');
-    round.checkGuess('w');
-    round.checkGuess('x');
-    round.checkGuess('y');
-    round.checkGuess('z');
-    expect(round.correctIndicesArr.length).to.not.equal(0);
-  });
-
-  it('should find the winner of the round, and return their score', () => {
-    // console.log(round.updateGameStandings());
-    // round.endRound(game);
-    game.players[0].currentRoundMoney = 800;
-    game.players[1].currentRoundMoney = 700;
-    // console.log(game.players[1].currentRoundMoney);
-    game.players[2].currentRoundMoney = 750;
-    // console.log(round.updateGameStandings(game));
-    expect(round.updateGameStandings(game)).to.deep.equal({
-      id: 1,
-      name: 'Chris',
+  it('should find the winner of the round', () => {
+    console.log(round.roundStandings)
+    round.roundStandings[2].currentRoundMoney = 800;
+    round.roundStandings[1].currentRoundMoney = 700;
+    round.roundStandings[0].currentRoundMoney = 750;
+    round.updateGameStandings(game);
+    console.log(round.roundStandings)
+    expect(round.roundStandings[0]).to.deep.equal({
+      id: 3,
+      name: 'Victor',
       currentRoundMoney: 800,
       totalMoney: 0
     });
@@ -140,3 +116,5 @@ describe('Round', () => {
     expect(round.correctIndicesArr.length).to.equal(0);
   });
 });
+
+export default Player;
