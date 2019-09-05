@@ -17,7 +17,7 @@ class Round {
     // puzzleClass.choosePuzzleBank();
     // puzzleClass.setPuzzle();
     // this.puzzle = puzzleClass.newPuzzle;
-    this.guessedLetters = [];
+    // this.guessedLetters = [];
   }
 
   endRound(game) {
@@ -42,6 +42,10 @@ class Round {
     let numberGuessed = this.correctIndicesArr.length - num;
     let score = numberGuessed * value;
     return score;
+  }
+
+  buyVowel(playerArg) {
+    return playerArg.currentRoundMoney += -100;
   }
 
   checkSolveByLetter() {

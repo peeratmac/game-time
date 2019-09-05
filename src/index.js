@@ -6,7 +6,7 @@ import Turn from './Turn.js';
 import Puzzle from './Puzzle.js';
 import Wheel from './Wheel.js';
 import Player from './Player.js';
-import data from './data/sample-data.js';
+// import data from './data/sample-data';
 import domUpdates from './domUpdates';
 
 let game, round;
@@ -21,6 +21,6 @@ $('.button--guess').click(event => {
   game = new Game(data);
   game.startGame($player1, $player2, $player3);
   round = new Round(game.puzzles[game.currentRound])
-  $('.p--puzzle-display').text(`${round.puzzle.correct_answer}`)
-  $('.p--puzzle-category').text(`${round.puzzle.category}`)
+  domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`)
+  domUpdates.hideModal('.div--modal-setup');
 });

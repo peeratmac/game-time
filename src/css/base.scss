@@ -27,10 +27,14 @@ text-align: center;
 display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: "main main main main main main main main main" 
-  "main main main main main main main main main" "main main main main main main main main main" 
-  "main main main main main main main main main" "main main main main main main main main main" 
-  "main main main main main main main main main" "main main main main main main main main main" 
+  grid-template-areas: 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
   "footer footer footer footer footer footer footer footer footer"
   "footer footer footer footer footer footer footer footer footer" 
   "footer footer footer footer footer footer footer footer footer";
@@ -57,20 +61,19 @@ main {
 footer {
   grid-area: footer;
   display: flex;
-  height: 100%;
   flex-direction: column;
-  position: fixed;
-  z-index: 1000;
 }
 
 
 // * <---- MODALS ----->
 .div--modal-background {
+  display: flex;
   background-color: grey;
   min-height: 100vh;
   min-width: 100vw;
   opacity: .5;
-  z-index: 1000;
+  position: fixed;
+  z-index: 2000;
 }
 
 .div--modal-setup {
@@ -80,14 +83,15 @@ footer {
   left: 10%;
   min-width: 80vw;
   top: 20%;
-  z-index: 2000;
+  z-index: 3000;
   
-  form {
+  .form--player-setup {
     background: black;
     display: flex;
     flex-direction: column;
     height: 65vh;
     justify-content: space-around;
+    z-index: 3000;
   }
 }  
 
@@ -119,7 +123,6 @@ footer {
 
 .footer--player-controls {
   display: flex;
-  // flex-direction: column;
 }
 
 // .section--player-name {
