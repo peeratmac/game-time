@@ -21,6 +21,8 @@ body {
 background-color: $primary-background;
 font-family: 'Karla', sans-serif;
 color: black;
+height: 100vh;
+width: 100vw;
 text-align: center;
 display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -38,12 +40,27 @@ header {
 font-size: 6em;
 font-family: 'Ubuntu', sans-serif;
 font-weight: 900;
-color: white;
-width: 60%;
+color: rgb(241, 241, 235);
 margin: 0, ;
 margin-top: 2vh;
-display: none;
+text-shadow: 0px 3px 0px #b2a98f,
+             0px 14px 10px rgba(0,0,0,0.15),
+             0px 24px 2px rgba(0,0,0,0.1),
+             0px 34px 30px rgba(0,0,0,0.1);
 }
+
+main {
+  grid-area: main;
+  height: 100%;
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
 
 // * <---- MODALS ----->
 
@@ -62,28 +79,24 @@ display: none;
 .div--modal-round-summary{ 
   display: none;
 }
-main {
-  grid-area: main;
-}
 
-footer {
-  grid-area: footer;
-  display: flex;
-  flex-direction: column;
+.div--modal-solution {
+  display: none;
 }
 
 // * <---- MAIN ----->
 
 .label {
   font-size: 2em;
-  color: rgb(89, 203, 146);
+  color: rgb(78, 46, 111);
   font-weight: 400;
 }
 
 // * <---- FOOTER ----->
 
 .footer--player-controls {
-
+  display: flex;
+  // flex-direction: column;
 }
 
 .section--player-name {
@@ -91,12 +104,34 @@ footer {
 }
 
 .section--player-buttons {
-
+  display: flex;
+  flex-direction: column;
 }
 
 .button--spin {
-
+  color: white;
+  height: 200px;
+  font-size: 40px;
+  box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+  width: 200px;
+  border-radius: 50%;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: rgb(66, 184, 221);
+  border: solid 1px white;
 }
+
+.button--spin:hover {
+  color: black;
+  // background-color: grey;
+  // transition-delay: .15s;
+}
+
+.button--spin:active {
+  box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
+  color: white;
+  border: solid 1px yellow;
+}
+
 
 .form--player-guess {
 
@@ -139,7 +174,7 @@ footer {
 }
 
 .input--solution {
-  
+
 }
 
 
