@@ -16,11 +16,8 @@ class Game {
     this.players = []
     this.instantiatePlayers();
     this.getPuzzles();
-    let round = new Round(this.puzzles[this.currentRound]);
+    let round = new Round(this.puzzles[this.currentRound], this.players);
     round.startRound();
-    // this.gameStandings;
-    // this.gameStandings = [{ id: 1, money: 0 }, { id: 2, money: 0 }, { id: 3, money: 0 }];
-    // this.currentRound;
   }
 
   getPuzzles() {
@@ -34,7 +31,7 @@ class Game {
 
   beginNewRound() {
     this.currentRound === 4 ? this.beginBonusRound : this.incrementRound();
-    let round = new Round(this.puzzles[this.currentRound]);
+    let round = new Round(this.puzzles[this.currentRound], this.players);
     round.startRound();
   }
 
@@ -61,11 +58,15 @@ class Game {
   //   return this.players.find(elem => elem.id === winnerID.id)
   // }
 
-  getWinnerThisRound() {
-    let sortedPlayers = this.players.sort((a, b) => {
-      return b.currentRoundMoney - a.currentRoundMoney;
-    });
-    return sortedPlayers[0];
+  getWinnerThisRound(winner) {
+    this.players.map((player) => {
+      if (player.id === winner.id) {
+        player.totalMoney += winner.currentRoundMoney;
+        player.currentRoundMoney = 0;
+      } else {
+        player.currentRoundMoney = 0;
+      }
+    })
   }
 
   getWinnerAtTheEnd() {

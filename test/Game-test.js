@@ -9,17 +9,11 @@ import data from '../src/data/sample-data.js';
 describe('Game', () => {
   let game;
   beforeEach(() => {
-    // game = new Game([
-    //   { id: 1, name: 'Chris' },
-    //   { id: 2, name: 'Peerat' },
-    //   { id: 3, name: 'Victor' }
-    // ]);
     game = new Game();
     game.instantiatePlayers('Chris', 'Peerat', 'Victor');
   });
 
   it('should take in player names and associated starting values', () => {
-    // console.log(game.players);
     expect(game.players).to.deep.equal([
       {
         id: 1,
@@ -68,15 +62,21 @@ describe('Game', () => {
       gameWinner.players[0].currentRoundMoney = 100;
       gameWinner.players[2].totalMoney = 3000;
     });
-
+    
     it('should be able to determine a winner for each round', () => {
-      // console.log(gameWinner.getWinnerThisRound());
-      expect(gameWinner.getWinnerThisRound()).to.deep.equal({
+      gameWinner.getWinnerThisRound(gameWinner.players[0]);
+      expect(gameWinner.players).to.deep.equal([{
         id: 1,
         name: 'Chris',
-        currentRoundMoney: 100,
-        totalMoney: 0
-      });
+        currentRoundMoney: 0,
+        totalMoney: 100
+      }, { id: 2, name: 'Peerat', currentRoundMoney: 0, totalMoney: 0 },
+      {
+        id: 3,
+        name: 'Victor',
+        currentRoundMoney: 0,
+        totalMoney: 3000
+      }]);
     });
 
     it('should be able to determine a winner at the end of round 4', () => {

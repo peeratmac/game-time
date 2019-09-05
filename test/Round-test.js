@@ -18,7 +18,7 @@ describe('Round', () => {
     puzzle.choosePuzzleBank();
     puzzle = puzzle.setPuzzle();
     round = new Round(puzzle, game.players);
-    round.startRound();
+    // round.startRound();
   });
 
   it('should store the current rounds puzzle', () => {
@@ -95,14 +95,9 @@ describe('Round', () => {
     expect(round.correctIndicesArr.length).to.not.equal(0);
   });
 
-  it('should find the winner of the round', () => {
-    console.log(round.roundStandings)
-    round.roundStandings[2].currentRoundMoney = 800;
-    round.roundStandings[1].currentRoundMoney = 700;
-    round.roundStandings[0].currentRoundMoney = 750;
-    round.updateGameStandings(game);
-    console.log(round.roundStandings)
-    expect(round.roundStandings[0]).to.deep.equal({
+  it('should update the round scores for each player', () => {
+    round.updateRoundStandings({name: 'Victor', currentRoundMoney: 800});
+    expect(round.roundStandings[2]).to.deep.equal({
       id: 3,
       name: 'Victor',
       currentRoundMoney: 800,

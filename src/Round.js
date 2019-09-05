@@ -79,7 +79,7 @@ class Round {
       return b.currentRoundMoney - a.currentRoundMoney;
     });
     let winner = this.roundStandings[0];
-    return gameClass.getWinnerThisRound(winner);
+    gameClass.getWinnerThisRound(winner);
   }
 }
 
