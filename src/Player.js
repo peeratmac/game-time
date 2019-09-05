@@ -6,16 +6,16 @@ class Player {
     this.totalMoney = 0;
   }
 
-  updateCurrentRoundMoney(id, score) {
-    if (this.id === id) {
-      this.currentRoundMoney += score;
-    }
+  updateCurrentRoundMoney(score) {
+    this.currentRoundMoney += score;
   }
 
-  updateTotalMoney(id, score) {
-    if (this.id === id) {
-      this.totalMoney += score;
-    }
+  resetRoundMoney() {
+    this.currentRoundMoney = 0;
+  }
+
+  updateTotalMoney(score) {
+    this.totalMoney += score;
   }
 }
 

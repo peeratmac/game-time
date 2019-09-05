@@ -22,11 +22,12 @@ describe('Player', () => {
   });
 
   it('should keep track of currentRoundMoney and totalMoney as the game progresses', () => {
-    player2.updateCurrentRoundMoney(2, 650);
-    player2.updateTotalMoney(2, 1350);
-    console.log(player2)
+    player2.updateCurrentRoundMoney(650);
+    player2.updateTotalMoney(1350);
     expect(player1.currentRoundMoney).to.equal(0);
     expect(player2.currentRoundMoney).to.equal(650);
     expect(player2.totalMoney).to.equal(1350);
+    player2.resetRoundMoney();
+    expect(player2.currentRoundMoney).to.equal(0);
   });
 });
