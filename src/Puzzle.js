@@ -1,4 +1,5 @@
 import { throws } from 'assert';
+
 class Puzzle {
   constructor(puzzles) {
     this.fullBank = puzzles;
