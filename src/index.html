@@ -8,25 +8,58 @@
   </head>
   <body>
     <header>Wheel of Fortune</header>
+
+    <!-- MODAL POPUP -->
+
+    <div class="div--div-modal-setup" role="form" aria-disabled="false">
+      <form class="form form--player-setup">
+        <label class="label label--player1" for="player1">Player 1</label>
+        <input type="text" class="input input--player1" id="player1" placeholder="Enter Player 1 Name">
+        <label class="label label--player2" for="player2">Player 2</label>
+        <input type="text" class="input input--player2" id="player2" placeholder="Enter Player 2 Name">
+        <label class="label label--player3" for="player3">Player 3</label>
+        <input type="text" class="input input--player3" id="player3" placeholder="Enter Player 3 Name">
+        <button class="button button--guess">Submit Players</button>
+      </form>
+    </div>
+    
+    <!-- END MODAL -->
+
+    <!-- MODAL POPUP -->
+
+    <div class="div div--modal-start-screen" role="presentation" aria-disabled="true">
+      <h1 class="h1 h1--value-spinner">Wheel of Fortune</h1>
+      <button>START GAME</button>
+    </div>
+
+    <!-- END MODAL -->
+
+    <!-- MODAL POPUP -->
+
+    <div class="div div--modal-category" role="status" aria-disabled="true">
+      <h1 class="h1 h1--category">Puzzle Category</h1>
+    </div>
+
+    <!-- MODAL POPUP -->
+
+
+    <div class="div div--modal-round-summary" role="status" aria-disabled="true">
+
+    </div>
+
+    <!-- END MODAL -->
+
+    <!-- MODAL POPUP -->
+    
+    <div class="div div--modal-solution" role="textbox" aria-disabled="true">
+      <label class="label label--solution" for="solution">Your Solution</label>
+      <input type="text" class="input input--solution" id="solution"  placeholder="Enter Guess">
+    </div>
+    <div class="div div--current-value" role="status" aria-disabled="true"></div>
+
+    <!-- END MODAL -->
+    
     <main class="main main--puzzle">
-      <div class="div--div-modal-setup" role="form" aria-disabled="false">
-        <form class="form form--player-setup">
-          <label class="label label--player1" for="player1">Player 1</label>
-          <input type="text" class="input input--player1" id="player1" placeholder="Enter Player 1 Name">
-          <label class="label label--player2" for="player2">Player 2</label>
-          <input type="text" class="input input--player2" id="player2" placeholder="Enter Player 2 Name">
-          <label class="label label--player3" for="player3">Player 3</label>
-          <input type="text" class="input input--player3" id="player3" placeholder="Enter Player 3 Name">
-          <button class="button button--guess">Submit Players</button>
-        </form>
-      </div>
-      <div class="div div--modal-spinner" role="presentation" aria-disabled="true">
-        <h1 class="h1 h1--value-spinner">Get Your Letter Value!</h1>
-      </div>
-      <div class="div div--modal-category" role="status" aria-disabled="true">
-        <h1 class="h1 h1--category">Puzzle Category</h1>
-      </div>
-      <div class="div div--modal-round-summary" role="status" aria-disabled="true"></div>
       <section class="section section--puzzle">
       </section>
       <section class="section section--description"></section>
@@ -46,11 +79,6 @@
           <button class="button button--buy-vowel">Buy</button>
         </form>
         <button class="button button--guess-solution">Guess Solution</button>
-        <div class="div div--modal-solution" role="textbox" aria-disabled="true">
-          <label class="label label--solution" for="solution">Your Solution</label>
-          <input type="text" class="input input--solution" id="solution"  placeholder="Enter Guess">
-        </div>
-        <div class="div div--current-value" role="status" aria-disabled="true"></div>
       </section>
     </footer>
       <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
