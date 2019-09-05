@@ -27,10 +27,14 @@ text-align: center;
 display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: "main main main main main main main main main" 
-  "main main main main main main main main main" "main main main main main main main main main" 
-  "main main main main main main main main main" "main main main main main main main main main" 
-  "main main main main main main main main main" "main main main main main main main main main" 
+  grid-template-areas: 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
+  "main main main main main main main main main" 
   "footer footer footer footer footer footer footer footer footer"
   "footer footer footer footer footer footer footer footer footer" 
   "footer footer footer footer footer footer footer footer footer";
@@ -57,26 +61,49 @@ main {
 footer {
   grid-area: footer;
   display: flex;
-  height: 100%;
   flex-direction: column;
 }
 
 
 // * <---- MODALS ----->
+.div--modal-background {
+  display: flex;
+  background-color: grey;
+  min-height: 100vh;
+  min-width: 100vw;
+  opacity: .5;
+  position: fixed;
+  z-index: 2000;
+}
 
-.div--div-modal-setup {
+.div--modal-setup {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 10%;
+  min-width: 80vw;
+  top: 20%;
+  z-index: 3000;
+  
+  .form--player-setup {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    justify-content: space-around;
+    z-index: 3000;
+  }
+}  
+
+.div--modal-start-screen {
   display: none;
 }
 
-.div--modal-start-screen{
+.div--modal-category {
   display: none;
 }
 
-.div--modal-category{
-  display: none;
-}
-
-.div--modal-round-summary{ 
+.div--modal-round-summary { 
   display: none;
 }
 
@@ -96,12 +123,11 @@ footer {
 
 .footer--player-controls {
   display: flex;
-  // flex-direction: column;
 }
 
-.section--player-name {
+// .section--player-name {
 
-}
+// }
 
 .section--player-buttons {
   display: flex;
@@ -133,48 +159,48 @@ footer {
 }
 
 
-.form--player-guess {
+// .form--player-guess {
 
-}
+// }
 
-.label--player-guess {
+// .label--player-guess {
   
-}
+// }
 
-.input--player-guess {
+// .input--player-guess {
 
-}
+// }
 
-.button--guess {
+// .button--guess {
 
-}
+// }
 
-.form-buy-vowel {
+// .form-buy-vowel {
 
-}
+// }
 
-.label--buy-vowel {
+// .label--buy-vowel {
 
-}
+// }
 
-.input--buy-vowel {
+// .input--buy-vowel {
 
-}
+// }
 
-.button--buy-vowel {
+// .button--buy-vowel {
 
-}
+// }
 
-.button--guess-solution {
+// .button--guess-solution {
   
-}
+// }
 
-.label--solution {
+// .label--solution {
 
-}
+// }
 
-.input--solution {
+// .input--solution {
 
-}
+// }
 
 

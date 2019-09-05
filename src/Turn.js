@@ -10,13 +10,13 @@ class Turn {
     return wheel.currentVal;
   }
 
-  makeGuess(letter) {
-    round.puzzle.join('');
-  }
+  // makeGuess(letter) {
+  //   round.puzzle.join('');
+  // }
 
-  solvePuzzle() {}
+  // solvePuzzle() {}
 
-  buyVowel() {}
+  // buyVowel() {}
 
   startTurn() {}
 
