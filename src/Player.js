@@ -17,6 +17,10 @@ class Player {
   updateTotalMoney(score) {
     this.totalMoney += score;
   }
+
+  endTurn() {
+    round.updateRoundStandings(this);
+  }
 }
 
 export default Player;

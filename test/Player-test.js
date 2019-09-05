@@ -9,7 +9,6 @@ describe('Player', () => {
   beforeEach(() => {
     player1 = new Player(1, 'Annabella');
     player2 = new Player(2, 'Karissa')
-    // player3 = new Player(3, 'Kombuchaju');
   });
 
   it('should be able to hold player information based on the instantiation of Player', () => {
