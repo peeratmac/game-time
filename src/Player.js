@@ -5,6 +5,22 @@ class Player {
     this.currentRoundMoney = 0;
     this.totalMoney = 0;
   }
+
+  updateCurrentRoundMoney(score) {
+    this.currentRoundMoney += score;
+  }
+
+  resetRoundMoney() {
+    this.currentRoundMoney = 0;
+  }
+
+  updateTotalMoney(score) {
+    this.totalMoney += score;
+  }
+
+  endTurn() {
+    round.updateRoundStandings(this);
+  }
 }
 
 export default Player;

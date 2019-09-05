@@ -1,12 +1,8 @@
-import Puzzle from './Puzzle.js';
-import Game from './Game.js';
-
-
 class Round {
-  constructor(puzzle) {
+  constructor(puzzle, players) {
     this.puzzle = puzzle;
     this.playerTurnIndex = 0;
-    this.roundStandings = [];
+    this.roundStandings = players
     this.guessedLetters = [];
     this.correctIndicesArr = [];
   }
@@ -16,6 +12,7 @@ class Round {
   }
 
   startRound() {
+    // ! I don't think we need this method since we are instantiating from the Game Class
     // let puzzleClass = new Puzzle(data.puzzles);
     // puzzleClass.choosePuzzleBank();
     // puzzleClass.setPuzzle();
@@ -30,14 +27,21 @@ class Round {
     this.correctIndicesArr = [];
   }
 
-  checkGuess(letter) {
+  checkGuess(letter, value) {
+    let currentLetters = this.correctIndicesArr.length;
     let answerArray = this.puzzle.correct_answer.split('');
     answerArray.forEach((char, index) => {
       char.toUpperCase() === letter.toUpperCase()
         ? this.correctIndicesArr.push(index)
         : null;
     });
-    this.checkSolveByLetter();
+    this.calculateScore(currentLetters, value);
+  }
+
+  calculateScore(num, value) {
+    let numberGuessed = this.correctIndicesArr.length - num;
+    let score = numberGuessed * value;
+    return score;
   }
 
   checkSolveByLetter() {
@@ -62,13 +66,20 @@ class Round {
     return gameClass.getWinnerAtTheEnd();
   }
 
+  updateRoundStandings(playerArg) {
+    this.roundStandings.map((player) => {
+      if (player.name === playerArg.name) {
+        player.currentRoundMoney = playerArg.currentRoundMoney;
+      }
+    })
+  }
+
   updateGameStandings(gameClass) {
-    // let gameClass = new Game();
-    // gameClass.instantiatePlayers('Chris', 'Peerat', 'Victor');
-    // gameClass.players[0].currentRoundMoney = 800;
-    // gameClass.players[1].currentRoundMoney = 700;
-    // gameClass.players[2].currentRoundMoney = 750;
-    return gameClass.getWinnerThisRound();
+    this.roundStandings = this.roundStandings.sort((a, b) => {
+      return b.currentRoundMoney - a.currentRoundMoney;
+    });
+    let winner = this.roundStandings[0];
+    gameClass.getWinnerThisRound(winner);
   }
 }
 
