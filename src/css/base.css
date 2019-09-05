@@ -1,9 +1,77 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-body {
-  color: pink;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  color: green;
+body {
+  background-color: #eb6c63;
+  font-family: 'Karla', sans-serif;
+  color: black;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-areas: "main main main main main main main main main"  "main main main main main main main main main" "main main main main main main main main main"  "main main main main main main main main main" "main main main main main main main main main"  "main main main main main main main main main" "main main main main main main main main main"  "footer footer footer footer footer footer footer footer footer" "footer footer footer footer footer footer footer footer footer"  "footer footer footer footer footer footer footer footer footer";
+}
+
+header {
+  font-size: 6em;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 900;
+  color: white;
+  width: 60%;
+  margin: 0;
+  margin-top: 2vh;
+  display: none;
+}
+
+.div--div-modal-setup {
+  display: none;
+}
+
+.div--modal-start-screen {
+  display: none;
+}
+
+.div--modal-category {
+  display: none;
+}
+
+.div--modal-round-summary {
+  display: none;
+}
+
+main {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 7;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 9;
+  grid-area: main;
+}
+
+footer {
+  -ms-grid-row: 8;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 9;
+  grid-area: footer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.label {
+  font-size: 2em;
+  color: #59cb92;
+  font-weight: 400;
 }
 /*# sourceMappingURL=base.css.map */
