@@ -13,7 +13,7 @@ let game, round;
 const data = fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data").then(data => data.json()).then(data => data.data.puzzles).catch(err => console.log(err));
 const wheel = fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data").then(data => data.json()).then(data => data.data.wheel).catch(err => console.log(err));
 
-$('.button--guess').click(event => {
+$('.button--start').click(event => {
   event.preventDefault();
   let $player1 = $('.input--player1').val();
   let $player2 = $('.input--player2').val();
@@ -23,4 +23,12 @@ $('.button--guess').click(event => {
   round = new Round(game.puzzles[game.currentRound])
   domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`)
   domUpdates.hideModal('.div--modal-setup');
+});
+
+$('.button--guess').click(event => {
+  event.preventDefault();
+});  
+
+$('.button--buy-vowel').click(event => {
+  event.preventDefault();
 });
