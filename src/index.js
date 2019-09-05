@@ -3,16 +3,16 @@
 
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-import './css/base.scss'
+import './css/base.scss';
 import Game from '../src/Game.js';
 import Round from './Round.js';
 import Turn from './Turn.js';
 import Puzzle from './Puzzle.js';
 import Wheel from './Wheel.js';
-import Players from './Players.js';
+import Player from './Player.js';
 import data from './data/sample-data.js';
 import domUpdates from './domUpdates';
-// ! we can uncomment the following imports if we need them 
+// ! we can uncomment the following imports if we need them
 // import Round from './Round.js';
 // import Turn from './Turn.js';
 // import Puzzle from './Puzzle.js';
@@ -24,29 +24,27 @@ import domUpdates from './domUpdates';
 import './images/turing-logo.png';
 
 let game;
-let data;
+// let data;
 
 // fetch()
 // ! we will be learning how to do this in Wed's lesson
 
 $('document').ready(function() {
   //! appending and deciding when to hide and show some elements
-  //! should occur here  
+  //! should occur here
 });
 
 //? Maybe we should change this to a start game type button?
 //? so that game begins when player names have been entered.
-$('.button--guess').click((event) => {
+$('.button--guess').click(event => {
   event.preventDefault();
   let $player1 = $('.input--player1').val();
   let $player2 = $('.input--player2').val();
   let $player3 = $('.input--player3').val();
-  game = new Game()
+  game = new Game();
   game.startGame();
   //! actions we want to occur on DOM when game starts up
 });
-
-
 
 function startGame(p1, p2, p3) {
   const player1 = new Player(1, p1);
