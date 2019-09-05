@@ -2,7 +2,6 @@ import Player from './Player.js';
 import Round from './Round.js';
 import Puzzle from './Puzzle.js';
 import data from './data/sample-data.js';
-
 class Game {
   constructor(data) {
     this.data = data;
@@ -12,9 +11,9 @@ class Game {
     this.bonusRound = false;
   }
 
-  startGame() {
+  startGame(p1, p2, p3) {
     this.players = []
-    this.instantiatePlayers();
+    this.instantiatePlayers(p1, p2, p3);
     this.getPuzzles();
     let round = new Round(this.puzzles[this.currentRound], this.players);
     round.startRound();

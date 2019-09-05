@@ -1,4 +1,3 @@
-// import $ from jQuery;
 // import $ from 'jquery';
 // import Game from '../src/Game.js';
 // import Round from './Round.js';
@@ -8,12 +7,10 @@
 // import Players from './Players.js';
 // import data from './data/sample-data.js';
 
-// $(document).ready(function() {
-
-//   const game = new Game([{ id: 1, name: 'Chris' }, { id: 2, name: 'Peerat' }, { id: 3, name: 'Victor' }]);
-//   game.startGame();
-//   console.log('ready');
-
-// });
+// const domUpdates {
+//   function appendHTML(element){
+//     ${element}.text()
+//   }
+// }
 
 // export default domUpdates;

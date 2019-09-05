@@ -9,8 +9,8 @@ import Round from './Round.js';
 import Turn from './Turn.js';
 import Puzzle from './Puzzle.js';
 import Wheel from './Wheel.js';
-import Players from './Players.js';
-import data from './data/sample-data.js';
+import Player from './Player';
+// import data from './data/sample-data.js';
 import domUpdates from './domUpdates';
 // ! we can uncomment the following imports if we need them 
 // import Round from './Round.js';
@@ -23,47 +23,29 @@ import domUpdates from './domUpdates';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 
-let game;
-let data;
+let game, round;
+const data = fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data").then(data => data.json()).then(data => data.data.puzzles).catch(err => console.log(err));
+const wheel = fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data").then(data => data.json()).then(data => data.data.wheel).catch(err => console.log(err));
 
-// fetch()
-// ! we will be learning how to do this in Wed's lesson
-
-$('document').ready(function() {
-  //! appending and deciding when to hide and show some elements
-  //! should occur here  
-});
-
-//? Maybe we should change this to a start game type button?
-//? so that game begins when player names have been entered.
-$('.button--guess').click((event) => {
+$('.button--guess').click(event => {
+  console.log($('.button--guess'))
   event.preventDefault();
   let $player1 = $('.input--player1').val();
   let $player2 = $('.input--player2').val();
   let $player3 = $('.input--player3').val();
-  game = new Game()
-  game.startGame();
-  //! actions we want to occur on DOM when game starts up
+  console.log(data)
+  game = new Game(data);
+  console.log(game)
+  game.startGame($player1, $player2, $player3);
+  round = new Round(game.puzzles[game.currentRound])
+  console.log(round);
+  $('.p--puzzle-display').text(`${round.puzzle.correct_answer}`)
+  $('.p--puzzle-category').text(`${round.puzzle.category}`)
 });
 
-
-
-function startGame(p1, p2, p3) {
-  const player1 = new Player(1, p1);
-  const player2 = new Player(2, p2);
-  const player3 = new Player(3, p3);
-  const game = new Game([player1, player2, player3]);
+function gameSetUp() {
+  
 }
 
-$('.button--guess').click(event => {
-  event.preventDefault();
-  let $p1Name = $('.input--player1').val();
-  let $p2Name = $('.input--player2').val();
-  let $p3Name = $('.input--player3').val();
-  startGame($p1Name, $p2Name, $p3Name);
-  console.log(game);
-});
-
-console.log(game);
 
 // console.log('This is the JavaScript entry file - your code begins here.');
