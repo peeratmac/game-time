@@ -3,10 +3,10 @@ import Game from './Game.js';
 
 
 class Round {
-  constructor(puzzle) {
+  constructor(puzzle, players) {
     this.puzzle = puzzle;
     this.playerTurnIndex = 0;
-    this.roundStandings = [];
+    this.roundStandings = players
     this.guessedLetters = [];
     this.correctIndicesArr = [];
   }
@@ -60,6 +60,14 @@ class Round {
 
   resolveScores(gameClass) {
     return gameClass.getWinnerAtTheEnd();
+  }
+
+  updateRoundStandings(playerArg) {
+    this.roundStandings.map((player) => {
+      if (player.name === playerArg.name) {
+        player.currentRoundMoney = playerArg.currentRoundMoney;
+      }
+    })
   }
 
   updateGameStandings(gameClass) {

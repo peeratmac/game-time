@@ -16,7 +16,7 @@ describe('Round', () => {
     puzzle = new Puzzle(data.puzzles);
     puzzle.choosePuzzleBank();
     puzzle = puzzle.setPuzzle();
-    round = new Round(puzzle);
+    round = new Round(puzzle, game.players);
     round.startRound();
   });
 
@@ -29,7 +29,17 @@ describe('Round', () => {
   });
 
   it('should store the current round standings', () => {
-    expect(round.roundStandings).to.be.an('array');
+    round.updateRoundStandings({
+      id: 1,
+      name: 'Chris',
+      currentRoundMoney: 600,
+      totalMoney: 0
+    })
+    expect(round.roundStandings).to.deep.equal([
+      { id: 1, name: 'Chris', currentRoundMoney: 600, totalMoney: 0 },
+      { id: 2, name: 'Peerat', currentRoundMoney: 0, totalMoney: 0 },
+      { id: 3, name: 'Victor', currentRoundMoney: 0, totalMoney: 0 }
+    ]);
   });
 
   it('should start with no letters guessed', () => {
@@ -105,8 +115,6 @@ describe('Round', () => {
     round.checkGuess('x');
     round.checkGuess('y');
     round.checkGuess('z');
-    console.log(round.guessedLetters);
-    console.log(round.correctIndicesArr.length);
     expect(round.correctIndicesArr.length).to.not.equal(0);
   });
 
