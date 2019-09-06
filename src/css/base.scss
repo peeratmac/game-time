@@ -1,17 +1,14 @@
 // * <---- SCSS IDENTIFIERS ---->
 
-$neutral: #BABABA;
+$neutral: #bababa;
 $primary-background: rgb(235, 108, 99);
-$secondary-background: #F070A1;
-$accent-background:#439F76;
+$secondary-background: #f070a1;
+$accent-background: #439f76;
 $body-text: black;
-$accent-text: #C34271;
-$alt-text: #F070A1;
+$accent-text: #c34271;
+$alt-text: #f070a1;
 $main-font: 'Press Start 2P', cursive;
-$retro-shadow: 4px 4px 0px #d5d5d5, 
-      7px 7px 0px rgba(0, 0, 0, 0.2);
-
-
+$retro-shadow: 4px 4px 0px #d5d5d5, 7px 7px 0px rgba(0, 0, 0, 0.2);
 
 // * <---- ELEMENT STYLES ---->
 * {
@@ -22,39 +19,37 @@ $retro-shadow: 4px 4px 0px #d5d5d5,
 }
 
 body {
-    background-color: $primary-background;
-    font-family: $main-font;
-    color: black;
-    height: 100vh;
-    width: 100vw;
-    text-align: center;
-// display: grid;
-//   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-//   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-//   grid-template-areas: 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "footer footer footer footer footer footer footer footer footer"
-//   "footer footer footer footer footer footer footer footer footer" 
-//   "footer footer footer footer footer footer footer footer footer";
+  background-color: $primary-background;
+  font-family: $main-font;
+  color: black;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  // display: grid;
+  //   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  //   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  //   grid-template-areas:
+  //   "main main main main main main main main main"
+  //   "main main main main main main main main main"
+  //   "main main main main main main main main main"
+  //   "main main main main main main main main main"
+  //   "main main main main main main main main main"
+  //   "main main main main main main main main main"
+  //   "main main main main main main main main main"
+  //   "footer footer footer footer footer footer footer footer footer"
+  //   "footer footer footer footer footer footer footer footer footer"
+  //   "footer footer footer footer footer footer footer footer footer";
 }
 
 header {
-    font-size: 4em;
-    font-family: $main-font;
-    font-weight: 900;
-    color: rgb(241, 241, 235);
-    margin: 0, ;
-    margin-top: 2vh;
-    text-shadow: 0px 3px 0px #b2a98f,
-    0px 14px 10px rgba(0,0,0,0.15),
-    0px 24px 2px rgba(0,0,0,0.1),
-    0px 34px 30px rgba(0,0,0,0.1);    
+  font-size: 4em;
+  font-family: $main-font;
+  font-weight: 900;
+  color: rgb(241, 241, 235);
+  margin: 0;
+  margin-top: 2vh;
+  text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15),
+    0px 24px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1);
 }
 
 main {
@@ -67,27 +62,26 @@ footer {
   flex-direction: column;
 }
 
-
 // * <---- MODALS ----->
 .div--modal-background {
-  display: none;
+  display: flex;
   background-color: grey;
   min-height: 100vh;
   min-width: 100vw;
-  opacity: .5;
+  opacity: 0.5;
   position: fixed;
   z-index: 2000;
 }
 
 .div--modal-setup {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: fixed;
   left: 10%;
   min-width: 80vw;
   top: 20%;
   z-index: 3000;
-  
+
   .form--player-setup {
     background: black;
     display: flex;
@@ -96,7 +90,7 @@ footer {
     justify-content: space-around;
     z-index: 3000;
   }
-}  
+}
 
 .div--modal-start-screen {
   display: none;
@@ -106,7 +100,7 @@ footer {
   display: none;
 }
 
-.div--modal-round-summary { 
+.div--modal-round-summary {
   display: none;
 }
 
@@ -142,13 +136,12 @@ footer {
 
 // }
 
-
 .button--spin {
   color: white;
   display: inline;
   height: 150px;
   font-size: 1.8em;
-  box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+  box-shadow: 2px 7px 50px -7px rgba(0, 0, 0, 0.98);
   width: 150px;
   border-radius: 50%;
   text-shadow: $retro-shadow;
@@ -157,7 +150,6 @@ footer {
   font-family: $main-font;
 }
 
-
 .button--spin:hover {
   color: black;
   // background-color: grey;
@@ -165,7 +157,7 @@ footer {
 }
 
 .button--spin:active {
-  box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
+  box-shadow: 2px 5px 41px -2px rgba(0, 0, 0, 0.98);
   color: white;
   border: solid 1px yellow;
 }
@@ -176,7 +168,7 @@ footer {
   font-family: $main-font;
   height: 150px;
   font-size: 1em;
-  box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+  box-shadow: 2px 7px 50px -7px rgba(0, 0, 0, 0.98);
   width: 150px;
   text-shadow: $retro-shadow;
   border-radius: 50%;
@@ -191,7 +183,7 @@ footer {
 }
 
 .button--guess-solution:active {
-  box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
+  box-shadow: 2px 5px 41px -2px rgba(0, 0, 0, 0.98);
   color: white;
   border: solid 1px yellow;
 }
@@ -210,13 +202,12 @@ footer {
   display: inline;
 }
 
-
 // .form--player-guess {
 
 // }
 
 // .label--player-guess {
-  
+
 // }
 
 // .input--player-guess {
@@ -243,9 +234,8 @@ footer {
 
 // }
 
-
 // .button--guess-solution {
-  
+
 // }
 
 // .label--solution {
@@ -255,5 +245,3 @@ footer {
 // .input--solution {
 
 // }
-
-
