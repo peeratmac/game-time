@@ -76,7 +76,7 @@ footer {
 
 // * <---- MODALS ----->
 .div--modal-background {
-  display: none;
+  // display: none;
   background-color: grey;
   min-height: 100vh;
   min-width: 100vw;
@@ -86,7 +86,7 @@ footer {
 }
 
 .div--modal-setup {
-  display: none;
+  // display: none;
   flex-direction: column;
   position: fixed;
   left: 10%;
