@@ -1,3 +1,5 @@
+import data from './data/sample-data';
+
 class Wheel {
   constructor(data) {
     this.wheelVals = data.wheel;
@@ -6,9 +8,9 @@ class Wheel {
 
   randomizeWheelVal() {
     let spinIndex = Math.floor(Math.random() * 22);
-    this.currentVal = this.wheelVals[spinIndex]
+    this.currentVal = this.wheelVals[spinIndex];
+    return this.currentVal;
   }
-
 }
 
 export default Wheel;
