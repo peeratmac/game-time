@@ -3,14 +3,18 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Wheel of Fortune</title>
     <!-- <link rel="stylesheet" href="css/base.css"> -->
   </head>
   <body>
+    <!-- MODAL BACKGROUND-->
+    <div class="div div--modal-background" role="presentation" aria-disabled="false"></div>
+    <!-- END MODAL -->
 
     <!-- MODAL POPUP -->
 
-    <div class="div--div-modal-setup" role="form" aria-disabled="false">
+    <div class="div div--modal-setup" role="form" aria-disabled="false">
       <form class="form form--player-setup">
         <label class="label label--player1" for="player1">Player 1</label>
         <input type="text" class="input input--player1" id="player1" placeholder="Enter Player 1 Name">
@@ -18,7 +22,7 @@
         <input type="text" class="input input--player2" id="player2" placeholder="Enter Player 2 Name">
         <label class="label label--player3" for="player3">Player 3</label>
         <input type="text" class="input input--player3" id="player3" placeholder="Enter Player 3 Name">
-        <button class="button button--guess">Submit Players</button>
+        <button class="button button--guess">START GAME</button>
       </form>
     </div>
     
@@ -54,6 +58,7 @@
       <label class="label label--solution" for="solution">Your Solution</label>
       <input type="text" class="input input--solution" id="solution"  placeholder="Enter Guess">
     </div>
+
     <div class="div div--current-value" role="status" aria-disabled="true"></div>
 
     <!-- END MODAL -->
