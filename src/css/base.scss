@@ -322,12 +322,17 @@ footer {
 	  padding-left: 15px;
     border: none;
     font-family: $main-font;
-    text-align: center;
+    outline: none;
+    // text-align: center;
     border-radius: 20px;
     margin: auto;
     margin-bottom: 20px;
     background: rgba(52, 152, 182, 0.2);
+    // 
+  }
 
+  input:focus::placeholder{
+       color:transparent;
   }
 
 .button--guess,
