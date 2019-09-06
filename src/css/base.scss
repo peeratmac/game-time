@@ -164,6 +164,64 @@ footer {
   border-top: 3px solid $accent-background;
 }
 
+// .section--player-name {
+
+// }
+
+
+.button--spin {
+  color: white;
+  display: inline;
+  height: 150px;
+  font-size: 1.8em;
+  box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+  width: 150px;
+  border-radius: 50%;
+  text-shadow: $retro-shadow;
+  background: rgb(66, 184, 221);
+  border: solid 1px white;
+  font-family: $main-font;
+}
+
+
+.button--spin:hover {
+  color: black;
+  // background-color: grey;
+  // transition-delay: .15s;
+}
+
+.button--spin:active {
+  box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
+  color: white;
+  border: solid 1px yellow;
+}
+
+.button--guess-solution {
+  color: white;
+  display: inline;
+  font-family: $main-font;
+  height: 150px;
+  font-size: 1em;
+  box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+  width: 150px;
+  text-shadow: $retro-shadow;
+  border-radius: 50%;
+  background: rgb(66, 184, 221);
+  border: solid 1px white;
+}
+
+.button--guess-solution:hover {
+  color: black;
+  // background-color: grey;
+  // transition-delay: .15s;
+}
+
+.button--guess-solution:active {
+  box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
+  color: white;
+  border: solid 1px yellow;
+}
+
 .section--player-buttons {
   display: flex;
   height: 100%;
@@ -308,6 +366,7 @@ footer {
 // .button--buy-vowel {
 
 // }
+
 
 // .button--guess-solution {
   
