@@ -1,15 +1,23 @@
 // * <---- SCSS IDENTIFIERS ---->
 
-$neutral: #BABABA;
-$primary-background: rgb(235, 108, 99);
-$secondary-background: #F070A1;
+$primary-background: #C96567;
+$secondary-background: #314455;
 $accent-background:#439F76;
+$button-back-1: #12C998;
+$button-back-2: rgb(188, 120, 222);
+$big-button-text: rgb(33, 129, 213);
+$controls-color: #314455;
 $body-text: black;
-$accent-text: #C34271;
+$head-color: rgb(255, 255, 255);
+$accent-text: rgb(108, 123, 171);
 $alt-text: #F070A1;
 $main-font: 'Press Start 2P', cursive;
-$retro-shadow: 4px 4px 0px #d5d5d5, 
+$retro-shadow: 4px 4px 0px #b8aaaa, 
       7px 7px 0px rgba(0, 0, 0, 0.2);
+$depth-shadow: 0px 3px 0px #b2a98f,
+    0px 14px 10px rgba(0,0,0,0.15),
+    0px 24px 2px rgba(0,0,0,0.1),
+    0px 34px 30px rgba(0,0,0,0.1);
 
 
 
@@ -18,14 +26,15 @@ $retro-shadow: 4px 4px 0px #d5d5d5,
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border: solid red 1px;
+  // border: solid red 1px;
 }
 
 body {
     background-color: $primary-background;
+    // background-image: url(https://wallpapercave.com/wp/wp1895667.png);
     font-family: $main-font;
     color: black;
-    height: 100vh;
+    height: 97vh;
     width: 100vw;
     text-align: center;
 // display: grid;
@@ -48,13 +57,10 @@ header {
     font-size: 4em;
     font-family: $main-font;
     font-weight: 900;
-    color: rgb(241, 241, 235);
+    color: $head-color;
     margin: 0, ;
     margin-top: 2vh;
-    text-shadow: 0px 3px 0px #b2a98f,
-    0px 14px 10px rgba(0,0,0,0.15),
-    0px 24px 2px rgba(0,0,0,0.1),
-    0px 34px 30px rgba(0,0,0,0.1);    
+    text-shadow: $depth-shadow;    
 }
 
 main {
@@ -116,26 +122,46 @@ footer {
 
 // * <---- MAIN ----->
 
-.label {
+.section--round-disp {
+  background: $secondary-background;
+  height: 10%;
+  width: 10%;
+  border: solid 3px $accent-background;
+  padding: 5px;
+  margin-top: 25px;
+  margin-left: 2%;
+  // display: inline;
+  position: fixed;
+}
+.p--puzzle-display {
+  background: $secondary-background; 
+}
+
+.div--round-disp{
+  margin-top: 10px;
   font-size: 2em;
-  color: rgb(78, 46, 111);
-  font-weight: 400;
 }
 
 .section--description {
   height: 70%;
   width: 70%;
-  float: right;
-  margin: 20px 20px 0 0;
-  border: 3px white solid;
+  margin: 30px 20px 0 0;
+  border: 3px solid $accent-background;
   background-color: $secondary-background;
   display: inline-block;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  // transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 }
 
 // * <---- FOOTER ----->
 
 .footer--player-controls {
   display: flex;
+  background-color: $controls-color;
+  height: 175px;
+  border-top: 3px solid $accent-background;
 }
 
 // .section--player-name {
@@ -198,40 +224,138 @@ footer {
 
 .section--player-buttons {
   display: flex;
-  // height: 100%;
+  height: 100%;
   justify-content: space-around;
+  align-items: center;
+  padding-bottom: 10px;
 }
 
-.form--player-guess {
-  display: inline;
-}
-
-.form-buy-vowel {
-  display: inline;
-}
-
-
-// .form--player-guess {
-
-// }
-
-// .label--player-guess {
+// .section--player-name {
   
-// }
+  // }
+  
+  
+  .button--spin {
+    color: $big-button-text;
+    display: inline;
+    height: 150px;
+    background: $button-back-1;
+    font-size: 1.8em;
+    box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+    width: 150px;
+    border-radius: 50%;
+    text-shadow: $retro-shadow;
+    border: solid 1px white;
+    font-family: $main-font;
+  }
+  
+  .button {
+    outline: none;
+  }
+  
+  .button--spin:hover {
+    color: black;
+    // background-color: grey;
+    // transition-delay: .15s;
+  }
+  
+  .button--spin:active {
+    box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
+    color: $big-button-text;
+    border: solid 1px yellow;
+  }
+  
+  .button--guess-solution {
+    color: $big-button-text;
+    display: inline;
+    font-family: $main-font;
+    height: 150px;
+    font-size: 1em;
+    box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+    width: 150px;
+    text-shadow: $retro-shadow;
+    border-radius: 50%;
+    background: $button-back-2;
+    border: solid 1px white;
+  }
+  
+  .button--guess-solution:hover {
+    color: black;
+    // background-color: grey;
+    // transition-delay: .15s;
+  }
+  
+  .button--guess-solution:active {
+    box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
+    color: $big-button-text;
+    border: solid 1px yellow;
+  }
+  
+  
+  .form--player-guess,
+  .form-buy-vowel {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+  }
+  
+  .form-buy-vowel {
+  }
+  
+  
+  // .form--player-guess {
+    
+    // }
+  
+  .label {
+      font-size: 2em;
+      font-weight: 300;
+      color: $accent-text;
+      text-shadow: $depth-shadow;
+      margin: 15px 0;
+    }
+    
+.input--buy-vowel,
+.input--player-guess {
+    width: 50%;
+    height: 35px;
+	  padding-left: 15px;
+    border: none;
+    font-family: $main-font;
+    text-align: center;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    background: rgba(52, 152, 182, 0.2);
 
-// .input--player-guess {
+  }
 
-// }
-
-// .button--guess {
-
-// }
-
-// .form-buy-vowel {
-
-// }
-
-// .label--buy-vowel {
+.button--guess,
+.button--buy-vowel {
+  display: inline-block;
+    background: blue;
+    border: 1px solid darken(blue, 5%);
+    padding: .5em 2em;
+    color: white;
+    border-radius: 20px;
+    font-family: $main-font;
+    width: 50%;
+    margin: auto;
+    box-shadow: inset 0px 1px 0px fadeout(white, 80%)
+  }
+    // .input--player-guess {
+      
+      // }
+      
+      // .button--guess {
+        
+        // }
+        
+        // .form-buy-vowel {
+          
+          // }
+          
+          // .label--buy-vowel {
 
 // }
 
