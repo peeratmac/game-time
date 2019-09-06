@@ -8,18 +8,16 @@ import $ from 'jquery';
 // import data from './data/sample-data.js';
 
 const domUpdates = {
+   
   appendHTML(element, text) {
     $(element).text(text);
   },
-
+  
   hideModal(element) {
     $(element).toggle();
     $('.div--modal-background').toggle();
-  },
-
-  displaySpinValue(wheelValue) {
-    $('.spin-value').text(wheelValue);
   }
-};
+  
+}
 
 export default domUpdates;
