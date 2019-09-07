@@ -5,6 +5,7 @@ class Round {
     this.roundStandings = players;
     this.guessedLetters = [];
     this.correctIndicesArr = [];
+    this.solvedQuestionMark = false;
   }
 
   storeGuess(letter) {
@@ -64,10 +65,11 @@ class Round {
       .split('')
       .filter(elem => elem !== ' ');
     if (this.correctIndicesArr.length === noSpacesArr.length) {
-      // this.endRound();
-      return true;
+      this.solvedQuestionMark = true;
+      return this.solvedQuestionMark;
     } else {
-      return false;
+      this.solvedQuestionMark = false;
+      return this.solvedQuestionMark;
     }
   }
 

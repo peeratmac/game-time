@@ -98,6 +98,6 @@ $('.button--guess').click(() => {
   );
 
   domUpdates.updateRoundScoreAfterGuess(winnerTurnIndex, totalRoundScore);
-
+  round.checkSolveByLetter();
   round.updatePlayerIndex();
 });
