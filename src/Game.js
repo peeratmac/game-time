@@ -35,7 +35,11 @@ class Game {
   }
 
   incrementRound() {
-    return this.currentRound++;
+    if (this.currentRound < 5) {
+      return this.currentRound++;
+    } else {
+      this.currentRound = 0;
+    }
   }
 
   instantiatePlayers(p1, p2, p3) {
@@ -48,14 +52,6 @@ class Game {
   startBonus() {
     this.bonusRound = true;
   }
-
-  // getWinner() {
-  //   let sortedPlayers = this.gameStandings.sort((playerA, playerB) => {
-  //     playerA - playerB
-  //   })
-  //   let winnerID = sortedPlayers.shift();
-  //   return this.players.find(elem => elem.id === winnerID.id)
-  // }
 
   getWinnerThisRound(winner) {
     this.players.map(player => {
