@@ -1,3 +1,6 @@
+import Game from './Game.js';
+import data from './data/sample-data.js';
+
 class Round {
   constructor(puzzle, players) {
     this.puzzle = puzzle;
@@ -12,13 +15,11 @@ class Round {
     this.guessedLetters = [...this.guessedLetters, letter];
   }
 
-  startRound() {
-    // ! I don't think we need this method since we are instantiating from the Game Class
-    // let puzzleClass = new Puzzle(data.puzzles);
-    // puzzleClass.choosePuzzleBank();
-    // puzzleClass.setPuzzle();
-    // this.puzzle = puzzleClass.newPuzzle;
-    // this.guessedLetters = [];
+  endRoundCleanup() {
+    this.guessedLetters = [];
+    this.correctIndicesArr = [];
+    this.playerTurnIndex = 0;
+    this.solvedQuestionMark = false;
   }
 
   endRound(game) {
@@ -46,8 +47,6 @@ class Round {
     } else {
       this.playerTurnIndex++;
     }
-
-    // Later we will make sure we update the index according to the answer
   }
 
   calculateScore(num, value) {

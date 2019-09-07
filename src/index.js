@@ -98,6 +98,25 @@ $('.button--guess').click(() => {
   );
 
   domUpdates.updateRoundScoreAfterGuess(winnerTurnIndex, totalRoundScore);
-  round.checkSolveByLetter();
+
   round.updatePlayerIndex();
+
+  endRoundCheck();
 });
+
+function endRoundCheck() {
+  round.checkSolveByLetter();
+  if (round.solvedQuestionMark) {
+    console.log('round has ended!');
+    round.endRoundCleanup();
+    game.incrementRound();
+    round = new Round(game.puzzles[game.currentRound]);
+    domUpdates.appendHTML(
+      '.p--puzzle-display',
+      `${round.puzzle.correct_answer}`
+    );
+    domUpdates.displayRoundNumber(game);
+  } else {
+    return;
+  }
+}
