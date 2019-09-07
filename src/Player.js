@@ -15,7 +15,7 @@ class Player {
   }
 
   updateTotalMoney(score) {
-    this.totalMoney += score;
+    return (this.totalMoney += score);
   }
 
   endTurn() {

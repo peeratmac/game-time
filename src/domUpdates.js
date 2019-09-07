@@ -41,6 +41,12 @@ const domUpdates = {
     $(`.player--roundscore${playerTurnIndex + 1}`).text(
       `Round Score: ${score}`
     );
+  },
+
+  updateTotalMoneyAfterSolve(playerTurnIndex, score) {
+    $(`.player--totalscore${playerTurnIndex + 1}`).text(
+      `Total Score: ${score}`
+    );
   }
 };
 

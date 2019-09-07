@@ -87,17 +87,18 @@ $('.button--guess-solution').click(() => {
   event.preventDefault();
 });
 
+let turnIndex;
 $('.button--guess').click(() => {
   event.preventDefault();
   var guessedLetter = $('.input--player-guess').val();
   var scoreJustNow = round.checkGuess(guessedLetter, wheelValue);
-  let winnerTurnIndex = round.playerTurnIndex;
+  turnIndex = round.playerTurnIndex;
 
-  let totalRoundScore = players[winnerTurnIndex].updateCurrentRoundMoney(
+  let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(
     scoreJustNow
   );
 
-  domUpdates.updateRoundScoreAfterGuess(winnerTurnIndex, totalRoundScore);
+  domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
 
   round.updatePlayerIndex();
 
@@ -108,6 +109,14 @@ function endRoundCheck() {
   round.checkSolveByLetter();
   if (round.solvedQuestionMark) {
     console.log('round has ended!');
+    console.log(turnIndex);
+
+    let winnerTotal = players[turnIndex].updateTotalMoney(
+      players[turnIndex].currentRoundMoney
+    );
+
+    domUpdates.updateTotalMoneyAfterSolve(turnIndex, winnerTotal);
+
     round.endRoundCleanup();
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
