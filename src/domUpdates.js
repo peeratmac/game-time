@@ -19,6 +19,18 @@ const domUpdates = {
 
   displaySpinValue(wheelValue) {
     $('.spin-value').text(wheelValue);
+  },
+
+  appendPlayers(players) {
+    players.forEach(player => {
+      $(`.player--name${player.id}`).text(`${player.name}`);
+      $(`.player--roundscore${player.id}`).text(
+        `Round Score: ${player.currentRoundMoney}`
+      );
+      $(`.player--totalscore${player.id}`).text(
+        `Total Score: ${player.totalMoney}`
+      );
+    });
   }
 };
 
