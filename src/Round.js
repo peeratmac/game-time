@@ -2,7 +2,7 @@ class Round {
   constructor(puzzle, players) {
     this.puzzle = puzzle;
     this.playerTurnIndex = 0;
-    this.roundStandings = players
+    this.roundStandings = players;
     this.guessedLetters = [];
     this.correctIndicesArr = [];
   }
@@ -35,7 +35,18 @@ class Round {
         ? this.correctIndicesArr.push(index)
         : null;
     });
-    this.calculateScore(currentLetters, value);
+
+    return this.calculateScore(currentLetters, value);
+  }
+
+  updatePlayerIndex() {
+    if (this.playerTurnIndex === 2) {
+      this.playerTurnIndex = 0;
+    } else {
+      this.playerTurnIndex++;
+    }
+
+    // Later we will make sure we update the index according to the answer
   }
 
   calculateScore(num, value) {
@@ -45,11 +56,12 @@ class Round {
   }
 
   buyVowel(playerArg) {
-    return playerArg.currentRoundMoney += -100;
+    return (playerArg.currentRoundMoney += -100);
   }
 
   checkSolveByLetter() {
-    let noSpacesArr = this.puzzle.correct_answer.split('')
+    let noSpacesArr = this.puzzle.correct_answer
+      .split('')
       .filter(elem => elem !== ' ');
     if (this.correctIndicesArr.length === noSpacesArr.length) {
       // this.endRound();
@@ -60,7 +72,10 @@ class Round {
   }
 
   checkSolve(fullPlayerGuess) {
-    if (fullPlayerGuess !== undefined && this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()) {
+    if (
+      fullPlayerGuess !== undefined &&
+      this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()
+    ) {
       // this.endRound();
       return true;
     }
@@ -71,11 +86,11 @@ class Round {
   }
 
   updateRoundStandings(playerArg) {
-    this.roundStandings.map((player) => {
+    this.roundStandings.map(player => {
       if (player.name === playerArg.name) {
         player.currentRoundMoney = playerArg.currentRoundMoney;
       }
-    })
+    });
   }
 
   updateGameStandings(gameClass) {

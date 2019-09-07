@@ -3,16 +3,16 @@ import Round from './Round.js';
 import Puzzle from './Puzzle.js';
 import data from './data/sample-data.js';
 class Game {
-  constructor(data) {
+  constructor(players, data) {
     this.data = data;
-    this.players = [];
-    this.currentRound = 0;
+    this.players = players;
+    this.currentRound = 1;
     this.puzzles = [];
     this.bonusRound = false;
   }
 
   startGame(p1, p2, p3) {
-    this.players = []
+    this.players = [];
     this.instantiatePlayers(p1, p2, p3);
     this.getPuzzles();
     let round = new Round(this.puzzles[this.currentRound], this.players);
@@ -24,7 +24,7 @@ class Game {
     while (this.puzzles.length < 5) {
       puzzleClass.choosePuzzleBank();
       let puzzle = puzzleClass.setPuzzle();
-      this.puzzles.push(puzzle)
+      this.puzzles.push(puzzle);
     }
   }
 
@@ -58,14 +58,14 @@ class Game {
   // }
 
   getWinnerThisRound(winner) {
-    this.players.map((player) => {
+    this.players.map(player => {
       if (player.id === winner.id) {
         player.totalMoney += winner.currentRoundMoney;
         player.currentRoundMoney = 0;
       } else {
         player.currentRoundMoney = 0;
       }
-    })
+    });
   }
 
   getWinnerAtTheEnd() {
