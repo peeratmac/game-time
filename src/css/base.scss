@@ -56,13 +56,13 @@ body {
 }
 
 header {
-    font-size: 4em;
-    font-family: $main-font;
-    font-weight: 900;
-    color: $head-color;
-    margin: 0, ;
-    margin-top: 2vh;
-    text-shadow: $depth-shadow;    
+  font-size: 4em;
+  font-family: $main-font;
+  font-weight: 900;
+  color: $head-color;
+  margin: 0, ;
+  margin-top: 2vh;
+  text-shadow: $depth-shadow;    
 }
 
 main {
@@ -78,7 +78,7 @@ footer {
 
 // * <---- MODALS ----->
 .div--modal-background {
-  // display: none;
+  display: none;
   background-color: $secondary-background;
   min-height: 120vh;
   min-width: 100vw;
@@ -88,7 +88,7 @@ footer {
 }
 
 .div--modal-setup {
-  // display: none;
+  display: none;
   flex-direction: column;
   position: fixed;
   left: 10%;
@@ -156,16 +156,32 @@ footer {
 
 // * <---- MAIN ----->
 
+.players--section {
+  position: fixed;
+  margin: 15% 0 0 1%;
+  background: $secondary-background;
+  width: 12%;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: solid 3px $accent-background;
+  height: 30%;
+}
+
 .section--round-disp {
   background: $secondary-background;
   height: 10%;
-  width: 10%;
+  color: white;
+  width: 12%;
   border: solid 3px $accent-background;
   padding: 5px;
-  margin-top: 25px;
-  margin-left: 2%;
-  // display: inline;
+  margin: 25px 0 0 1%;
   position: fixed;
+}
+.players--section {
+  
 }
 .p--puzzle-display {
   background: $secondary-background; 

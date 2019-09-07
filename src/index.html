@@ -51,33 +51,10 @@
 
     <!-- END MODAL -->
 
-    <!-- PLAYER NAMES + SCORES + INFO-->
-
-    <section class="players--section">
-      <div class="player-status player-info--1">
-        <p class="player-name player--name1">Player 1</p>
-        <p class="player-roundscore player--roundscore1">Round Score: X</p>
-        <p class="player-totalscore player--totalscore1">Total Score: XX</p>
-      </div>
-      <div class="player-status player-info--2">
-        <p class="player-name player--name2">Player 2</p>
-        <p class="player-roundscore player--roundscore2">Round Score: X</p>
-        <p class="player-totalscore player--totalscore2">Total Score: XX</p>
-      </div>
-      <div class="player-status player-info--3">
-        <p class="player-name player--name3">Player 3</p>
-        <p class="player-roundscore player--roundscore3">Round Score: X</p>
-        <p class="player-totalscore player--totalscore3">Total Score: XX</p>
-      </div>
-    </section>
-
     <!-- MODAL POPUP -->
 
     <div
-      class="div div--modal-start-screen"
-      role="presentation"
-      aria-disabled="true"
-    >
+      class="div div--modal-start-screen" role="presentation" aria-disabled="true">
       <h1 class="h1 h1--value-spinner">Wheel of Fortune</h1>
       <button>START GAME</button>
     </div>
@@ -122,13 +99,31 @@
 
     <main class="main main--puzzle">
       <header>Wheel of Fortune</header>
-      <p class="p p--puzzle-display"></p>
       <section class="section--round-disp">
         <p class="p--round-disp">ROUND:</p>
         <div class="div--round-disp">X</div>
       </section>
+      <section class="players--section">
+        <div class="player-status player-info--1">
+          <p class="player-name player--name1">Player 1</p>
+          <p class="player-roundscore player--roundscore1">Round Score: X</p>
+          <p class="player-totalscore player--totalscore1">Total Score: XX</p>
+        </div>
+        <div class="player-status player-info--2">
+          <p class="player-name player--name2">Player 2</p>
+          <p class="player-roundscore player--roundscore2">Round Score: X</p>
+          <p class="player-totalscore player--totalscore2">Total Score: XX</p>
+        </div>
+        <div class="player-status player-info--3">
+          <p class="player-name player--name3">Player 3</p>
+          <p class="player-roundscore player--roundscore3">Round Score: X</p>
+          <p class="player-totalscore player--totalscore3">Total Score: XX</p>
+        </div>
+      </section>
       <section class="section section--puzzle"></section>
-      <section class="section section--description"></section>
+      <section class="section section--description">
+        <p class="p p--puzzle-display"></p>
+      </section>
     </main>
     <footer class="footer footer--player-controls">
       <section class="section section--player-name"></section>
@@ -136,9 +131,8 @@
         <div class="spin-value">XX</div>
         <button class="button button--spin">SPIN</button>
         <form class="form form--player-guess">
-          <label class="label label--player-guess" for="guess"
-            >Guess a Letter</label
-          >
+          <label class="label label--player-guess" for="guess">Guess a Letter
+          </label>
           <input
             type="text"
             class="input input--player-guess"
