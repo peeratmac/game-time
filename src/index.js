@@ -68,9 +68,11 @@ $('.button--buy-vowel').click(event => {
   event.preventDefault();
 });
 
+let wheelValue;
+
 $('.button--spin').click(() => {
   event.preventDefault();
-  var wheelValue = wheel.randomizeWheelVal();
+  wheelValue = wheel.randomizeWheelVal();
   domUpdates.displaySpinValue(wheelValue);
   console.log(wheelValue);
 });
@@ -83,4 +85,19 @@ $('.button--buy-vowel').click(() => {
 
 $('.button--guess-solution').click(() => {
   event.preventDefault();
+});
+
+$('.button--guess').click(() => {
+  event.preventDefault();
+  var guessedLetter = $('.input--player-guess').val();
+  var scoreJustNow = round.checkGuess(guessedLetter, wheelValue);
+  let winnerTurnIndex = round.playerTurnIndex;
+
+  let totalRoundScore = players[winnerTurnIndex].updateCurrentRoundMoney(
+    scoreJustNow
+  );
+
+  domUpdates.updateRoundScoreAfterGuess(winnerTurnIndex, totalRoundScore);
+
+  round.updatePlayerIndex();
 });

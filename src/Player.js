@@ -7,7 +7,7 @@ class Player {
   }
 
   updateCurrentRoundMoney(score) {
-    this.currentRoundMoney += score;
+    return (this.currentRoundMoney += score);
   }
 
   resetRoundMoney() {
@@ -20,6 +20,11 @@ class Player {
 
   endTurn() {
     round.updateRoundStandings(this);
+  }
+
+  getUpdatedRoundMoneyWithScore() {
+    this.updateCurrentRoundMoney;
+    return this.currentRoundMoney;
   }
 }
 

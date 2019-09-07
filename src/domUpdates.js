@@ -35,6 +35,12 @@ const domUpdates = {
 
   displayRoundNumber(game) {
     $('.div--round-disp').text(game.currentRound);
+  },
+
+  updateRoundScoreAfterGuess(playerTurnIndex, score) {
+    $(`.player--roundscore${playerTurnIndex + 1}`).text(
+      `Round Score: ${score}`
+    );
   }
 };
 
