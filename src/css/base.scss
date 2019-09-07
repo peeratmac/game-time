@@ -2,6 +2,7 @@
 
 $primary-background: #C96567;
 $secondary-background: #314455;
+$ternary-background: #9E5A63;
 $accent-background:#439F76;
 $button-back-1: #12C998;
 $button-back-2: rgb(188, 120, 222);
@@ -26,6 +27,7 @@ $depth-shadow: 0px 3px 0px #b2a98f,
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: none;
   // border: solid red 1px;
 }
 
@@ -77,10 +79,10 @@ footer {
 // * <---- MODALS ----->
 .div--modal-background {
   // display: none;
-  background-color: grey;
-  min-height: 100vh;
+  background-color: $secondary-background;
+  min-height: 120vh;
   min-width: 100vw;
-  opacity: .5;
+  opacity: .7;
   position: fixed;
   z-index: 2000;
 }
@@ -95,14 +97,46 @@ footer {
   z-index: 3000;
   
   .form--player-setup {
-    background: black;
+    background: $ternary-background;
     display: flex;
     flex-direction: column;
     height: 65vh;
+    border-radius: 50px;
+    border: 5px solid $accent-background;
     justify-content: space-around;
     z-index: 3000;
   }
 }  
+
+.input--player1,
+.input--player2,
+.input--player3 {
+  width: 50%;
+  margin: auto;
+  height: 8vh;
+  border: 2px solid ;
+  font-size: 1.2em;
+  border-radius: 5px;
+  background: $secondary-background;
+  font-family: $main-font;
+  padding-left: 20px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.button--start {
+    display: inline-block;
+    background: $accent-background;
+    border: 2px solid darken($secondary-background, 5%);
+    padding: .5em 2em;
+    height: 100px;
+    font-size: 20px;
+    color: white;
+    border-radius: 20px;
+    font-family: $main-font;
+    width: 50%;
+    margin: auto;
+    box-shadow: inset 0px 1px 0px fadeout(black, 80%)  
+}
 
 .div--modal-start-screen {
   display: none;
@@ -338,8 +372,8 @@ footer {
 .button--guess,
 .button--buy-vowel {
   display: inline-block;
-    background: blue;
-    border: 1px solid darken(blue, 5%);
+    background: $accent-background;
+    border: 2px solid darken($secondary-background, 5%);
     padding: .5em 2em;
     color: white;
     border-radius: 20px;
