@@ -45,6 +45,7 @@ function startTheGame() {
   domUpdates.appendPlayers(players);
   domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`);
   domUpdates.hideModal('.div--modal-setup');
+  domUpdates.displayRoundNumber(game);
 }
 
 function instantiatePlayers() {

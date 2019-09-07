@@ -31,6 +31,10 @@ const domUpdates = {
         `Total Score: ${player.totalMoney}`
       );
     });
+  },
+
+  displayRoundNumber(game) {
+    $('.div--round-disp').text(game.currentRound);
   }
 };
 

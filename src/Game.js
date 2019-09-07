@@ -6,7 +6,7 @@ class Game {
   constructor(players, data) {
     this.data = data;
     this.players = players;
-    this.currentRound = 0;
+    this.currentRound = 1;
     this.puzzles = [];
     this.bonusRound = false;
   }
