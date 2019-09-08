@@ -2,6 +2,7 @@ import Player from './Player.js';
 import Round from './Round.js';
 import Puzzle from './Puzzle.js';
 import data from './data/sample-data.js';
+import domUpdates from './domUpdates';
 class Game {
   constructor(players, data) {
     this.data = data;
@@ -71,9 +72,10 @@ class Game {
     return sortedPlayers[0];
   }
 
-  endGame() {
-    // ? how do we end it?
-    return true;
+  endRound() {
+    this.players.forEach(player => {
+      player.resetRoundMoney();
+    });
   }
 }
 

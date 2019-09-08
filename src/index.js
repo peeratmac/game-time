@@ -43,7 +43,10 @@ function startTheGame() {
   wheel = new Wheel(data);
 
   domUpdates.appendPlayers(players);
-  domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`);
+  domUpdates.appendHTML(
+    '.p--puzzle-display',
+    `${round.puzzle.correct_answer}  Category: ${round.puzzle.description}  Hint/Description: ${round.puzzle.category}`
+  );
   domUpdates.hideModal('.div--modal-setup');
   domUpdates.displayRoundNumber(game);
 }
@@ -116,13 +119,17 @@ function endRoundCheck() {
     );
 
     domUpdates.updateTotalMoneyAfterSolve(turnIndex, winnerTotal);
-
+    domUpdates.updateRoundScoreAfterSolve(players);
     round.endRoundCleanup();
+    players.forEach(player => {
+      player.resetRoundMoney();
+      console.log(player.currentRoundMoney);
+    });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
     domUpdates.appendHTML(
       '.p--puzzle-display',
-      `${round.puzzle.correct_answer}`
+      `${round.puzzle.correct_answer}  Category: ${round.puzzle.description}  Hint/Description: ${round.puzzle.category}`
     );
     domUpdates.displayRoundNumber(game);
   } else {

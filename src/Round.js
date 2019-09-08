@@ -1,11 +1,13 @@
 import Game from './Game.js';
+import Player from './Player.js';
 import data from './data/sample-data.js';
+import domUpdates from './domUpdates';
 
 class Round {
   constructor(puzzle, players) {
     this.puzzle = puzzle;
     this.playerTurnIndex = 0;
-    this.roundStandings = players;
+    this.players = players;
     this.guessedLetters = [];
     this.correctIndicesArr = [];
     this.solvedQuestionMark = false;
@@ -15,11 +17,14 @@ class Round {
     this.guessedLetters = [...this.guessedLetters, letter];
   }
 
-  endRoundCleanup() {
+  endRoundCleanup(players) {
     this.guessedLetters = [];
     this.correctIndicesArr = [];
     this.playerTurnIndex = 0;
     this.solvedQuestionMark = false;
+    // players.forEach(player => {
+    //   player.currentRoundMoney = 0;
+    // });
   }
 
   endRound(game) {
