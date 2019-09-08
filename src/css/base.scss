@@ -78,7 +78,7 @@ footer {
 
 // * <---- MODALS ----->
 .div--modal-background {
-  display: none;
+  // display: none;
   background-color: $secondary-background;
   min-height: 120vh;
   min-width: 100vw;
@@ -88,7 +88,7 @@ footer {
 }
 
 .div--modal-setup {
-  display: none;
+  // display: none;
   flex-direction: column;
   position: fixed;
   left: 10%;
@@ -157,12 +157,12 @@ footer {
 // * <---- MAIN ----->
 
 .players--section {
-  position: fixed;
-  margin: 15% 0 0 1%;
+  position: absolute;
+  margin: 13% 0 0 1%;
   background: $secondary-background;
   width: 12%;
   color: white;
-  font-size: 12px;
+  font-size: .7em;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -176,9 +176,9 @@ footer {
   color: white;
   width: 12%;
   border: solid 3px $accent-background;
-  padding: 5px;
+  padding: .5%;
   margin: 25px 0 0 1%;
-  position: fixed;
+  position: absolute;
 }
 .players--section {
   
@@ -189,7 +189,7 @@ footer {
 
 .div--round-disp{
   margin-top: 10px;
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 .section--description {
@@ -205,32 +205,79 @@ footer {
   // transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 }
 
+.spin-value {
+  background-color: $button-back-1;
+  position: absolute;
+  width: 14%;
+  display: inline-block;
+  // color: $button-back-2;
+  margin: auto;
+  margin-top: 5%;
+  height: 30%; 
+  text-align: center;
+  padding-top: 3%;
+  border-radius: 13px;
+  border: 11px solid $secondary-background;
+  
+  p {
+    color: green;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+
+  span {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: $button-back-2;
+  }
+}
+
+
+
 // * <---- FOOTER ----->
 
 .footer--player-controls {
   display: flex;
   background-color: $controls-color;
-  height: 175px;
+  height: 20vh;
   border-top: 3px solid $accent-background;
+  box-shadow: 0 50vh 0 50vh $controls-color;
+  padding-top: 2rem;
 }
 
-// .section--player-name {
+.section--player-buttons {
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 10px;
+}
 
+// .button--spin {
+//   color: white;
+//   display: inline;
+//   height: 1em;
+//   font-size: 1.8rem;
+//   box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+//   width: 1em;
+//   border-radius: 50%;
+//   text-shadow: $retro-shadow;
+//   background: rgb(66, 184, 221);
+//   border: solid 1px white;
+//   font-family: $main-font;
 // }
-
-
 .button--spin {
-  color: white;
-  display: inline;
-  height: 150px;
-  font-size: 1.8em;
-  box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
-  width: 150px;
-  border-radius: 50%;
-  text-shadow: $retro-shadow;
-  background: rgb(66, 184, 221);
-  border: solid 1px white;
-  font-family: $main-font;
+    color: $big-button-text;
+    display: inline;
+    height: 150px;
+    width: 150px;
+    background: $button-back-1;
+    font-size: 1.8em;
+    box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
+    border-radius: 50%;
+    text-shadow: $retro-shadow;
+    border: solid 1px white;
+    font-family: $main-font;
 }
 
 
@@ -272,32 +319,12 @@ footer {
   border: solid 1px yellow;
 }
 
-.section--player-buttons {
-  display: flex;
-  height: 100%;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: 10px;
-}
 
 // .section--player-name {
   
   // }
   
   
-  .button--spin {
-    color: $big-button-text;
-    display: inline;
-    height: 150px;
-    background: $button-back-1;
-    font-size: 1.8em;
-    box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
-    width: 150px;
-    border-radius: 50%;
-    text-shadow: $retro-shadow;
-    border: solid 1px white;
-    font-family: $main-font;
-  }
   
   .button {
     outline: none;
