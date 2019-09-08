@@ -15,6 +15,7 @@ class Round {
 
   storeGuess(letter) {
     this.guessedLetters = [...this.guessedLetters, letter];
+    return this.guessedLetters;
   }
 
   endRoundCleanup(players) {

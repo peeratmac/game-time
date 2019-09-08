@@ -64,7 +64,10 @@ function instantiatePlayers() {
 $('.button--guess').click(event => {
   event.preventDefault();
   var guessLetter = $('.input--player-guess').val();
+  var lettersUsed = alreadyUsedLettersCheck(guessLetter);
+  domUpdates.updateLettersUsed(lettersUsed);
   console.log(guessLetter);
+  console.log(lettersUsed);
 });
 
 $('.button--buy-vowel').click(event => {
@@ -135,4 +138,8 @@ function endRoundCheck() {
   } else {
     return;
   }
+}
+
+function alreadyUsedLettersCheck(letter) {
+  return round.storeGuess(letter);
 }

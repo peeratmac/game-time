@@ -44,7 +44,12 @@
           placeholder="Enter Player 2 Name"
         />
         <label class="label label--player3" for="player3">Player 3</label>
-        <input type="text" class="input input--player3" id="player3" placeholder="Enter Player 3 Name"/>
+        <input
+          type="text"
+          class="input input--player3"
+          id="player3"
+          placeholder="Enter Player 3 Name"
+        />
         <button class="button button--start">START GAME</button>
       </form>
     </div>
@@ -54,7 +59,10 @@
     <!-- MODAL POPUP -->
 
     <div
-      class="div div--modal-start-screen" role="presentation" aria-disabled="true">
+      class="div div--modal-start-screen"
+      role="presentation"
+      aria-disabled="true"
+    >
       <h1 class="h1 h1--value-spinner">Wheel of Fortune</h1>
       <button>START GAME</button>
     </div>
@@ -125,10 +133,13 @@
         <p class="p p--puzzle-display"></p>
         <div>
           <h4>Already used letters:</h4>
-          <span>xxx</span>
+          <span class="player-used-letters">xxx</span>
         </div>
       </section>
-      <div class="spin-box"><p>SPINNER</p><span class="spin-value">XX</span></div>
+      <div class="spin-box">
+        <p>SPINNER</p>
+        <span class="spin-value">XX</span>
+      </div>
       <section class="section--cur-player">
         <p>Up Now:</p>
         <div>XX</div>
@@ -139,7 +150,8 @@
       <section class="section section--player-buttons">
         <button class="button button--spin">SPIN</button>
         <form class="form form--player-guess">
-          <label class="label label--player-guess" for="guess">Guess a Letter
+          <label class="label label--player-guess" for="guess"
+            >Guess a Letter
           </label>
           <input
             type="text"

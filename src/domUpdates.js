@@ -53,6 +53,10 @@ const domUpdates = {
     players.forEach(player => {
       $(`.player--roundscore${player.id}`).text(`Round Score: 0`);
     });
+  },
+
+  updateLettersUsed(letters) {
+    $(`.player-used-letters`).text(letters);
   }
 };
 
