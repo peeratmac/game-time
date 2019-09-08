@@ -116,7 +116,7 @@ function endRoundCheck() {
     );
 
     domUpdates.updateTotalMoneyAfterSolve(turnIndex, winnerTotal);
-
+    domUpdates.updateRoundScoreAfterSolve(players);
     round.endRoundCleanup();
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);

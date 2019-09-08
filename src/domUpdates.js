@@ -47,6 +47,12 @@ const domUpdates = {
     $(`.player--totalscore${playerTurnIndex + 1}`).text(
       `Total Score: ${score}`
     );
+  },
+
+  updateRoundScoreAfterSolve(players) {
+    players.forEach(player => {
+      $(`.player--roundscore${player.id}`).text(`Round Score: 0`);
+    });
   }
 };
 

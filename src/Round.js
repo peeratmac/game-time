@@ -1,5 +1,6 @@
 import Game from './Game.js';
 import data from './data/sample-data.js';
+import domUpdates from './domUpdates';
 
 class Round {
   constructor(puzzle, players) {
