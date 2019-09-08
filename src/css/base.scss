@@ -181,10 +181,6 @@ footer {
   position: absolute;
 }
 
-.p--puzzle-display {
-  background: $secondary-background; 
-}
-
 .div--round-disp{
   margin-top: 10px;
   font-size: 2rem;
@@ -201,6 +197,14 @@ footer {
   display: inline-block;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
+  .div--category-display {
+
+  }
+
+  .p--puzzle-display {
+  background: $secondary-background; 
+  }
+
   p {
     color: white;
   }
@@ -210,9 +214,20 @@ footer {
     flex-direction: column;
     position: absolute;
     bottom: 0;
-    margin: 0;
-    background: green;
+    opacity: 90%;
+    margin-right: 20px;
+    background: $accent-background;
     width: 100%;
+    left: 0;
+    border-top: 3px solid $accent-text;
+
+    h4{
+      color: $accent-text;
+    }
+
+    span {
+      color: white;
+    }
   }
 }
 
@@ -222,7 +237,6 @@ footer {
   height: 100px;
   background: $secondary-background;
   display: inline-block;
-  // margin: auto;
   margin-top: 44vh;
   text-align: center;
   border: solid 3px $accent-background;
