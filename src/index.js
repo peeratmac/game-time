@@ -29,8 +29,8 @@ let wheelData = fetch(
 $('.button--start').click(event => {
   event.preventDefault();
 
-  checkGameValidity([$player1, $player2, $player3]);
-
+  // checkGameValidity([$player1, $player2, $player3]);
+  startTheGame();
   // game.startGame($player1, $player2, $player3);
 });
 
@@ -93,6 +93,18 @@ $('.button--spin').click(() => {
   event.preventDefault();
   wheelValue = wheel.randomizeWheelVal();
   domUpdates.displaySpinValue(wheelValue);
+  if (wheelValue === 'BANKRUPT') {
+    window.alert('BANKRUPT, YOUR ROUND MONEY IS NOW ZERO, NEXT PLAYER PLEASE');
+    players[round.playerTurnIndex].resetRoundMoney();
+    domUpdates.updateRoundScoreAfterGuess(round.playerTurnIndex, 0);
+    round.updatePlayerIndex();
+    domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+  }
+  if (wheelValue === 'LOSE A TURN') {
+    window.alert('YOU LOST A TURN, NEXT PLAYER PLEASE');
+    round.updatePlayerIndex();
+    domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+  }
 });
 
 $('.button--buy-vowel').click(() => {
@@ -123,7 +135,6 @@ $('.button--guess').click(() => {
   endRoundCheck();
 
   domUpdates.clearField($playerGuess);
-  
 });
 
 function endRoundCheck() {
