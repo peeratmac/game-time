@@ -56,6 +56,11 @@ const domUpdates = {
   giveFieldError(fields) {
     let filteredFields = fields.filter(field => field.val() === '');
     filteredFields.forEach(field => this.appendNewElement(`<p>Field is required</p>`, field));
+  },
+
+  clearField(field) {
+    return field.val('');
+  }
 };
 
 export default domUpdates;

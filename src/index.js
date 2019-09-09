@@ -72,7 +72,9 @@ function validateFields(fields) {
 
 $('.button--guess').click(event => {
   event.preventDefault();
-  var guessLetter = $('.input--player-guess').val();
+  let $playerGuess = $('.input--player-guess')
+  var guessLetter = $playerGuess.val()
+  domUpdates.clearField($playerGuess);
 });
 
 $('.button--buy-vowel').click(event => {
@@ -112,6 +114,8 @@ $('.button--guess').click(() => {
   round.updatePlayerIndex();
 
   endRoundCheck();
+
+  
 });
 
 function endRoundCheck() {
