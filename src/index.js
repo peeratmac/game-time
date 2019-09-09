@@ -43,7 +43,7 @@ function startTheGame() {
   wheel = new Wheel(data);
 
   domUpdates.appendPlayers(players);
-  domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`);
+  domUpdates.appendPuzzle('.span--puzzle-display', `${round.puzzle.correct_answer}`);
   domUpdates.appendHTML(
     '.puzzle-category',
     `Category: ${round.puzzle.category}`
@@ -132,10 +132,15 @@ function endRoundCheck() {
     });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
-    domUpdates.appendHTML(
-      '.p--puzzle-display',
+    // domUpdates.appendHTML(
+    //   '.p--puzzle-display',
+    //   `${round.puzzle.correct_answer}`
+    // );
+    domUpdates.appendPuzzle(
+      '.span--puzzle-display',
       `${round.puzzle.correct_answer}`
     );
+
     domUpdates.appendHTML(
       '.puzzle-category',
       `Category: ${round.puzzle.category}`

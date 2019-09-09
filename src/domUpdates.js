@@ -12,6 +12,29 @@ const domUpdates = {
     $(element).text(text);
   },
 
+  appendPuzzle(element, puzzleAnswer) {
+    let puzzleElem = '';
+    let text = puzzleAnswer.toUpperCase().split(' ');
+    text.forEach(word => {
+      puzzleElem += `<div class="div--puzz-set">`
+      let ltrs = word.split('');
+      ltrs.forEach((char) => {
+        if (char === '-' || char === '&') {
+          puzzleElem += `</div><span class="char-container"><div class="word">
+                          <span class="char symbol">${char}</span></div>
+                          </div></span><div class="word">`;
+        } else if (char === '\'') {
+          puzzleElem += `<span class="char-container"><span class="char symbol">${char}</span></span>`;
+        } else {
+          puzzleElem += `<span class="char-container"><span class="char letter hidden" data-letter="${char}">${char}</span></span>`
+        }
+      });
+      puzzleElem += `</div >`
+    });
+    console.log(puzzleElem)
+    $(element).html(puzzleElem);
+  },
+
   hideModal(element) {
     $(element).toggle();
     $('.div--modal-background').toggle();
