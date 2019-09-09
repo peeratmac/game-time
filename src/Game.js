@@ -11,7 +11,7 @@ class Game {
     this.puzzles = [];
     this.bonusRound = false;
   }
-
+  
   startGame(p1, p2, p3) {
     this.players = [];
     this.instantiatePlayers(p1, p2, p3);
@@ -19,7 +19,7 @@ class Game {
     let round = new Round(this.puzzles[this.currentRound], this.players);
     round.startRound();
   }
-
+  
   getPuzzles() {
     let puzzleClass = new Puzzle(data.puzzles);
     while (this.puzzles.length < 5) {
