@@ -12,6 +12,33 @@ const domUpdates = {
     $(element).text(text);
   },
 
+  appendPuzzle(element, puzzleAnswer) {
+    let puzzleElem = '';
+    let text = puzzleAnswer.toUpperCase().split(' ');
+    text.forEach(word => {
+      puzzleElem += `<div class="div--puzz-set">`
+      let ltrs = word.split('');
+      ltrs.forEach((char) => {
+        if (char === '-' || char === '&') {
+          puzzleElem += `</div><span class="char-container"><div class="word">
+                          <span class="char symbol">${char}</span></div>
+                          </div></span><div class="word">`;
+        } else if (char === '\'') {
+          puzzleElem += `<span class="char-container"><span class="char symbol">${char}</span></span>`;
+        } else {
+          puzzleElem += `<span class="char-container"><span class="char letter hidden" data-letter="${char}">${char}</span></span>`
+        }
+      })
+      puzzleElem += `</div >`
+    })
+    console.log(puzzleElem)
+    $(element).html(puzzleElem);
+  },
+
+  appendNewElement(element, text) {
+    $(text).after(element);
+  },
+
   hideModal(element) {
     $(element).toggle();
     $('.div--modal-background').toggle();
@@ -47,6 +74,15 @@ const domUpdates = {
     $(`.player--totalscore${playerTurnIndex + 1}`).text(
       `Total Score: ${score}`
     );
+  },
+
+  giveFieldError(fields) {
+    let filteredFields = fields.filter(field => field.val() === '');
+    filteredFields.forEach(field => this.appendNewElement(`<p>Field is required</p>`, field));
+  },
+
+  clearField(field) {
+    return field.val('');
   },
 
   updateRoundScoreAfterSolve(players) {

@@ -39,20 +39,6 @@ body {
     height: 97vh;
     width: 100vw;
     text-align: center;
-// display: grid;
-//   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-//   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-//   grid-template-areas: 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "main main main main main main main main main" 
-//   "footer footer footer footer footer footer footer footer footer"
-//   "footer footer footer footer footer footer footer footer footer" 
-//   "footer footer footer footer footer footer footer footer footer";
 }
 
 header {
@@ -216,19 +202,44 @@ footer {
   display: inline-block;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
+  .span--puzzle-display {
+    display: flex;
+    flex-direction: column;
+  }
+    .div--puzz-set{
+      margin: 2.7vh;
+      font-size: 3.5em;
+    }
+    .char-container {
+      margin: .4rem;
+      // width: ;
+      padding: 1px;
+      color: white;
+      background: $button-back-1;
+      border: 2px solid $accent-text;
+      
+      .char {
+      }
+      
+      .hidden {
+        visibility: hidden;  
+      }
+    }
+    .letter {
+     
+    }
+
   .div--category-display {
 
-  }
-
-  .p--puzzle-display {
-  background: $secondary-background; 
   }
 
   p {
     color: white;
   }
 
-  div {
+
+
+  .div--used-letters {
     display: inline-block;
     flex-direction: column;
     position: absolute;
@@ -249,6 +260,8 @@ footer {
     }
   }
 }
+
+
 
 .section--cur-player {
   position: absolute;

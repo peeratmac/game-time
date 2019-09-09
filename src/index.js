@@ -8,6 +8,10 @@ import Wheel from './Wheel.js';
 import Player from './Player.js';
 import domUpdates from './domUpdates';
 
+let $player1 = $('.input--player1');
+let $player2 = $('.input--player2');
+let $player3 = $('.input--player3');
+
 let game, round, wheel, players;
 const data = fetch(
   'https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
@@ -25,8 +29,8 @@ let wheelData = fetch(
 $('.button--start').click(event => {
   event.preventDefault();
 
+  // checkGameValidity([$player1, $player2, $player3]);
   startTheGame();
-
   // game.startGame($player1, $player2, $player3);
 });
 
@@ -42,7 +46,7 @@ function startTheGame() {
   wheel = new Wheel(wheelData);
 
   domUpdates.appendPlayers(players);
-  domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`);
+  domUpdates.appendPuzzle('.span--puzzle-display', `${round.puzzle.correct_answer}`);
   domUpdates.appendHTML(
     '.puzzle-category',
     `Category: ${round.puzzle.category}`
@@ -60,6 +64,15 @@ function instantiatePlayers() {
     new Player(3, $('.input--player3').val() || 'Player 3')
   );
   return players;
+}
+
+function checkGameValidity(fields) {
+  let checkFields = validateFields(fields);
+  checkFields ? startTheGame() : domUpdates.giveFieldError(fields);
+}
+
+function validateFields(fields) {
+  return fields.every(field => field.val() !== '');
 }
 
 $('.button--guess').click(event => {
@@ -80,7 +93,18 @@ $('.button--spin').click(() => {
   event.preventDefault();
   wheelValue = wheel.randomizeWheelVal();
   domUpdates.displaySpinValue(wheelValue);
-  console.log(wheelValue);
+  if (wheelValue === 'BANKRUPT') {
+    window.alert('BANKRUPT, YOUR ROUND MONEY IS NOW ZERO, NEXT PLAYER PLEASE');
+    players[round.playerTurnIndex].resetRoundMoney();
+    domUpdates.updateRoundScoreAfterGuess(round.playerTurnIndex, 0);
+    round.updatePlayerIndex();
+    domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+  }
+  if (wheelValue === 'LOSE A TURN') {
+    window.alert('YOU LOST A TURN, NEXT PLAYER PLEASE');
+    round.updatePlayerIndex();
+    domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+  }
 });
 
 $('.button--buy-vowel').click(() => {
@@ -113,8 +137,8 @@ $('.button--guess').click(() => {
   event.preventDefault();
   var guessedLetter = $('.input--player-guess').val();
   var scoreJustNow = round.checkGuess(guessedLetter, wheelValue);
+  let $playerGuess = $('.input--player-guess');
   turnIndex = round.playerTurnIndex;
-
   let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(
     scoreJustNow
   );
@@ -125,6 +149,8 @@ $('.button--guess').click(() => {
   domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   round.checkSolveByLetter();
   endRoundCheck();
+
+  domUpdates.clearField($playerGuess);
 });
 
 function endRoundCheck() {
@@ -145,10 +171,15 @@ function endRoundCheck() {
     });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
-    domUpdates.appendHTML(
-      '.p--puzzle-display',
+    // domUpdates.appendHTML(
+    //   '.p--puzzle-display',
+    //   `${round.puzzle.correct_answer}`
+    // );
+    domUpdates.appendPuzzle(
+      '.span--puzzle-display',
       `${round.puzzle.correct_answer}`
     );
+
     domUpdates.appendHTML(
       '.puzzle-category',
       `Category: ${round.puzzle.category}`
