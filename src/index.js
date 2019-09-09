@@ -50,6 +50,7 @@ function startTheGame() {
   );
   domUpdates.hideModal('.div--modal-setup');
   domUpdates.displayRoundNumber(game);
+  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
 }
 
 function instantiatePlayers() {
@@ -108,7 +109,7 @@ $('.button--guess').click(() => {
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
 
   round.updatePlayerIndex();
-
+  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   endRoundCheck();
 });
 

@@ -57,6 +57,10 @@ const domUpdates = {
 
   updateLettersUsed(letters) {
     $(`.player-used-letters`).text(letters);
+  },
+
+  updateCurrentPlayerDisplay(playerTurn) {
+    $('.current-player').text(playerTurn);
   }
 };
 
