@@ -20,9 +20,9 @@ const domUpdates = {
       let ltrs = word.split('');
       ltrs.forEach((char) => {
         if (char === '-' || char === '&') {
-          puzzleElem += `</div><span class="char-container"><div class="word">
+          puzzleElem += `</div><div class="div--puzz-set"><div class="symbol-container">
                           <span class="char symbol">${char}</span></div>
-                          </div></span><div class="word">`;
+                          </div></div><div class="div--puzz-set">`;
         } else if (char === '\'') {
           puzzleElem += `<span class="char-container"><span class="char symbol">${char}</span></span>`;
         } else {
@@ -31,9 +31,8 @@ const domUpdates = {
       });
       puzzleElem += `</div >`
     });
-    console.log(puzzleElem)
     $(element).html(puzzleElem);
-
+  },
   appendNewElement(element, text) {
     $(text).after(element);
   },
