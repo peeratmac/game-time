@@ -33,6 +33,9 @@ const domUpdates = {
     });
     console.log(puzzleElem)
     $(element).html(puzzleElem);
+
+  appendNewElement(element, text) {
+    $(text).after(element);
   },
 
   hideModal(element) {
@@ -70,6 +73,15 @@ const domUpdates = {
     $(`.player--totalscore${playerTurnIndex + 1}`).text(
       `Total Score: ${score}`
     );
+  },
+
+  giveFieldError(fields) {
+    let filteredFields = fields.filter(field => field.val() === '');
+    filteredFields.forEach(field => this.appendNewElement(`<p>Field is required</p>`, field));
+  },
+
+  clearField(field) {
+    return field.val('');
   },
 
   updateRoundScoreAfterSolve(players) {
