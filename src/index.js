@@ -54,6 +54,7 @@ function startTheGame() {
   domUpdates.hideModal('.div--modal-setup');
   domUpdates.displayRoundNumber(game);
   domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+  console.log(round.puzzle.correct_answer);
 }
 
 function instantiatePlayers() {
@@ -120,11 +121,12 @@ $('.button--guess-solution').click(() => {
 
 $('.button--submit-solution').click(() => {
   event.preventDefault();
-  let solution = $('.input--solution').val();
-  round.checkSolve(solution)
+  let $solution = $('.input--solution');
+  round.checkSolve($solution.val())
   endRoundCheck()
   round.solvedQuestionMark ? domUpdates.hideModal('.div--modal-incorrect') : null;
   domUpdates.hideModal('.div--modal-solution');
+  domUpdates.clearField($solution);
 });
 
 $('.button--close-alert').click(() => {
