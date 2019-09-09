@@ -35,7 +35,7 @@ $('.button--start').click(event => {
 });
 
 function startTheGame() {
-  let players = instantiatePlayers();
+  players = instantiatePlayers();
 
   game = new Game(players, data);
 
@@ -72,9 +72,7 @@ function validateFields(fields) {
 
 $('.button--guess').click(event => {
   event.preventDefault();
-  let $playerGuess = $('.input--player-guess')
-  var guessLetter = $playerGuess.val()
-  domUpdates.clearField($playerGuess);
+  
 });
 
 $('.button--buy-vowel').click(event => {
@@ -103,8 +101,8 @@ $('.button--guess').click(() => {
   event.preventDefault();
   var guessedLetter = $('.input--player-guess').val();
   var scoreJustNow = round.checkGuess(guessedLetter, wheelValue);
+  let $playerGuess = $('.input--player-guess');
   turnIndex = round.playerTurnIndex;
-
   let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(
     scoreJustNow
   );
@@ -115,6 +113,7 @@ $('.button--guess').click(() => {
 
   endRoundCheck();
 
+  domUpdates.clearField($playerGuess);
   
 });
 
