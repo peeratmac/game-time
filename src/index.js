@@ -8,6 +8,10 @@ import Wheel from './Wheel.js';
 import Player from './Player.js';
 import domUpdates from './domUpdates';
 
+let $player1 = $('.input--player1');
+let $player2 = $('.input--player2');
+let $player3 = $('.input--player3');
+
 let game, round, wheel, players;
 const data = fetch(
   'https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
@@ -25,13 +29,13 @@ let wheelData = fetch(
 $('.button--start').click(event => {
   event.preventDefault();
 
-  startTheGame();
+  checkGameValidity([$player1, $player2, $player3]);
 
   // game.startGame($player1, $player2, $player3);
 });
 
 function startTheGame() {
-  players = instantiatePlayers();
+  let players = instantiatePlayers();
 
   game = new Game(players, data);
 
@@ -57,10 +61,18 @@ function instantiatePlayers() {
   return players;
 }
 
+function checkGameValidity(fields) {
+  let checkFields = validateFields(fields);
+  checkFields ? startTheGame() : domUpdates.giveFieldError(fields);
+}
+
+function validateFields(fields) {
+  return fields.every(field => field.val() !== '');
+}
+
 $('.button--guess').click(event => {
   event.preventDefault();
   var guessLetter = $('.input--player-guess').val();
-  console.log(guessLetter);
 });
 
 $('.button--buy-vowel').click(event => {
@@ -72,7 +84,6 @@ $('.button--spin').click(() => {
   event.preventDefault();
   wheelValue = wheel.randomizeWheelVal();
   domUpdates.displaySpinValue(wheelValue);
-  console.log(wheelValue);
 });
 
 $('.button--buy-vowel').click(() => {

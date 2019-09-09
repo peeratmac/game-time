@@ -12,6 +12,10 @@ const domUpdates = {
     $(element).text(text);
   },
 
+  appendNewElement(element, text) {
+    $(text).after(element);
+  },
+
   hideModal(element) {
     $(element).toggle();
     $('.div--modal-background').toggle();
@@ -47,7 +51,11 @@ const domUpdates = {
     $(`.player--totalscore${playerTurnIndex + 1}`).text(
       `Total Score: ${score}`
     );
-  }
+  },
+
+  giveFieldError(fields) {
+    let filteredFields = fields.filter(field => field.val() === '');
+    filteredFields.forEach(field => this.appendNewElement(`<p>Field is required</p>`, field));
 };
 
 export default domUpdates;
