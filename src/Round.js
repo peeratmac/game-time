@@ -79,12 +79,17 @@ class Round {
   }
 
   checkSolve(fullPlayerGuess) {
+    console.log(fullPlayerGuess)
     if (
       fullPlayerGuess !== undefined &&
       this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()
     ) {
-      // this.endRound();
-      return true;
+      this.solvedQuestionMark = true;
+      console.log('here')
+      return this.solvedQuestionMark;
+    } else {
+      this.solvedQuestionMark = false;
+      return this.solvedQuestionMark;
     }
   }
 

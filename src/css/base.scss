@@ -150,8 +150,27 @@ footer {
   display: none;
 }
 
-.div--modal-solution {
+.div--modal-solution,
+.div--modal-incorrect {
   display: none;
+  flex-direction: column;
+  position: fixed;
+  left: 10%;
+  min-width: 80vw;
+  top: 20%;
+  z-index: 3000;
+  
+  .form--player-setup {
+    background: $ternary-background;
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    border-radius: 50px;
+    border: 5px solid $accent-background;
+    justify-content: space-around;
+    z-index: 3000;
+  }
+
 }
 
 // * <---- MAIN ----->

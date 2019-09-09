@@ -58,11 +58,7 @@
 
     <!-- MODAL POPUP -->
 
-    <div
-      class="div div--modal-start-screen"
-      role="presentation"
-      aria-disabled="true"
-    >
+    <div class="div div--modal-start-screen" role="presentation" aria-disabled="true">
       <h1 class="h1 h1--value-spinner">Wheel of Fortune</h1>
       <button>START GAME</button>
     </div>
@@ -77,11 +73,7 @@
 
     <!-- MODAL POPUP -->
 
-    <div
-      class="div div--modal-round-summary"
-      role="status"
-      aria-disabled="true"
-    ></div>
+    <div class="div div--modal-round-summary" role="status"aria-disabled="true"></div>
 
     <!-- END MODAL -->
 
@@ -89,12 +81,8 @@
 
     <div class="div div--modal-solution" role="textbox" aria-disabled="true">
       <label class="label label--solution" for="solution">Your Solution</label>
-      <input
-        type="text"
-        class="input input--solution"
-        id="solution"
-        placeholder="Enter Guess"
-      />
+      <input type="text" class="input input--solution" id="solution" placeholder="Enter Guess"/>
+      <button class="button button--submit-solution">SUBMIT SOLUTION</button>
     </div>
 
     <div
@@ -105,6 +93,13 @@
 
     <!-- END MODAL -->
 
+    <!-- MODAL POPUP -->
+    <div class="div div--modal-incorrect" role="alert" aria-disabled="true">
+      <p class="p p--incorrect-alert">INCORRECT!</p>
+      <button class="button button--close-alert">CLOSE</button>
+    </div>
+    <!-- END MODAL -->
+    
     <main class="main main--puzzle">
       <header>Pixels of Fortune</header>
       <section class="section--round-disp">
