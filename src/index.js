@@ -95,9 +95,15 @@ $('.button--spin').click(() => {
   domUpdates.displaySpinValue(wheelValue);
   if (wheelValue === 'BANKRUPT') {
     window.alert('BANKRUPT, YOUR ROUND MONEY IS NOW ZERO, NEXT PLAYER PLEASE');
+    players[round.playerTurnIndex].resetRoundMoney();
+    domUpdates.updateRoundScoreAfterGuess(round.playerTurnIndex, 0);
+    round.updatePlayerIndex();
+    domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   }
   if (wheelValue === 'LOSE A TURN') {
     window.alert('YOU LOST A TURN, NEXT PLAYER PLEASE');
+    round.updatePlayerIndex();
+    domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   }
 });
 
