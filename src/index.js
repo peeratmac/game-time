@@ -6,22 +6,21 @@ import Turn from './Turn.js';
 import Puzzle from './Puzzle.js';
 import Wheel from './Wheel.js';
 import Player from './Player.js';
-import data from './data/sample-data';
 import domUpdates from './domUpdates';
 
 let game, round, wheel, players;
-// const data = fetch(
-//   'https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
-// )
-//   .then(data => data.json())
-//   .then(data => data.data.puzzles)
-//   .catch(err => console.log(err));
-// const wheel = fetch(
-//   'https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
-// )
-//   .then(data => data.json())
-//   .then(data => data.data.wheel)
-//   .catch(err => console.log(err));
+const data = fetch(
+  'https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
+)
+  .then(data => data.json())
+  .then(data => data.data.puzzles)
+  .catch(err => console.log(err));
+let wheelData = fetch(
+  'https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
+)
+  .then(data => data.json())
+  .then(data => data.data.wheel)
+  .catch(err => console.log(err));
 
 $('.button--start').click(event => {
   event.preventDefault();
@@ -40,7 +39,7 @@ function startTheGame() {
 
   round = new Round(game.puzzles[game.currentRound]);
 
-  wheel = new Wheel(data);
+  wheel = new Wheel(wheelData);
 
   domUpdates.appendPlayers(players);
   domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`);
@@ -77,7 +76,6 @@ $('.button--buy-vowel').click(event => {
 });
 
 let wheelValue;
-
 $('.button--spin').click(() => {
   event.preventDefault();
   wheelValue = wheel.randomizeWheelVal();
