@@ -187,27 +187,40 @@ footer {
     display: flex;
     flex-direction: column;
   }
+
     .div--puzz-set{
       margin: 2.7vh;
       font-size: 3.5em;
+
     }
-    .char-container {
-      margin: .4rem;
-      // width: ;
+
+    .symbol-container {
+      margin: auto;
+      width: fit-content;
       padding: 1px;
       color: white;
       background: $button-back-1;
       border: 2px solid $accent-text;
+    }
+
+    .char-container {
+      margin: .4rem;
+      padding: 1px;
+      color: white;
+      background: $button-back-1;
+      border: 2px solid $accent-text;
+    
+    
       
       .char {
       }
       
       .hidden {
-        visibility: hidden;  
+        // visibility: hidden;  
       }
     }
     .letter {
-     
+      
     }
 
   .div--category-display {
