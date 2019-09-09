@@ -43,12 +43,14 @@ function startTheGame() {
   wheel = new Wheel(data);
 
   domUpdates.appendPlayers(players);
+  domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`);
   domUpdates.appendHTML(
-    '.p--puzzle-display',
-    `${round.puzzle.correct_answer}  Category: ${round.puzzle.description}  Hint/Description: ${round.puzzle.category}`
+    '.puzzle-category',
+    `Category: ${round.puzzle.category}`
   );
   domUpdates.hideModal('.div--modal-setup');
   domUpdates.displayRoundNumber(game);
+  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
 }
 
 function instantiatePlayers() {
@@ -107,7 +109,7 @@ $('.button--guess').click(() => {
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
 
   round.updatePlayerIndex();
-
+  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   endRoundCheck();
 });
 
@@ -132,7 +134,11 @@ function endRoundCheck() {
     round = new Round(game.puzzles[game.currentRound]);
     domUpdates.appendHTML(
       '.p--puzzle-display',
-      `${round.puzzle.correct_answer}  Category: ${round.puzzle.description}  Hint/Description: ${round.puzzle.category}`
+      `${round.puzzle.correct_answer}`
+    );
+    domUpdates.appendHTML(
+      '.puzzle-category',
+      `Category: ${round.puzzle.category}`
     );
     domUpdates.displayRoundNumber(game);
   } else {
