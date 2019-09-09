@@ -177,14 +177,8 @@ footer {
   width: 12%;
   border: solid 3px $accent-background;
   padding: .5%;
-  margin: 25px 0 0 1%;
+  margin: 25px 0 2% 1%;
   position: absolute;
-}
-.players--section {
-  
-}
-.p--puzzle-display {
-  background: $secondary-background; 
 }
 
 .div--round-disp{
@@ -195,24 +189,78 @@ footer {
 .section--description {
   height: 70%;
   width: 70%;
+  position: relative;
+  text-align: center;
   margin: 30px 20px 0 0;
   border: 3px solid $accent-background;
   background-color: $secondary-background;
   display: inline-block;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-  // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  // transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+
+  .div--category-display {
+
+  }
+
+  .p--puzzle-display {
+  background: $secondary-background; 
+  }
+
+  p {
+    color: white;
+  }
+
+  div {
+    display: inline-block;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    opacity: 90%;
+    margin-right: 20px;
+    background: $accent-background;
+    width: 100%;
+    left: 0;
+    border-top: 3px solid $accent-text;
+
+    h4{
+      color: $accent-text;
+    }
+
+    span {
+      color: white;
+    }
+  }
 }
 
-.spin-value {
+.section--cur-player {
+  position: absolute;
+  width: 14%;
+  height: 100px;
+  background: $secondary-background;
+  display: inline-block;
+  margin-top: 44vh;
+  text-align: center;
+  border: solid 3px $accent-background;
+  border-radius: 10px;
+
+  p {
+    color: green;
+    font-size: 1rem;
+    margin: .6rem 0 1rem 0;
+  }
+
+  div {
+    font-size: .9rem;
+    color: $button-back-2;
+  }
+}
+
+.spin-box {
   background-color: $button-back-1;
   position: absolute;
   width: 14%;
   display: inline-block;
-  // color: $button-back-2;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 5vh;
   height: 30%; 
   text-align: center;
   padding-top: 3%;

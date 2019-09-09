@@ -15,7 +15,6 @@ class Puzzle {
       'four_word_answers'
     ];
     let index = Math.floor(Math.random() * 4);
-    // console.log(this.fullBank)
     let chosenOption = options[index];
     this.chosenBank = this.fullBank[chosenOption].puzzle_bank;
   }

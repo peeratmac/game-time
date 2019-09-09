@@ -60,6 +60,20 @@ const domUpdates = {
 
   clearField(field) {
     return field.val('');
+  },
+
+  updateRoundScoreAfterSolve(players) {
+    players.forEach(player => {
+      $(`.player--roundscore${player.id}`).text(`Round Score: 0`);
+    });
+  },
+
+  updateLettersUsed(letters) {
+    $(`.player-used-letters`).text(letters);
+  },
+
+  updateCurrentPlayerDisplay(playerTurn) {
+    $('.current-player').text(playerTurn);
   }
 };
 

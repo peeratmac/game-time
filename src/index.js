@@ -47,8 +47,13 @@ function startTheGame() {
 
   domUpdates.appendPlayers(players);
   domUpdates.appendHTML('.p--puzzle-display', `${round.puzzle.correct_answer}`);
+  domUpdates.appendHTML(
+    '.puzzle-category',
+    `Category: ${round.puzzle.category}`
+  );
   domUpdates.hideModal('.div--modal-setup');
   domUpdates.displayRoundNumber(game);
+  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
 }
 
 function instantiatePlayers() {
@@ -72,7 +77,11 @@ function validateFields(fields) {
 
 $('.button--guess').click(event => {
   event.preventDefault();
-  
+  var guessLetter = $('.input--player-guess').val();
+  var lettersUsed = alreadyUsedLettersCheck(guessLetter);
+  domUpdates.updateLettersUsed(lettersUsed);
+  console.log(guessLetter);
+  console.log(lettersUsed);
 });
 
 $('.button--buy-vowel').click(event => {
@@ -110,7 +119,7 @@ $('.button--guess').click(() => {
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
 
   round.updatePlayerIndex();
-
+  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   endRoundCheck();
 
   domUpdates.clearField($playerGuess);
@@ -128,16 +137,28 @@ function endRoundCheck() {
     );
 
     domUpdates.updateTotalMoneyAfterSolve(turnIndex, winnerTotal);
-
+    domUpdates.updateRoundScoreAfterSolve(players);
     round.endRoundCleanup();
+    players.forEach(player => {
+      player.resetRoundMoney();
+      console.log(player.currentRoundMoney);
+    });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
     domUpdates.appendHTML(
       '.p--puzzle-display',
       `${round.puzzle.correct_answer}`
     );
+    domUpdates.appendHTML(
+      '.puzzle-category',
+      `Category: ${round.puzzle.category}`
+    );
     domUpdates.displayRoundNumber(game);
   } else {
     return;
   }
+}
+
+function alreadyUsedLettersCheck(letter) {
+  return round.storeGuess(letter);
 }
