@@ -112,9 +112,11 @@ $('.button--guess-solution').click(() => {
   domUpdates.hideModal('.div--modal-solution');
 });
 
+let turnIndex;
+
 $('.button--buy-vowel').click(() => {
   event.preventDefault();
-  let turnIndex = round.playerTurnIndex;
+  turnIndex = round.playerTurnIndex;
   let netScore = players[turnIndex].updateCurrentRoundMoney(-100);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, netScore);
   let $playerGuess = $('.input--buy-vowel');
@@ -194,7 +196,7 @@ $('.input--buy-vowel').click(() => {
 function checkGuess(letter) {
   let guessedLetter = letter;
   let scoreJustNow = round.checkGuess(guessedLetter, wheel.currentVal);
-  let turnIndex = round.playerTurnIndex;
+  turnIndex = round.playerTurnIndex;
   let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(
     scoreJustNow
   );
@@ -208,11 +210,11 @@ function checkGuess(letter) {
   endRoundCheck();
 }
 function endRoundCheck() {
-  let turnIndex = round.playerTurnIndex;
+  turnIndex = round.playerTurnIndex;
   if (round.solvedQuestionMark) {
     console.log('round has ended!');
     console.log(turnIndex);
-
+    console.log('total money', players[turnIndex].currentRoundMoney);
     let winnerTotal = players[turnIndex].updateTotalMoney(
       players[turnIndex].currentRoundMoney
     );
@@ -226,10 +228,7 @@ function endRoundCheck() {
     });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
-    // domUpdates.appendHTML(
-    //   '.p--puzzle-display',
-    //   `${round.puzzle.correct_answer}`
-    // );
+
     domUpdates.appendPuzzle(
       '.span--puzzle-display',
       `${round.puzzle.correct_answer}`
