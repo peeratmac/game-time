@@ -54,11 +54,10 @@ footer {
 
 // * <---- MODALS ----->
 .div--modal-background {
-  // display: none;
   background-color: $secondary-background;
   min-height: 120vh;
   min-width: 100vw;
-  opacity: .7;
+  opacity: .95;
   position: fixed;
   z-index: 2000;
   box-shadow: 0 -50vh 0 50vh $secondary-background;
@@ -66,7 +65,6 @@ footer {
 }
 
 .div--modal-setup {
-  // display: none;
   flex-direction: column;
   position: fixed;
   left: 10%;
@@ -78,11 +76,23 @@ footer {
     background: $ternary-background;
     display: flex;
     flex-direction: column;
-    height: 65vh;
+    height: 75vh;
     border-radius: 50px;
     border: 5px solid $accent-background;
     justify-content: space-around;
     z-index: 3000;
+  }
+
+  .label--player1 {
+    color: blue;
+  }
+
+  .label--player2 {
+      color: green;
+  }
+
+  .label--player3 {
+      color: yellow;
   }
 }  
 
@@ -106,7 +116,7 @@ footer {
     background: $accent-background;
     border: 2px solid darken($secondary-background, 5%);
     padding: .5em 2em;
-    height: 100px;
+    height: 60px;
     font-size: 20px;
     color: white;
     border-radius: 20px;
