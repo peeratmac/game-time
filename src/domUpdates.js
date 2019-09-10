@@ -16,24 +16,24 @@ const domUpdates = {
     let puzzleElem = '';
     let text = puzzleAnswer.toUpperCase().split(' ');
     text.forEach(word => {
-      puzzleElem += `<div class="div--puzz-set">`
+      puzzleElem += `<div class="div--puzz-set">`;
       let ltrs = word.split('');
-      ltrs.forEach((char) => {
+      ltrs.forEach(char => {
         if (char === '-' || char === '&') {
           puzzleElem += `</div><div class="div--puzz-set"><div class="symbol-container">
                           <span class="char symbol">${char}</span></div>
                           </div></div><div class="div--puzz-set">`;
-        } else if (char === '\'') {
+        } else if (char === "'") {
           puzzleElem += `<span class="char-container"><span class="char symbol">${char}</span></span>`;
         } else {
-          puzzleElem += `<span class="char-container"><span class="char letter hidden" data-id="${char}">${char}</span></span>`
+          puzzleElem += `<span class="char-container"><span class="char letter hidden" data-id="${char}">${char}</span></span>`;
         }
-      })
-      puzzleElem += `</div >`
+      });
+      puzzleElem += `</div >`;
     });
     $(element).html(puzzleElem);
   },
-  
+
   appendNewElement(element, text) {
     $(text).after(element);
   },
@@ -61,7 +61,7 @@ const domUpdates = {
 
   unhideGuessedLetters(correctLetters) {
     correctLetters.forEach(letter => {
-      $(`[data-id="${letter}"]`).removeClass('hidden')
+      $(`[data-id="${letter}"]`).removeClass('hidden');
     });
   },
 
@@ -76,14 +76,14 @@ const domUpdates = {
   },
 
   updateTotalMoneyAfterSolve(playerTurnIndex, score) {
-    $(`.player--totalscore${playerTurnIndex + 1}`).text(
-      `Total Score: ${score}`
-    );
+    $(`.player--totalscore${playerTurnIndex}`).text(`Total Score: ${score}`);
   },
 
   giveFieldError(fields) {
     let filteredFields = fields.filter(field => field.val() === '');
-    filteredFields.forEach(field => this.appendNewElement(`<p>Field is required</p>`, field));
+    filteredFields.forEach(field =>
+      this.appendNewElement(`<p>Field is required</p>`, field)
+    );
   },
 
   alertInvalidEntry(field) {
@@ -95,7 +95,7 @@ const domUpdates = {
   },
 
   removeError() {
-    let $error = $('.error')
+    let $error = $('.error');
     $error !== undefined ? $error.remove() : null;
   },
 
