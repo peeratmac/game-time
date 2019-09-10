@@ -106,7 +106,7 @@ $('.button--spin').click(() => {
 
 $('.button--guess-solution').click(() => {
   event.preventDefault();
-  
+  domUpdates.hideModal('.div--modal-solution');
 });
 
 $('.button--buy-vowel').click(() => {
@@ -128,6 +128,7 @@ $('.button--submit-solution').click(() => {
   endRoundCheck()
   round.solvedQuestionMark ? domUpdates.hideModal('.div--modal-incorrect') : null;
   domUpdates.hideModal('.div--modal-solution');
+  domUpdates.clearField($('.input--solution'));
 });
 
 $('.button--close-alert').click(() => {
