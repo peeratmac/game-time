@@ -10,6 +10,7 @@ class Round {
     this.players = players;
     this.guessedLetters = [];
     this.correctIndicesArr = [];
+    this.correctLetters = [];
     this.solvedQuestionMark = false;
   }
 
@@ -39,9 +40,12 @@ class Round {
     let currentLetters = this.correctIndicesArr.length;
     let answerArray = this.puzzle.correct_answer.split('');
     answerArray.forEach((char, index) => {
-      char.toUpperCase() === letter.toUpperCase()
-        ? this.correctIndicesArr.push(index)
-        : null;
+      if (char.toUpperCase() === letter.toUpperCase()) {
+        this.correctIndicesArr.push(index);
+        this.correctLetters.push(letter.toUpperCase());
+      } else {
+        return null
+      }
     });
 
     return this.calculateScore(currentLetters, value);

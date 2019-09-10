@@ -10,14 +10,7 @@ class Turn {
     return wheel.currentVal;
   }
 
-  // makeGuess(letter) {
-  //   round.puzzle.join('');
-  // }
-
-  // solvePuzzle() {}
-
-  // buyVowel() {}
-
+  //? do we need these at all?
   startTurn() {}
 
   endTurn() {}
