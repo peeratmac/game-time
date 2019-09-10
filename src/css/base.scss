@@ -22,7 +22,7 @@ $depth-shadow: 0px 3px 0px #b2a98f,
 
 
 
-// * <---- ELEMENT STYLES ---->
+// * <---- LARGE PARENT ELEMENT STYLES ---->
 * {
   box-sizing: border-box;
   margin: 0;
@@ -41,18 +41,9 @@ body {
     text-align: center;
 }
 
-header {
-  font-size: 4em;
-  font-family: $main-font;
-  font-weight: 900;
-  color: $head-color;
-  margin: 0, ;
-  margin-top: 2vh;
-  text-shadow: $depth-shadow;    
-}
-
 main {
   height: 78%;
+  position: relative;
 }
 
 footer {
@@ -136,11 +127,52 @@ footer {
   display: none;
 }
 
-.div--modal-solution {
+.div--modal-solution,
+.div--modal-incorrect {
   display: none;
+  flex-direction: column;
+  position: fixed;
+  left: 10%;
+  min-width: 80vw;
+  top: 20%;
+  z-index: 3000;
+  
+  .form--player-setup {
+    background: $ternary-background;
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    border-radius: 50px;
+    border: 5px solid $accent-background;
+    justify-content: space-around;
+    z-index: 3000;
+  }
+
 }
 
 // * <---- MAIN ----->
+header {
+  font-size: 4em;
+  font-family: $main-font;
+  font-weight: 900;
+  color: $head-color;
+  margin: 0, ;
+  margin-top: 2vh;
+  text-shadow: $depth-shadow;    
+}
+
+.span--new-game{
+  background: $button-back-2;
+  border-radius: 5px; 
+  font-size: .9em;
+  position: absolute;
+  width: 12%;
+  border: 3px solid $secondary-background;
+  height: 8%;
+  right: 0;
+  padding: .5em;
+  margin-right: 1%;
+}
 
 .players--section {
   position: absolute;
@@ -158,7 +190,7 @@ footer {
 
 .section--round-disp {
   background: $secondary-background;
-  height: 10%;
+  height: 14%;
   color: white;
   width: 12%;
   border: solid 3px $accent-background;
@@ -187,27 +219,42 @@ footer {
     display: flex;
     flex-direction: column;
   }
+
     .div--puzz-set{
-      margin: 2.7vh;
+      margin: 2vh;
       font-size: 3.5em;
+
     }
-    .char-container {
-      margin: .4rem;
-      // width: ;
+
+    .symbol-container {
+      margin: auto;
+      margin-top: 0;
+      margin-bottom: 0;
+      width: fit-content;
       padding: 1px;
       color: white;
       background: $button-back-1;
       border: 2px solid $accent-text;
+    }
+
+    .char-container {
+      margin: .4rem;
+      padding: 1px;
+      color: white;
+      background: $button-back-1;
+      border: 2px solid $accent-text;
+    
+    
       
       .char {
       }
       
       .hidden {
-        visibility: hidden;  
+        // visibility: hidden;  
       }
     }
     .letter {
-     
+      
     }
 
   .div--category-display {
@@ -273,7 +320,7 @@ footer {
   width: 14%;
   display: inline-block;
   margin: auto;
-  margin-top: 5vh;
+  margin-top: 10vh;
   height: 30%; 
   text-align: center;
   padding-top: 3%;
@@ -282,7 +329,7 @@ footer {
   
   p {
     color: green;
-    font-size: 1.5rem;
+    font-size: 1.6vw;
     margin-bottom: 40px;
   }
 

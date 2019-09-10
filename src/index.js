@@ -121,8 +121,20 @@ $('.button--buy-vowel').click(() => {
   domUpdates.clearField($playerGuess);
 });
 
+$('.button--submit-solution').click(() => {
+  event.preventDefault();
+  let solution = $('.input--solution').val();
+  round.checkSolve(solution)
+  endRoundCheck()
+  round.solvedQuestionMark ? domUpdates.hideModal('.div--modal-incorrect') : null;
+  domUpdates.hideModal('.div--modal-solution');
+});
 
-// let turnIndex;
+$('.button--close-alert').click(() => {
+  event.preventDefault();
+  domUpdates.hideModal('.div--modal-incorrect');
+})
+
 $('.button--guess').click(() => {
   event.preventDefault();
   let $playerGuess = $('.input--player-guess');
@@ -150,10 +162,10 @@ function checkGuess(letter) {
   round.updatePlayerIndex();
   domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   domUpdates.updateLettersUsed(lettersUsed);
+  round.checkSolveByLetter();
   endRoundCheck();
 }
 function endRoundCheck() {
-  round.checkSolveByLetter();
   if (round.solvedQuestionMark) {
     console.log('round has ended!');
     console.log(turnIndex);
