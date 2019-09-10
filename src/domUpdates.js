@@ -80,8 +80,17 @@ const domUpdates = {
     filteredFields.forEach(field => this.appendNewElement(`<p>Field is required</p>`, field));
   },
 
+  alertInvalidEntry(field) {
+    this.appendNewElement(`<p class="error">Invalid Entry</p>`, field);
+  },
+
   clearField(field) {
     return field.val('');
+  },
+
+  removeError() {
+    let $error = $('.error')
+    $error !== undefined ? $error.remove() : null;
   },
 
   updateRoundScoreAfterSolve(players) {
@@ -91,6 +100,7 @@ const domUpdates = {
   },
 
   updateLettersUsed(letters) {
+    // console.log(letters)
     $(`.player-used-letters`).text(letters);
   },
 
