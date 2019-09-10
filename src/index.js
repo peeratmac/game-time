@@ -166,6 +166,7 @@ function checkGuess(letter) {
   endRoundCheck();
 }
 function endRoundCheck() {
+  let turnIndex = round.playerTurnIndex;
   if (round.solvedQuestionMark) {
     console.log('round has ended!');
     console.log(turnIndex);
