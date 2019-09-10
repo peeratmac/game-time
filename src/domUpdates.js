@@ -28,11 +28,12 @@ const domUpdates = {
         } else {
           puzzleElem += `<span class="char-container"><span class="char letter hidden" data-letter="${char}">${char}</span></span>`
         }
-      });
+      })
       puzzleElem += `</div >`
     });
     $(element).html(puzzleElem);
   },
+  
   appendNewElement(element, text) {
     $(text).after(element);
   },

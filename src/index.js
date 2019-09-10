@@ -115,7 +115,22 @@ $('.button--buy-vowel').click(() => {
 
 $('.button--guess-solution').click(() => {
   event.preventDefault();
+  domUpdates.hideModal('.div--modal-solution');
 });
+
+$('.button--submit-solution').click(() => {
+  event.preventDefault();
+  let solution = $('.input--solution').val();
+  round.checkSolve(solution)
+  endRoundCheck()
+  round.solvedQuestionMark ? domUpdates.hideModal('.div--modal-incorrect') : null;
+  domUpdates.hideModal('.div--modal-solution');
+});
+
+$('.button--close-alert').click(() => {
+  event.preventDefault();
+  domUpdates.hideModal('.div--modal-incorrect');
+})
 
 let turnIndex;
 $('.button--guess').click(() => {
@@ -132,13 +147,13 @@ $('.button--guess').click(() => {
 
   round.updatePlayerIndex();
   domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+  round.checkSolveByLetter();
   endRoundCheck();
 
   domUpdates.clearField($playerGuess);
 });
 
 function endRoundCheck() {
-  round.checkSolveByLetter();
   if (round.solvedQuestionMark) {
     console.log('round has ended!');
     console.log(turnIndex);
