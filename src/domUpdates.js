@@ -76,7 +76,9 @@ const domUpdates = {
   },
 
   updateTotalMoneyAfterSolve(playerTurnIndex, score) {
-    $(`.player--totalscore${playerTurnIndex}`).text(`Total Score: ${score}`);
+    $(`.player--totalscore${playerTurnIndex + 1}`).text(
+      `Total Score: ${score}`
+    );
   },
 
   giveFieldError(fields) {
