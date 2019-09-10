@@ -54,6 +54,7 @@ function startTheGame() {
   domUpdates.hideModal('.div--modal-setup');
   domUpdates.displayRoundNumber(game);
   domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+  console.log(round.puzzle.correct_answer)
 }
 
 function instantiatePlayers() {
@@ -77,15 +78,11 @@ function validateFields(fields) {
 
 $('.button--guess').click(event => {
   event.preventDefault();
-  var guessLetter = $('.input--player-guess').val();
-  var lettersUsed = alreadyUsedLettersCheck(guessLetter);
-  domUpdates.updateLettersUsed(lettersUsed);
-  console.log(guessLetter);
-  console.log(lettersUsed);
-});
-
-$('.button--buy-vowel').click(event => {
-  event.preventDefault();
+  // var guessLetter = $('.input--player-guess').val();
+  // var lettersUsed = alreadyUsedLettersCheck(guessLetter);
+  // domUpdates.updateLettersUsed(lettersUsed);
+  // console.log(guessLetter);
+  // console.log(lettersUsed);
 });
 
 let wheelValue;
@@ -107,17 +104,37 @@ $('.button--spin').click(() => {
   }
 });
 
-$('.button--buy-vowel').click(() => {
-  event.preventDefault();
-  var wantedLetter = $('.input--buy-vowel').val();
-  console.log(wantedLetter);
-});
-
 $('.button--guess-solution').click(() => {
   event.preventDefault();
+  
 });
 
-let turnIndex;
+$('.button--buy-vowel').click(() => {
+  event.preventDefault();
+  let turnIndex = round.playerTurnIndex;
+  let netScore = players[turnIndex].updateCurrentRoundMoney(-100);
+  domUpdates.updateRoundScoreAfterGuess(turnIndex, netScore);
+  let $playerGuess = $('.input--buy-vowel');
+  let $playerGuessValue = $('.input--buy-vowel').val().toLowerCase();
+  let vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
+  round.guessedLetters.includes($playerGuessValue) ? domUpdates.alertInvalidEntry($playerGuess) : vowels.includes($playerGuessValue) ? checkGuess($playerGuessValue) : domUpdates.alertInvalidEntry($playerGuess);
+  domUpdates.clearField($playerGuess);
+});
+
+$('.button--submit-solution').click(() => {
+  event.preventDefault();
+  let solution = $('.input--solution').val();
+  round.checkSolve(solution)
+  endRoundCheck()
+  round.solvedQuestionMark ? domUpdates.hideModal('.div--modal-incorrect') : null;
+  domUpdates.hideModal('.div--modal-solution');
+});
+
+$('.button--close-alert').click(() => {
+  event.preventDefault();
+  domUpdates.hideModal('.div--modal-incorrect');
+})
+
 $('.button--guess').click(() => {
   event.preventDefault();
   var guessedLetter = $('.input--player-guess').val();
@@ -131,16 +148,36 @@ $('.button--guess').click(() => {
   console.log(round.correctLetters)
   domUpdates.unhideGuessedLetters(round.correctLetters);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
-
-  round.updatePlayerIndex();
-  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
-  endRoundCheck();
-
+  let $playerGuess = $('.input--player-guess');
+  let $playerGuessValue = $('.input--player-guess').val().toLowerCase();
+  let consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
+  round.guessedLetters.includes($playerGuessValue) ? domUpdates.alertInvalidEntry($playerGuess) : consonants.includes($playerGuessValue) ? checkGuess($playerGuessValue) : domUpdates.alertInvalidEntry($playerGuess);
   domUpdates.clearField($playerGuess);
 });
 
-function endRoundCheck() {
+$('.input--player-guess').click(() => {
+  domUpdates.removeError();
+});
+
+$('.input--buy-vowel').click(() => {
+  domUpdates.removeError();
+})
+
+function checkGuess(letter) {
+  let guessedLetter = letter;
+  let scoreJustNow = round.checkGuess(guessedLetter, wheel.currentVal);
+  let turnIndex = round.playerTurnIndex;
+  let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(scoreJustNow);
+  var lettersUsed = alreadyUsedLettersCheck(guessedLetter);
+  domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
+  round.updatePlayerIndex();
+  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+  domUpdates.updateLettersUsed(lettersUsed);
   round.checkSolveByLetter();
+  endRoundCheck();
+}
+function endRoundCheck() {
+  let turnIndex = round.playerTurnIndex;
   if (round.solvedQuestionMark) {
     console.log('round has ended!');
     console.log(turnIndex);
