@@ -47,7 +47,6 @@ main {
 }
 
 footer {
-  grid-area: footer;
   display: flex;
   flex-direction: column;
 }
@@ -62,6 +61,8 @@ footer {
   opacity: .7;
   position: fixed;
   z-index: 2000;
+  box-shadow: 0 -50vh 0 50vh $secondary-background;
+
 }
 
 .div--modal-setup {
@@ -148,6 +149,43 @@ footer {
     z-index: 3000;
   }
 
+}
+
+.div--modal-solution {
+  font-size: 2em;
+
+  .label--solution {
+
+  }
+
+  .input--solution {
+    width: 50%;
+    height: 3rem;
+	  padding-left: 15px;
+    border: none;
+    font-family: $main-font;
+    outline: none;
+    // text-align: center;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    background: rgba(52, 152, 182, 0.2);
+  }
+
+  .button--submit-solution {
+    display: block;
+    background: $accent-background;
+    border: 2px solid darken($secondary-background, 5%);
+    padding: .5em 2em;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    font-family: $main-font;
+    width: 40%;
+    height: 3rem;
+    margin: auto;
+    box-shadow: inset 0px 1px 0px fadeout(white, 80%)
+  }
 }
 
 // * <---- MAIN ----->
@@ -523,7 +561,7 @@ header {
 
 .button--guess,
 .button--buy-vowel {
-  display: inline-block;
+    display: inline-block;
     background: $accent-background;
     border: 2px solid darken($secondary-background, 5%);
     padding: .5em 2em;
