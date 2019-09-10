@@ -122,12 +122,14 @@ $('.button--guess').click(() => {
   event.preventDefault();
   var guessedLetter = $('.input--player-guess').val();
   var scoreJustNow = round.checkGuess(guessedLetter, wheelValue);
+  
   let $playerGuess = $('.input--player-guess');
   turnIndex = round.playerTurnIndex;
   let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(
     scoreJustNow
   );
-
+  console.log(round.correctLetters)
+  domUpdates.unhideGuessedLetters(round.correctLetters);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
 
   round.updatePlayerIndex();

@@ -231,7 +231,8 @@ header {
       }
       
       .hidden {
-        // visibility: hidden;  
+        visibility: hidden;
+        // color: green;  
       }
     }
     .letter {
@@ -261,7 +262,7 @@ header {
     border-top: 3px solid $accent-text;
 
     h4{
-      color: $accent-text;
+      color: $primary-background;
     }
 
     span {

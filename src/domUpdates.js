@@ -26,7 +26,7 @@ const domUpdates = {
         } else if (char === '\'') {
           puzzleElem += `<span class="char-container"><span class="char symbol">${char}</span></span>`;
         } else {
-          puzzleElem += `<span class="char-container"><span class="char letter hidden" data-letter="${char}">${char}</span></span>`
+          puzzleElem += `<span class="char-container"><span class="char letter hidden" data-id="${char}">${char}</span></span>`
         }
       });
       puzzleElem += `</div >`
@@ -55,6 +55,12 @@ const domUpdates = {
       $(`.player--totalscore${player.id}`).text(
         `Total Score: ${player.totalMoney}`
       );
+    });
+  },
+
+  unhideGuessedLetters(correctLetters) {
+    correctLetters.forEach(letter => {
+      $(`[data-id="${letter}"]`).removeClass('hidden')
     });
   },
 
