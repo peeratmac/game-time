@@ -112,6 +112,16 @@ const domUpdates = {
 
   updateCurrentPlayerDisplay(playerTurn) {
     $('.current-player').text(playerTurn);
+  },
+
+  disableBtn(button) {
+    button.forEach(btn => btn.attr('disabled', true));
+    button.forEach(btn => btn.addClass('button--disabled'));
+  },
+
+  enableBtn(button) {
+    button.forEach(btn => btn.removeAttr('disabled'));
+    button.forEach(btn => btn.removeClass('button--disabled'));
   }
 };
 
