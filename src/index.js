@@ -79,15 +79,6 @@ function validateFields(fields) {
   return fields.every(field => field.val() !== '');
 }
 
-$('.button--guess').click(event => {
-  event.preventDefault();
-  // var guessLetter = $('.input--player-guess').val();
-  // var lettersUsed = alreadyUsedLettersCheck(guessLetter);
-  // domUpdates.updateLettersUsed(lettersUsed);
-  // console.log(guessLetter);
-  // console.log(lettersUsed);
-});
-
 let wheelValue;
 $('.button--spin').click(() => {
   event.preventDefault();
@@ -202,19 +193,19 @@ function checkGuess(letter) {
   );
   var lettersUsed = alreadyUsedLettersCheck(guessedLetter);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
-  round.updatePlayerIndex();
-  domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+
   domUpdates.updateLettersUsed(lettersUsed);
   domUpdates.unhideGuessedLetters(round.correctLetters);
   round.checkSolveByLetter();
+
   endRoundCheck();
 }
 function endRoundCheck() {
   turnIndex = round.playerTurnIndex;
   if (round.solvedQuestionMark) {
     console.log('round has ended!');
-    console.log(turnIndex);
-    console.log('total money', players[turnIndex].currentRoundMoney);
+    console.log('current', players[turnIndex].currentRoundMoney);
+    console.log('total', players[turnIndex].totalMoney);
     let winnerTotal = players[turnIndex].updateTotalMoney(
       players[turnIndex].currentRoundMoney
     );
@@ -224,7 +215,6 @@ function endRoundCheck() {
     round.endRoundCleanup();
     players.forEach(player => {
       player.resetRoundMoney();
-      console.log(player.currentRoundMoney);
     });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
@@ -239,11 +229,22 @@ function endRoundCheck() {
       `Category: ${round.puzzle.category}`
     );
     domUpdates.displayRoundNumber(game);
+    round.updatePlayerIndex();
+    domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   } else {
+    round.updatePlayerIndex();
+    domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
     return;
   }
+  console.log('total1', players[0].totalMoney);
+  console.log('total2', players[1].totalMoney);
+  console.log('total3', players[2].totalMoney);
 }
 
 function alreadyUsedLettersCheck(letter) {
   return round.storeGuess(letter);
 }
+
+$('.span--new-game').click(() => {
+  startTheGame();
+});
