@@ -141,14 +141,14 @@ $('.button--guess').click(() => {
   var scoreJustNow = round.checkGuess(guessedLetter, wheelValue);
   
   let $playerGuess = $('.input--player-guess');
-  turnIndex = round.playerTurnIndex;
+  let turnIndex = round.playerTurnIndex;
   let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(
     scoreJustNow
   );
   console.log(round.correctLetters)
   domUpdates.unhideGuessedLetters(round.correctLetters);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
-  let $playerGuess = $('.input--player-guess');
+  // let $playerGuess = $('.input--player-guess');
   let $playerGuessValue = $('.input--player-guess').val().toLowerCase();
   let consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
   round.guessedLetters.includes($playerGuessValue) ? domUpdates.alertInvalidEntry($playerGuess) : consonants.includes($playerGuessValue) ? checkGuess($playerGuessValue) : domUpdates.alertInvalidEntry($playerGuess);
