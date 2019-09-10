@@ -229,7 +229,7 @@ function endRoundCheck() {
     });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
-
+    console.log(round.puzzle);
     domUpdates.appendPuzzle(
       '.span--puzzle-display',
       `${round.puzzle.correct_answer}`
@@ -240,8 +240,19 @@ function endRoundCheck() {
       `Category: ${round.puzzle.category}`
     );
     domUpdates.displayRoundNumber(game);
+    endGameCheck();
   } else {
     return;
+  }
+}
+
+function endGameCheck() {
+  if (game.currentRound === 5) {
+    let winner = game.getWinnerAtTheEnd();
+    domUpdates.appendHTML($('.p--winner-alert'), `${winner} is the winner!`);
+    domUpdates.hideModal($('.div--modal-winner'));
+  } else {
+    return
   }
 }
 
