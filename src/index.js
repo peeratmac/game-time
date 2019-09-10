@@ -46,7 +46,10 @@ function startTheGame() {
   wheel = new Wheel(wheelData);
 
   domUpdates.appendPlayers(players);
-  domUpdates.appendPuzzle('.span--puzzle-display', `${round.puzzle.correct_answer}`);
+  domUpdates.appendPuzzle(
+    '.span--puzzle-display',
+    `${round.puzzle.correct_answer}`
+  );
   domUpdates.appendHTML(
     '.puzzle-category',
     `Category: ${round.puzzle.category}`
@@ -54,7 +57,7 @@ function startTheGame() {
   domUpdates.hideModal('.div--modal-setup');
   domUpdates.displayRoundNumber(game);
   domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
-  console.log(round.puzzle.correct_answer)
+  console.log(round.puzzle.correct_answer);
 }
 
 function instantiatePlayers() {
@@ -115,18 +118,26 @@ $('.button--buy-vowel').click(() => {
   let netScore = players[turnIndex].updateCurrentRoundMoney(-100);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, netScore);
   let $playerGuess = $('.input--buy-vowel');
-  let $playerGuessValue = $('.input--buy-vowel').val().toLowerCase();
+  let $playerGuessValue = $('.input--buy-vowel')
+    .val()
+    .toLowerCase();
   let vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
-  round.guessedLetters.includes($playerGuessValue) ? domUpdates.alertInvalidEntry($playerGuess) : vowels.includes($playerGuessValue) ? checkGuess($playerGuessValue) : domUpdates.alertInvalidEntry($playerGuess);
+  round.guessedLetters.includes($playerGuessValue)
+    ? domUpdates.alertInvalidEntry($playerGuess)
+    : vowels.includes($playerGuessValue)
+    ? checkGuess($playerGuessValue)
+    : domUpdates.alertInvalidEntry($playerGuess);
   domUpdates.clearField($playerGuess);
 });
 
 $('.button--submit-solution').click(() => {
   event.preventDefault();
   let solution = $('.input--solution').val();
-  round.checkSolve(solution)
-  endRoundCheck()
-  round.solvedQuestionMark ? domUpdates.hideModal('.div--modal-incorrect') : null;
+  round.checkSolve(solution);
+  endRoundCheck();
+  round.solvedQuestionMark
+    ? domUpdates.hideModal('.div--modal-incorrect')
+    : null;
   domUpdates.hideModal('.div--modal-solution');
   domUpdates.clearField($('.input--solution'));
 });
@@ -134,25 +145,41 @@ $('.button--submit-solution').click(() => {
 $('.button--close-alert').click(() => {
   event.preventDefault();
   domUpdates.hideModal('.div--modal-incorrect');
-})
+});
 
 $('.button--guess').click(() => {
   event.preventDefault();
-  var guessedLetter = $('.input--player-guess').val();
-  var scoreJustNow = round.checkGuess(guessedLetter, wheelValue);
-  
   let $playerGuess = $('.input--player-guess');
-  let turnIndex = round.playerTurnIndex;
-  let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(
-    scoreJustNow
-  );
-  console.log(round.correctLetters)
-  domUpdates.unhideGuessedLetters(round.correctLetters);
-  domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
-  // let $playerGuess = $('.input--player-guess');
-  let $playerGuessValue = $('.input--player-guess').val().toLowerCase();
-  let consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
-  round.guessedLetters.includes($playerGuessValue) ? domUpdates.alertInvalidEntry($playerGuess) : consonants.includes($playerGuessValue) ? checkGuess($playerGuessValue) : domUpdates.alertInvalidEntry($playerGuess);
+  let $playerGuessValue = $('.input--player-guess')
+    .val()
+    .toLowerCase();
+  let consonants = [
+    'b',
+    'c',
+    'd',
+    'f',
+    'g',
+    'h',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'v',
+    'w',
+    'x',
+    'z'
+  ];
+  round.guessedLetters.includes($playerGuessValue)
+    ? domUpdates.alertInvalidEntry($playerGuess)
+    : consonants.includes($playerGuessValue)
+    ? checkGuess($playerGuessValue)
+    : domUpdates.alertInvalidEntry($playerGuess);
   domUpdates.clearField($playerGuess);
 });
 
@@ -162,18 +189,21 @@ $('.input--player-guess').click(() => {
 
 $('.input--buy-vowel').click(() => {
   domUpdates.removeError();
-})
+});
 
 function checkGuess(letter) {
   let guessedLetter = letter;
   let scoreJustNow = round.checkGuess(guessedLetter, wheel.currentVal);
   let turnIndex = round.playerTurnIndex;
-  let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(scoreJustNow);
+  let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(
+    scoreJustNow
+  );
   var lettersUsed = alreadyUsedLettersCheck(guessedLetter);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
   round.updatePlayerIndex();
   domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   domUpdates.updateLettersUsed(lettersUsed);
+  domUpdates.unhideGuessedLetters(round.correctLetters);
   round.checkSolveByLetter();
   endRoundCheck();
 }
