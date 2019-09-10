@@ -111,6 +111,9 @@ $('.button--guess-solution').click(() => {
 
 $('.button--buy-vowel').click(() => {
   event.preventDefault();
+  let turnIndex = round.playerTurnIndex;
+  let netScore = players[turnIndex].updateCurrentRoundMoney(-100);
+  domUpdates.updateRoundScoreAfterGuess(turnIndex, netScore);
   let $playerGuess = $('.input--buy-vowel');
   let $playerGuessValue = $('.input--buy-vowel').val().toLowerCase();
   let vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
@@ -139,7 +142,7 @@ $('.input--buy-vowel').click(() => {
 
 function checkGuess(letter) {
   let guessedLetter = letter;
-  let scoreJustNow = round.checkGuess(guessedLetter);
+  let scoreJustNow = round.checkGuess(guessedLetter, wheel.currentVal);
   let turnIndex = round.playerTurnIndex;
   let totalRoundScore = players[turnIndex].updateCurrentRoundMoney(scoreJustNow);
   var lettersUsed = alreadyUsedLettersCheck(guessedLetter);
