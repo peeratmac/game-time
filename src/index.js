@@ -82,9 +82,13 @@ function validateFields(fields) {
 let wheelValue;
 $('.button--spin').click(() => {
   event.preventDefault();
+  domUpdates.enableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
+  domUpdates.disableBtn([$('.button--spin')]);
   wheelValue = wheel.randomizeWheelVal();
   domUpdates.displaySpinValue(wheelValue);
   if (wheelValue === 'BANKRUPT') {
+  domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
+  domUpdates.enableBtn([$('.button--spin')]);
     window.alert('BANKRUPT, YOUR ROUND MONEY IS NOW ZERO, NEXT PLAYER PLEASE');
     players[round.playerTurnIndex].resetRoundMoney();
     domUpdates.updateRoundScoreAfterGuess(round.playerTurnIndex, 0);
@@ -92,6 +96,8 @@ $('.button--spin').click(() => {
     domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   }
   if (wheelValue === 'LOSE A TURN') {
+  domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
+  domUpdates.enableBtn([$('.button--spin')]);
     window.alert('YOU LOST A TURN, NEXT PLAYER PLEASE');
     round.updatePlayerIndex();
     domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
@@ -107,6 +113,8 @@ let turnIndex;
 
 $('.button--buy-vowel').click(() => {
   event.preventDefault();
+  domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
+  domUpdates.enableBtn([$('.button--spin')]);
   turnIndex = round.playerTurnIndex;
   let netScore = players[turnIndex].updateCurrentRoundMoney(-100);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, netScore);
@@ -168,6 +176,8 @@ $('.button--guess').click(() => {
     'x',
     'z'
   ];
+  domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
+  domUpdates.enableBtn([$('.button--spin')]);
   round.guessedLetters.includes($playerGuessValue)
     ? domUpdates.alertInvalidEntry($playerGuess)
     : consonants.includes($playerGuessValue)
