@@ -2,7 +2,7 @@ import Player from './Player.js';
 import Round from './Round.js';
 import Puzzle from './Puzzle.js';
 import data from './data/sample-data.js';
-import domUpdates from './domUpdates';
+
 class Game {
   constructor(players, data) {
     this.data = data;

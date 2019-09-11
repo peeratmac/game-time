@@ -28,12 +28,10 @@ $depth-shadow: 0px 3px 0px #b2a98f,
   margin: 0;
   padding: 0;
   outline: none;
-  // border: solid red 1px;
 }
 
 body {
     background-color: $primary-background;
-    // background-image: url(https://wallpapercave.com/wp/wp1895667.png);
     font-family: $main-font;
     color: black;
     height: 97vh;
@@ -153,10 +151,6 @@ footer {
 .div--modal-solution {
   font-size: 2em;
 
-  .label--solution {
-
-  }
-
   .input--solution {
     width: 50%;
     height: 3rem;
@@ -164,7 +158,6 @@ footer {
     border: none;
     font-family: $main-font;
     outline: none;
-    // text-align: center;
     border-radius: 20px;
     margin: auto;
     margin-bottom: 20px;
@@ -280,24 +273,11 @@ header {
       color: white;
       background: $button-back-1;
       border: 2px solid $accent-text;
-    
-    
-      
-      .char {
-      }
       
       .hidden {
         visibility: hidden;
-        // color: green;  
       }
     }
-    .letter {
-      
-    }
-
-  .div--category-display {
-
-  }
 
   p {
     color: white;
@@ -399,19 +379,6 @@ header {
   padding-bottom: 10px;
 }
 
-// .button--spin {
-//   color: white;
-//   display: inline;
-//   height: 1em;
-//   font-size: 1.8rem;
-//   box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
-//   width: 1em;
-//   border-radius: 50%;
-//   text-shadow: $retro-shadow;
-//   background: rgb(66, 184, 221);
-//   border: solid 1px white;
-//   font-family: $main-font;
-// }
 .button--spin {
     color: $big-button-text;
     display: inline;
@@ -429,8 +396,6 @@ header {
 
 .button--spin:hover {
   color: black;
-  // background-color: grey;
-  // transition-delay: .15s;
 }
 
 .button--spin:active {
@@ -455,8 +420,6 @@ header {
 
 .button--guess-solution:hover {
   color: black;
-  // background-color: grey;
-  // transition-delay: .15s;
 }
 
 .button--guess-solution:active {
@@ -464,22 +427,13 @@ header {
   color: white;
   border: solid 1px yellow;
 }
-
-
-// .section--player-name {
-  
-  // }
-  
-  
-  
+   
   .button {
     outline: none;
   }
   
   .button--spin:hover {
     color: black;
-    // background-color: grey;
-    // transition-delay: .15s;
   }
   
   .button--spin:active {
@@ -504,8 +458,6 @@ header {
   
   .button--guess-solution:hover {
     color: black;
-    // background-color: grey;
-    // transition-delay: .15s;
   }
   
   .button--guess-solution:active {
@@ -522,90 +474,42 @@ header {
     align-items: space-between;
   }
   
-  .form-buy-vowel {
+.label {
+    font-size: 2em;
+    font-weight: 300;
+    color: $accent-text;
+    text-shadow: $depth-shadow;
+    margin: 15px 0;
   }
-  
-  
-  // .form--player-guess {
-    
-    // }
-  
-  .label {
-      font-size: 2em;
-      font-weight: 300;
-      color: $accent-text;
-      text-shadow: $depth-shadow;
-      margin: 15px 0;
-    }
     
 .input--buy-vowel,
 .input--player-guess {
-    width: 50%;
-    height: 35px;
-	  padding-left: 15px;
-    border: none;
-    font-family: $main-font;
-    outline: none;
-    // text-align: center;
-    border-radius: 20px;
-    margin: auto;
-    margin-bottom: 20px;
-    background: rgba(52, 152, 182, 0.2);
-    // 
-  }
+  width: 50%;
+  height: 35px;
+  padding-left: 15px;
+  border: none;
+  font-family: $main-font;
+  outline: none;
+  border-radius: 20px;
+  margin: auto;
+  margin-bottom: 20px;
+  background: rgba(52, 152, 182, 0.2);
+}
 
-  input:focus::placeholder{
-       color:transparent;
-  }
+input:focus::placeholder{
+      color:transparent;
+}
 
 .button--guess,
 .button--buy-vowel {
-    display: inline-block;
-    background: $accent-background;
-    border: 2px solid darken($secondary-background, 5%);
-    padding: .5em 2em;
-    color: white;
-    border-radius: 20px;
-    font-family: $main-font;
-    width: 50%;
-    margin: auto;
-    box-shadow: inset 0px 1px 0px fadeout(white, 80%)
-  }
-    // .input--player-guess {
-      
-      // }
-      
-      // .button--guess {
-        
-        // }
-        
-        // .form-buy-vowel {
-          
-          // }
-          
-          // .label--buy-vowel {
-
-// }
-
-// .input--buy-vowel {
-
-// }
-
-// .button--buy-vowel {
-
-// }
-
-
-// .button--guess-solution {
-  
-// }
-
-// .label--solution {
-
-// }
-
-// .input--solution {
-
-// }
-
-
+  display: inline-block;
+  background: $accent-background;
+  border: 2px solid darken($secondary-background, 5%);
+  padding: .5em 2em;
+  color: white;
+  border-radius: 20px;
+  font-family: $main-font;
+  width: 50%;
+  margin: auto;
+  box-shadow: inset 0px 1px 0px fadeout(white, 80%)
+}

@@ -1,8 +1,3 @@
-import Game from './Game.js';
-import Player from './Player.js';
-import data from './data/sample-data.js';
-import domUpdates from './domUpdates';
-
 class Round {
   constructor(puzzle, players) {
     this.puzzle = puzzle;
@@ -19,14 +14,11 @@ class Round {
     return this.guessedLetters;
   }
 
-  endRoundCleanup(players) {
+  endRoundCleanup() {
     this.guessedLetters = [];
     this.correctIndicesArr = [];
     this.playerTurnIndex = 0;
     this.solvedQuestionMark = false;
-    // players.forEach(player => {
-    //   player.currentRoundMoney = 0;
-    // });
   }
 
   endRound(game) {
@@ -83,13 +75,8 @@ class Round {
   }
 
   checkSolve(fullPlayerGuess) {
-    console.log(fullPlayerGuess)
-    if (
-      fullPlayerGuess !== undefined &&
-      this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()
-    ) {
+    if (fullPlayerGuess !== undefined && this.puzzle.correct_answer.toUpperCase() === fullPlayerGuess.toUpperCase()) {
       this.solvedQuestionMark = true;
-      console.log('here')
       return this.solvedQuestionMark;
     } else {
       this.solvedQuestionMark = false;
