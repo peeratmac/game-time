@@ -211,7 +211,6 @@ $('.input--buy-vowel').click(() => {
 });
 
 function checkGuess(letter) {
-  console.log(round.puzzle.correct_answer)
   let guessedLetter = letter;
   let scoreJustNow = round.checkGuess(guessedLetter, wheel.currentVal);
   turnIndex = round.playerTurnIndex;
