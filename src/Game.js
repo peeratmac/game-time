@@ -17,7 +17,6 @@ class Game {
     this.instantiatePlayers(p1, p2, p3);
     this.getPuzzles();
     let round = new Round(this.puzzles[this.currentRound], this.players);
-    round.startRound();
   }
   
   getPuzzles() {
@@ -27,12 +26,6 @@ class Game {
       let puzzle = puzzleClass.setPuzzle();
       this.puzzles.push(puzzle);
     }
-  }
-
-  beginNewRound() {
-    this.currentRound === 4 ? this.beginBonusRound : this.incrementRound();
-    let round = new Round(this.puzzles[this.currentRound], this.players);
-    round.startRound();
   }
 
   incrementRound() {

@@ -19,7 +19,6 @@ describe('Wheel', function () {
 
   it('should be able to hold the Wheel of Fortune values', () => {
     wheel.randomizeWheelVal();
-    console.log(wheel.randomizeWheelVal());
     expect(wheel.currentVal).to.not.equal(undefined);
   });
 });
