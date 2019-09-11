@@ -1,5 +1,4 @@
 import Player from './Player.js';
-import Round from './Round.js';
 import Puzzle from './Puzzle.js';
 import data from './data/sample-data.js';
 
@@ -12,11 +11,9 @@ class Game {
     this.bonusRound = false;
   }
   
-  startGame(p1, p2, p3) {
+  startGame() {
     this.players = [];
-    this.instantiatePlayers(p1, p2, p3);
     this.getPuzzles();
-    let round = new Round(this.puzzles[this.currentRound], this.players);
   }
   
   getPuzzles() {
@@ -45,7 +42,7 @@ class Game {
 
   startBonus() {
     this.bonusRound = true;
-  }
+  } 
 
   getWinnerThisRound(winner) {
     this.players.map(player => {
