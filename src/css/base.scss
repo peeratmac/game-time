@@ -54,7 +54,6 @@ footer {
 
 // * <---- MODALS ----->
 .div--modal-background {
-  // display: none;
   background-color: $secondary-background;
   min-height: 120vh;
   min-width: 100vw;
@@ -66,7 +65,6 @@ footer {
 }
 
 .div--modal-setup {
-  // display: none;
   flex-direction: column;
   position: fixed;
   left: 10%;
@@ -128,6 +126,7 @@ footer {
   display: none;
 }
 
+.div--modal-winner,
 .div--modal-solution,
 .div--modal-incorrect {
   display: none;
@@ -135,7 +134,7 @@ footer {
   position: fixed;
   left: 10%;
   min-width: 80vw;
-  top: 20%;
+  top: 45%;
   z-index: 3000;
   
   .form--player-setup {
