@@ -12,13 +12,12 @@ describe('Round', () => {
 
   beforeEach(() => {
     game = new Game(data);
+    game.startGame();
     game.instantiatePlayers('Chris', 'Peerat', 'Victor');
-    // game.startGame();
     puzzle = new Puzzle(data.puzzles);
     puzzle.choosePuzzleBank();
     puzzle = puzzle.setPuzzle();
     round = new Round(puzzle, game.players);
-    // round.startRound();
   });
 
   it('should store the current rounds puzzle', () => {
@@ -27,20 +26,6 @@ describe('Round', () => {
 
   it("should store the current player's turn", () => {
     expect(round.playerTurnIndex).to.equal(0);
-  });
-
-  it('should store the current round standings', () => {
-    round.updateRoundStandings({
-      id: 1,
-      name: 'Chris',
-      currentRoundMoney: 600,
-      totalMoney: 0
-    })
-    expect(round.roundStandings).to.deep.equal([
-      { id: 1, name: 'Chris', currentRoundMoney: 600, totalMoney: 0 },
-      { id: 2, name: 'Peerat', currentRoundMoney: 0, totalMoney: 0 },
-      { id: 3, name: 'Victor', currentRoundMoney: 0, totalMoney: 0 }
-    ]);
   });
 
   it('should start with no letters guessed', () => {
@@ -93,16 +78,6 @@ describe('Round', () => {
     round.checkGuess('z');
     expect(round.checkSolve(round.puzzle['correct_answer'])).to.equal(true);
     expect(round.correctIndicesArr.length).to.not.equal(0);
-  });
-
-  it('should update the round scores for each player', () => {
-    round.updateRoundStandings({name: 'Victor', currentRoundMoney: 800});
-    expect(round.roundStandings[2]).to.deep.equal({
-      id: 3,
-      name: 'Victor',
-      currentRoundMoney: 800,
-      totalMoney: 0
-    });
   });
 
   it('should be able to end round and return guessLetters and correctIndicesArr to empty array state', () => {

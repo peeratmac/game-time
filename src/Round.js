@@ -23,7 +23,6 @@ class Round {
 
   endRound(game) {
     this.resolveScores(game);
-    this.updateGameStandings(game);
     this.guessedLetters = [];
     this.correctIndicesArr = [];
   }
@@ -86,22 +85,6 @@ class Round {
 
   resolveScores(gameClass) {
     return gameClass.getWinnerAtTheEnd();
-  }
-
-  updateRoundStandings(playerArg) {
-    this.roundStandings.map(player => {
-      if (player.name === playerArg.name) {
-        player.currentRoundMoney = playerArg.currentRoundMoney;
-      }
-    });
-  }
-
-  updateGameStandings(gameClass) {
-    this.roundStandings = this.roundStandings.sort((a, b) => {
-      return b.currentRoundMoney - a.currentRoundMoney;
-    });
-    let winner = this.roundStandings[0];
-    gameClass.getWinnerThisRound(winner);
   }
 }
 
