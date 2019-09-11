@@ -22,7 +22,7 @@ class Game {
   
   getPuzzles() {
     let puzzleClass = new Puzzle(data.puzzles);
-    while (this.puzzles.length < 5) {
+    while (this.puzzles.length < 6) {
       puzzleClass.choosePuzzleBank();
       let puzzle = puzzleClass.setPuzzle();
       this.puzzles.push(puzzle);
@@ -69,7 +69,7 @@ class Game {
     let sortedPlayers = this.players.sort((a, b) => {
       return b.totalMoney - a.totalMoney;
     });
-    return sortedPlayers[0];
+    return sortedPlayers[0].name;
   }
 
   endRound() {

@@ -2,8 +2,8 @@ import $ from 'jquery';
 import './css/base.scss';
 import Game from '../src/Game.js';
 import Round from './Round.js';
-import Turn from './Turn.js';
-import Puzzle from './Puzzle.js';
+// import Turn from './Turn.js';
+// import Puzzle from './Puzzle.js';
 import Wheel from './Wheel.js';
 import Player from './Player.js';
 import domUpdates from './domUpdates';
@@ -148,6 +148,12 @@ $('.button--close-alert').click(() => {
   domUpdates.hideModal('.div--modal-incorrect');
 });
 
+$('.button--close-winner').click(() => {
+  event.preventDefault();
+  domUpdates.hideModal('.div--modal-winner');
+  startTheGame();
+});
+
 $('.button--guess').click(() => {
   event.preventDefault();
   let $playerGuess = $('.input--player-guess');
@@ -178,11 +184,7 @@ $('.button--guess').click(() => {
   ];
   domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
   domUpdates.enableBtn([$('.button--spin')]);
-  round.guessedLetters.includes($playerGuessValue)
-    ? domUpdates.alertInvalidEntry($playerGuess)
-    : consonants.includes($playerGuessValue)
-    ? checkGuess($playerGuessValue)
-    : domUpdates.alertInvalidEntry($playerGuess);
+  round.guessedLetters.includes($playerGuessValue) ? domUpdates.alertInvalidEntry($playerGuess) : consonants.includes($playerGuessValue) ? checkGuess($playerGuessValue) : domUpdates.alertInvalidEntry($playerGuess);
   domUpdates.clearField($playerGuess);
 });
 
@@ -211,15 +213,14 @@ function checkGuess(letter) {
   endRoundCheck();
 }
 function endRoundCheck() {
+  console.log(round.puzzle.correct_answer);
+  console.log(game.currentRound);
   turnIndex = round.playerTurnIndex;
-  if (round.solvedQuestionMark) {
-    console.log('round has ended!');
-    console.log('current', players[turnIndex].currentRoundMoney);
-    console.log('total', players[turnIndex].totalMoney);
+  if (round.solvedQuestionMark && game.currentRound < 5) {
     let winnerTotal = players[turnIndex].updateTotalMoney(
       players[turnIndex].currentRoundMoney
     );
-
+    
     domUpdates.updateTotalMoneyAfterSolve(turnIndex, winnerTotal);
     domUpdates.updateRoundScoreAfterSolve(players);
     round.endRoundCleanup();
@@ -228,12 +229,12 @@ function endRoundCheck() {
     });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
-
     domUpdates.appendPuzzle(
       '.span--puzzle-display',
       `${round.puzzle.correct_answer}`
     );
-
+    domUpdates.updateLettersUsed([]);        
+    endGameCheck();
     domUpdates.appendHTML(
       '.puzzle-category',
       `Category: ${round.puzzle.category}`
@@ -244,11 +245,20 @@ function endRoundCheck() {
   } else {
     round.updatePlayerIndex();
     domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
+    endGameCheck();
     return;
   }
-  console.log('total1', players[0].totalMoney);
-  console.log('total2', players[1].totalMoney);
-  console.log('total3', players[2].totalMoney);
+}
+
+function endGameCheck() {
+  if (game.currentRound === 5) {
+    let winner = game.getWinnerAtTheEnd();
+    console.log(winner);
+    domUpdates.appendHTML('.p--winner-alert', `${winner} is the winner!`);
+    domUpdates.hideModal($('.div--modal-winner'));
+  } else {
+    return
+  }
 }
 
 function alreadyUsedLettersCheck(letter) {
