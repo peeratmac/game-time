@@ -1,42 +1,40 @@
 // * <---- SCSS IDENTIFIERS ---->
-
-$primary-background: #C96567;
-$secondary-background: #314455;
-$ternary-background: #9E5A63;
 $accent-background:#439F76;
-$button-back-1: #12C998;
-$button-back-2: rgb(188, 120, 222);
-$big-button-text: rgb(33, 129, 213);
-$controls-color: #314455;
-$body-text: black;
-$head-color: rgb(255, 255, 255);
 $accent-text: rgb(108, 123, 171);
 $alt-text: #F070A1;
-$main-font: 'Press Start 2P', cursive;
-$retro-shadow: 4px 4px 0px #b8aaaa, 
-      7px 7px 0px rgba(0, 0, 0, 0.2);
+$big-button-text: rgb(33, 129, 213);
+$body-text: black;
+$button-back-1: #12C998;
+$button-back-2: rgb(188, 120, 222);
+$controls-color: #314455;
 $depth-shadow: 0px 3px 0px #b2a98f,
-    0px 14px 10px rgba(0,0,0,0.15),
-    0px 24px 2px rgba(0,0,0,0.1),
-    0px 34px 30px rgba(0,0,0,0.1);
-
-
+0px 14px 10px rgba(0, 0, 0, 0.15),
+0px 24px 2px rgba(0, 0, 0, 0.1),
+0px 34px 30px rgba(0, 0, 0, 0.1);
+$head-color: rgb(255, 255, 255);
+$main-font: 'Press Start 2P',
+cursive;
+$primary-background: #C96567;
+$retro-shadow: 4px 4px 0px #b8aaaa,
+7px 7px 0px rgba(0, 0, 0, 0.2);
+$secondary-background: #314455;
+$ternary-background: #9E5A63;
 
 // * <---- LARGE PARENT ELEMENT STYLES ---->
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
   outline: none;
+  padding: 0;
 }
 
 body {
-    background-color: $primary-background;
-    font-family: $main-font;
-    color: black;
-    height: 97vh;
-    width: 100vw;
-    text-align: center;
+  background-color: $primary-background;
+  color: black;
+  font-family: $main-font;
+  height: 97vh;
+  text-align: center;
+  width: 100vw;
 }
 
 main {
@@ -49,67 +47,65 @@ footer {
   flex-direction: column;
 }
 
-
 // * <---- MODALS ----->
 .div--modal-background {
   background-color: $secondary-background;
+  box-shadow: 0 -50vh 0 50vh $secondary-background;
   min-height: 120vh;
   min-width: 100vw;
   opacity: .7;
   position: fixed;
   z-index: 2000;
-  box-shadow: 0 -50vh 0 50vh $secondary-background;
-
 }
 
 .div--modal-setup {
   flex-direction: column;
-  position: fixed;
   left: 10%;
   min-width: 80vw;
+  position: fixed;
   top: 20%;
   z-index: 3000;
-  
+
   .form--player-setup {
     background: $ternary-background;
+    border-radius: 50px;
+    border: 5px solid $accent-background;
     display: flex;
     flex-direction: column;
     height: 65vh;
-    border-radius: 50px;
-    border: 5px solid $accent-background;
     justify-content: space-around;
     z-index: 3000;
   }
-}  
+}
 
 .input--player1,
 .input--player2,
 .input--player3 {
-  width: 50%;
-  margin: auto;
-  height: 8vh;
-  border: 2px solid ;
-  font-size: 1.2em;
-  border-radius: 5px;
   background: $secondary-background;
-  font-family: $main-font;
-  padding-left: 20px;
+  border-radius: 5px;
+  border: 2px solid;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  font-family: $main-font;
+  font-size: 1.2em;
+  height: 8vh;
+  margin: auto;
+  padding-left: 20px;
+  width: 50%;
 }
 
 .button--start {
-    display: inline-block;
-    background: $accent-background;
-    border: 2px solid darken($secondary-background, 5%);
-    padding: .5em 2em;
-    height: 100px;
-    font-size: 20px;
-    color: white;
-    border-radius: 20px;
-    font-family: $main-font;
-    width: 50%;
-    margin: auto;
-    box-shadow: inset 0px 1px 0px fadeout(black, 80%)  
+  background: $accent-background;
+  border-radius: 20px;
+  border: 2px solid darken($secondary-background, 5%);
+  box-shadow: inset 0px 1px 0px fadeout(black, 80%);
+  color: white;
+  display: inline-block;
+  font-family: $main-font;
+  font-size: 20px;
+  height: 100px;
+  margin: auto;
+  padding: .5em 2em;
+  width: 50%;
 }
 
 .div--modal-start-screen {
@@ -120,7 +116,7 @@ footer {
   display: none;
 }
 
-.div--modal-round-summary { 
+.div--modal-round-summary {
   display: none;
 }
 
@@ -129,39 +125,41 @@ footer {
 .div--modal-incorrect {
   display: none;
   flex-direction: column;
-  position: fixed;
   left: 10%;
   min-width: 80vw;
+  position: fixed;
   top: 45%;
   z-index: 3000;
-  
+
   .form--player-setup {
     background: $ternary-background;
+    border-radius: 50px;
+    border: 5px solid $accent-background;
     display: flex;
     flex-direction: column;
     height: 65vh;
-    border-radius: 50px;
-    border: 5px solid $accent-background;
     justify-content: space-around;
     z-index: 3000;
   }
-
 }
 
 .div--modal-solution {
   font-size: 2em;
 
   .input--solution {
-    width: 50%;
-    height: 3rem;
-	  padding-left: 15px;
+    background: rgba(52, 152, 182, 0.2);
+    border-radius: 20px;
     border: none;
     font-family: $main-font;
+    height: 3rem;
     outline: none;
     border-radius: 20px;
     margin: auto;
     margin-bottom: 20px;
-    background: rgba(52, 152, 182, 0.2);
+    margin: auto;
+    outline: none;
+    padding-left: 15px;
+    width: 50%;
   }
 
   .button--submit-solution {
@@ -182,122 +180,119 @@ footer {
 
 // * <---- MAIN ----->
 header {
-  font-size: 4em;
-  font-family: $main-font;
-  font-weight: 900;
   color: $head-color;
-  margin: 0, ;
+  font-family: $main-font;
+  font-size: 4em;
+  font-weight: 900;
   margin-top: 2vh;
-  text-shadow: $depth-shadow;    
+  margin: 0, ;
+  text-shadow: $depth-shadow;
 }
 
-.span--new-game{
+.span--new-game {
   background: $button-back-2;
-  border-radius: 5px; 
-  font-size: .9em;
-  position: absolute;
-  width: 12%;
+  border-radius: 5px;
   border: 3px solid $secondary-background;
+  font-size: .9em;
   height: 8%;
-  right: 0;
-  padding: .5em;
   margin-right: 1%;
+  padding: .5em;
+  position: absolute;
+  right: 0;
+  width: 12%;
 }
 
 .players--section {
-  position: absolute;
-  margin: 13% 0 0 1%;
   background: $secondary-background;
-  width: 12%;
+  border: solid 3px $accent-background;
   color: white;
-  font-size: .7em;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  border: solid 3px $accent-background;
+  font-size: .7em;
   height: 30%;
+  justify-content: space-around;
+  margin: 13% 0 0 1%;
+  position: absolute;
+  width: 12%;
 }
 
 .section--round-disp {
   background: $secondary-background;
-  height: 14%;
-  color: white;
-  width: 12%;
   border: solid 3px $accent-background;
-  padding: .5%;
+  color: white;
+  height: 14%;
   margin: 25px 0 2% 1%;
+  padding: .5%;
   position: absolute;
+  width: 12%;
 }
 
-.div--round-disp{
-  margin-top: 10px;
+.div--round-disp {
   font-size: 2rem;
+  margin-top: 10px;
 }
 
 .section--description {
+  background-color: $secondary-background;
+  border: 3px solid $accent-background;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  display: inline-block;
   height: 70%;
-  width: 70%;
+  margin: 30px 20px 0 0;
   position: relative;
   text-align: center;
-  margin: 30px 20px 0 0;
-  border: 3px solid $accent-background;
-  background-color: $secondary-background;
-  display: inline-block;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  width: 70%;
 
   .span--puzzle-display {
     display: flex;
     flex-direction: column;
   }
 
-    .div--puzz-set{
-      margin: 2vh;
-      font-size: 3.5em;
+  .div--puzz-set {
+    font-size: 3.5em;
+    margin: 2vh;
+  }
 
-    }
+  .symbol-container {
+    background: $button-back-1;
+    border: 2px solid $accent-text;
+    color: white;
+    margin-bottom: 0;
+    margin-top: 0;
+    margin: auto;
+    padding: 1px;
+    width: fit-content;
+  }
 
-    .symbol-container {
-      margin: auto;
-      margin-top: 0;
-      margin-bottom: 0;
-      width: fit-content;
-      padding: 1px;
-      color: white;
-      background: $button-back-1;
-      border: 2px solid $accent-text;
-    }
+  .char-container {
+    background: $button-back-1;
+    border: 2px solid $accent-text;
+    color: white;
+    margin: .4rem;
+    padding: 1px;
 
-    .char-container {
-      margin: .4rem;
-      padding: 1px;
-      color: white;
-      background: $button-back-1;
-      border: 2px solid $accent-text;
-      
-      .hidden {
-        visibility: hidden;
-      }
+    .hidden {
+      visibility: hidden;
     }
+  }
 
   p {
     color: white;
   }
 
-
-
   .div--used-letters {
+    background: $accent-background;
+    border-top: 3px solid $accent-text;
+    bottom: 0;
     display: inline-block;
     flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    opacity: 90%;
-    margin-right: 20px;
-    background: $accent-background;
-    width: 100%;
     left: 0;
-    border-top: 3px solid $accent-text;
+    margin-right: 20px;
+    opacity: 90%;
+    position: absolute;
+    width: 100%;
 
-    h4{
+    h4 {
       color: $primary-background;
     }
 
@@ -307,18 +302,16 @@ header {
   }
 }
 
-
-
 .section--cur-player {
-  position: absolute;
-  width: 14%;
-  height: 100px;
   background: $secondary-background;
-  display: inline-block;
-  margin-top: 44vh;
-  text-align: center;
-  border: solid 3px $accent-background;
   border-radius: 10px;
+  border: solid 3px $accent-background;
+  display: inline-block;
+  height: 100px;
+  margin-top: 44vh;
+  position: absolute;
+  text-align: center;
+  width: 14%;
 
   p {
     color: green;
@@ -327,24 +320,24 @@ header {
   }
 
   div {
-    font-size: .9rem;
     color: $button-back-2;
+    font-size: .9rem;
   }
 }
 
 .spin-box {
   background-color: $button-back-1;
-  position: absolute;
-  width: 14%;
-  display: inline-block;
-  margin: auto;
-  margin-top: 10vh;
-  height: 30%; 
-  text-align: center;
-  padding-top: 3%;
   border-radius: 13px;
   border: 11px solid $secondary-background;
-  
+  display: inline-block;
+  height: 30%;
+  margin-top: 10vh;
+  margin: auto;
+  padding-top: 3%;
+  position: absolute;
+  text-align: center;
+  width: 14%;
+
   p {
     color: green;
     font-size: 1.6vw;
@@ -352,22 +345,19 @@ header {
   }
 
   span {
-    margin-top: 1rem;
-    font-size: 1.5rem;
     color: $button-back-2;
+    font-size: 1.5rem;
+    margin-top: 1rem;
   }
 }
 
-
-
 // * <---- FOOTER ----->
-
 .footer--player-controls {
-  display: flex;
   background-color: $controls-color;
-  height: 20vh;
   border-top: 3px solid $accent-background;
   box-shadow: 0 50vh 0 50vh $controls-color;
+  display: flex;
+  height: 20vh;
   padding-top: 2rem;
 }
 
@@ -380,42 +370,41 @@ header {
 }
 
 .button--spin {
-    color: $big-button-text;
-    display: inline;
-    height: 150px;
-    width: 150px;
-    background: $button-back-1;
-    font-size: 1.8em;
-    box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
-    border-radius: 50%;
-    text-shadow: $retro-shadow;
-    border: solid 1px white;
-    font-family: $main-font;
+  background: $button-back-1;
+  border-radius: 50%;
+  border: solid 1px white;
+  box-shadow: 2px 7px 50px -7px rgba(0, 0, 0, 0.98);
+  color: $big-button-text;
+  display: inline;
+  font-family: $main-font;
+  font-size: 1.8em;
+  height: 150px;
+  text-shadow: $retro-shadow;
+  width: 150px;
 }
-
 
 .button--spin:hover {
   color: black;
 }
 
 .button--spin:active {
-  box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
-  color: white;
   border: solid 1px yellow;
+  box-shadow: 2px 5px 41px -2px rgba(0, 0, 0, 0.98);
+  color: white;
 }
 
 .button--guess-solution {
+  background: rgb(66, 184, 221);
+  border-radius: 50%;
+  border: solid 1px white;
+  box-shadow: 2px 7px 50px -7px rgba(0, 0, 0, 0.98);
   color: white;
   display: inline;
   font-family: $main-font;
-  height: 150px;
   font-size: 1em;
-  box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
-  width: 150px;
+  height: 150px;
   text-shadow: $retro-shadow;
-  border-radius: 50%;
-  background: rgb(66, 184, 221);
-  border: solid 1px white;
+  width: 150px;
 }
 
 .button--guess-solution:hover {
@@ -423,93 +412,92 @@ header {
 }
 
 .button--guess-solution:active {
-  box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
-  color: white;
   border: solid 1px yellow;
-}
-   
-  .button {
-    outline: none;
-  }
-  
-  .button--spin:hover {
-    color: black;
-  }
-  
-  .button--spin:active {
-    box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
-    color: $big-button-text;
-    border: solid 1px yellow;
-  }
-  
-  .button--guess-solution {
-    color: $big-button-text;
-    display: inline;
-    font-family: $main-font;
-    height: 150px;
-    font-size: 1em;
-    box-shadow: 2px 7px 50px -7px rgba(0,0,0,0.98);
-    width: 150px;
-    text-shadow: $retro-shadow;
-    border-radius: 50%;
-    background: $button-back-2;
-    border: solid 1px white;
-  }
-  
-  .button--guess-solution:hover {
-    color: black;
-  }
-  
-  .button--guess-solution:active {
-    box-shadow: 2px 5px 41px -2px rgba(0,0,0,0.98);
-    color: $big-button-text;
-    border: solid 1px yellow;
-  }
-  
-  
-  .form--player-guess,
-  .form-buy-vowel {
-    display: flex;
-    flex-direction: column;
-    align-items: space-between;
-  }
-  
-.label {
-    font-size: 2em;
-    font-weight: 300;
-    color: $accent-text;
-    text-shadow: $depth-shadow;
-    margin: 15px 0;
-  }
-    
-.input--buy-vowel,
-.input--player-guess {
-  width: 50%;
-  height: 35px;
-  padding-left: 15px;
-  border: none;
-  font-family: $main-font;
-  outline: none;
-  border-radius: 20px;
-  margin: auto;
-  margin-bottom: 20px;
-  background: rgba(52, 152, 182, 0.2);
+  box-shadow: 2px 5px 41px -2px rgba(0, 0, 0, 0.98);
+  color: white;
 }
 
-input:focus::placeholder{
-      color:transparent;
+.button {
+  outline: none;
+}
+
+.button--spin:hover {
+  color: black;
+}
+
+.button--spin:active {
+  border: solid 1px yellow;
+  box-shadow: 2px 5px 41px -2px rgba(0, 0, 0, 0.98);
+  color: $big-button-text;
+}
+
+.button--guess-solution {
+  background: $button-back-2;
+  border-radius: 50%;
+  border: solid 1px white;
+  box-shadow: 2px 7px 50px -7px rgba(0, 0, 0, 0.98);
+  color: $big-button-text;
+  display: inline;
+  font-family: $main-font;
+  font-size: 1em;
+  height: 150px;
+  text-shadow: $retro-shadow;
+  width: 150px;
+}
+
+.button--guess-solution:hover {
+  color: black;
+}
+
+.button--guess-solution:active {
+  border: solid 1px yellow;
+  box-shadow: 2px 5px 41px -2px rgba(0, 0, 0, 0.98);
+  color: $big-button-text;
+}
+
+.form--player-guess,
+.form-buy-vowel {
+  align-items: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 2em;
+  font-weight: 300;
+  color: $accent-text;
+  text-shadow: $depth-shadow;
+  margin: 15px 0;
+}
+
+.input--buy-vowel,
+.input--player-guess {
+  background: rgba(52, 152, 182, 0.2);
+  border-radius: 20px;
+  border: none;
+  font-family: $main-font;
+  height: 35px;
+  margin-bottom: 20px;
+  margin: auto;
+  outline: none;
+  padding-left: 15px;
+  width: 50%;
+}
+
+input:focus::placeholder {
+  color: transparent;
 }
 
 .button--guess,
 .button--buy-vowel {
-  display: inline-block;
   background: $accent-background;
-  border: 2px solid darken($secondary-background, 5%);
-  padding: .5em 2em;
-  color: white;
   border-radius: 20px;
+  border: 2px solid darken($secondary-background, 5%);
+  box-shadow: inset 0px 1px 0px fadeout(white, 80%);
+  color: white;
+  display: inline-block;
   font-family: $main-font;
-  width: 50%;
   margin: auto;
-  box-shadow: inset 0px 1px 0px fadeout(white, 80%)
+  padding: .5em 2em;
+  width: 50%
 }
