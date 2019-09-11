@@ -41,8 +41,6 @@
 
 ![desktop-view-2](screenshots/desktop-view-2.png)
 
-![desktop-view-3](screenshots/desktop-view-3.png)
-
 ## Future Functionalities
 
-- x
+- See [issues here](https://github.com/peeratmac/game-time/issues)
