@@ -1,11 +1,4 @@
 import $ from 'jquery';
-// import Game from '../src/Game.js';
-// import Round from './Round.js';
-// import Turn from './Turn.js';
-// import Puzzle from './Puzzle.js';
-// import Wheel from './Wheel.js';
-// import Player from './Player.js';
-// import data from './data/sample-data.js';
 
 const domUpdates = {
   appendHTML(element, text) {
@@ -108,7 +101,6 @@ const domUpdates = {
   },
 
   updateLettersUsed(letters) {
-    // console.log(letters)
     $(`.player-used-letters`).text(letters);
   },
 

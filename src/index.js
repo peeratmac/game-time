@@ -2,8 +2,6 @@ import $ from 'jquery';
 import './css/base.scss';
 import Game from '../src/Game.js';
 import Round from './Round.js';
-// import Turn from './Turn.js';
-// import Puzzle from './Puzzle.js';
 import Wheel from './Wheel.js';
 import Player from './Player.js';
 import domUpdates from './domUpdates';
@@ -11,7 +9,8 @@ import domUpdates from './domUpdates';
 let $player1 = $('.input--player1');
 let $player2 = $('.input--player2');
 let $player3 = $('.input--player3');
-
+let wheelValue;
+let turnIndex;
 let game, round, wheel, players;
 const data = fetch(
   'https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
@@ -28,23 +27,15 @@ let wheelData = fetch(
 
 $('.button--start').click(event => {
   event.preventDefault();
-
-  // checkGameValidity([$player1, $player2, $player3]);
-  startTheGame();
-  // game.startGame($player1, $player2, $player3);
+  checkGameValidity([$player1, $player2, $player3]);
 });
 
 function startTheGame() {
   players = instantiatePlayers();
-
   game = new Game(players, data);
-
   game.getPuzzles();
-
   round = new Round(game.puzzles[game.currentRound]);
-
   wheel = new Wheel(wheelData);
-
   domUpdates.appendPlayers(players);
   domUpdates.appendPuzzle(
     '.span--puzzle-display',
@@ -57,7 +48,6 @@ function startTheGame() {
   domUpdates.hideModal('.div--modal-setup');
   domUpdates.displayRoundNumber(game);
   domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
-  console.log(round.puzzle.correct_answer);
 }
 
 function instantiatePlayers() {
@@ -79,7 +69,6 @@ function validateFields(fields) {
   return fields.every(field => field.val() !== '');
 }
 
-let wheelValue;
 $('.button--spin').click(() => {
   event.preventDefault();
   domUpdates.enableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
@@ -87,8 +76,8 @@ $('.button--spin').click(() => {
   wheelValue = wheel.randomizeWheelVal();
   domUpdates.displaySpinValue(wheelValue);
   if (wheelValue === 'BANKRUPT') {
-  domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
-  domUpdates.enableBtn([$('.button--spin')]);
+    domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
+    domUpdates.enableBtn([$('.button--spin')]);
     window.alert('BANKRUPT, YOUR ROUND MONEY IS NOW ZERO, NEXT PLAYER PLEASE');
     players[round.playerTurnIndex].resetRoundMoney();
     domUpdates.updateRoundScoreAfterGuess(round.playerTurnIndex, 0);
@@ -96,8 +85,8 @@ $('.button--spin').click(() => {
     domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
   }
   if (wheelValue === 'LOSE A TURN') {
-  domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
-  domUpdates.enableBtn([$('.button--spin')]);
+    domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
+    domUpdates.enableBtn([$('.button--spin')]);
     window.alert('YOU LOST A TURN, NEXT PLAYER PLEASE');
     round.updatePlayerIndex();
     domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
@@ -109,7 +98,6 @@ $('.button--guess-solution').click(() => {
   domUpdates.hideModal('.div--modal-solution');
 });
 
-let turnIndex;
 
 $('.button--buy-vowel').click(() => {
   event.preventDefault();
@@ -126,8 +114,8 @@ $('.button--buy-vowel').click(() => {
   round.guessedLetters.includes($playerGuessValue)
     ? domUpdates.alertInvalidEntry($playerGuess)
     : vowels.includes($playerGuessValue)
-    ? checkGuess($playerGuessValue)
-    : domUpdates.alertInvalidEntry($playerGuess);
+      ? checkGuess($playerGuessValue)
+      : domUpdates.alertInvalidEntry($playerGuess);
   domUpdates.clearField($playerGuess);
 });
 
@@ -180,7 +168,8 @@ $('.button--guess').click(() => {
     'v',
     'w',
     'x',
-    'z'
+    'z',
+    '-'
   ];
   domUpdates.disableBtn([$('.button--guess-solution'), $('.button--buy-vowel'), $('.button--guess')]);
   domUpdates.enableBtn([$('.button--spin')]);
@@ -205,22 +194,18 @@ function checkGuess(letter) {
   );
   var lettersUsed = alreadyUsedLettersCheck(guessedLetter);
   domUpdates.updateRoundScoreAfterGuess(turnIndex, totalRoundScore);
-
   domUpdates.updateLettersUsed(lettersUsed);
   domUpdates.unhideGuessedLetters(round.correctLetters);
   round.checkSolveByLetter();
-
   endRoundCheck();
 }
+
 function endRoundCheck() {
-  console.log(round.puzzle.correct_answer);
-  console.log(game.currentRound);
   turnIndex = round.playerTurnIndex;
   if (round.solvedQuestionMark && game.currentRound < 5) {
     let winnerTotal = players[turnIndex].updateTotalMoney(
       players[turnIndex].currentRoundMoney
     );
-    
     domUpdates.updateTotalMoneyAfterSolve(turnIndex, winnerTotal);
     domUpdates.updateRoundScoreAfterSolve(players);
     round.endRoundCleanup();
@@ -229,16 +214,10 @@ function endRoundCheck() {
     });
     game.incrementRound();
     round = new Round(game.puzzles[game.currentRound]);
-    domUpdates.appendPuzzle(
-      '.span--puzzle-display',
-      `${round.puzzle.correct_answer}`
-    );
+    domUpdates.appendPuzzle('.span--puzzle-display', `${round.puzzle.correct_answer}`);
     domUpdates.updateLettersUsed([]);        
     endGameCheck();
-    domUpdates.appendHTML(
-      '.puzzle-category',
-      `Category: ${round.puzzle.category}`
-    );
+    domUpdates.appendHTML('.puzzle-category', `Category: ${round.puzzle.category}`);
     domUpdates.displayRoundNumber(game);
     round.updatePlayerIndex();
     domUpdates.updateCurrentPlayerDisplay(players[round.playerTurnIndex].name);
@@ -253,7 +232,6 @@ function endRoundCheck() {
 function endGameCheck() {
   if (game.currentRound === 5) {
     let winner = game.getWinnerAtTheEnd();
-    console.log(winner);
     domUpdates.appendHTML('.p--winner-alert', `${winner} is the winner!`);
     domUpdates.hideModal($('.div--modal-winner'));
   } else {
