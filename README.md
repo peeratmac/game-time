@@ -1,6 +1,6 @@
 # Game-Time
 
-## [Pixels of Fortune Live Site](https://peeratmac.github.io/game-time/src/index.html)
+## [Pixels of Fortune Live Site](https://peeratmac.github.io/game-time)
 
 ### [Peerat Sukcharoenyingyong](https://github.com/peeratmac) [Victor Abraham](https://github.com/VPAbraham) [Chris Basham](https://github.com/chrisdbasham317)
 
